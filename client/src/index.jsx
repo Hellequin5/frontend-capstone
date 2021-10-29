@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-//import API_KEY from './config.js';
 import axios from 'axios';
 import getStartingPid from './getStartingPid.jsx'
+import Overview from './overview/index.jsx'
+import Questions from './questions/index.jsx'
+import Reviews from './reviews/index.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -47,7 +49,11 @@ class App extends React.Component {
 
   render () {
     return (
-      <div> This is a Test</div>
+      <div>
+        <Overview />
+        <Questions />
+        <Reviews />
+      </div>
     )
   }
 }
