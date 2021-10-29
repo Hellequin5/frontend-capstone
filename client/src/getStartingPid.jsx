@@ -1,7 +1,6 @@
 import axios from 'axios';
 import API_KEY from './config.js';
 
-//var axios = require('axios');
 var getStartingPid = function(callback) {
 
   var config = {

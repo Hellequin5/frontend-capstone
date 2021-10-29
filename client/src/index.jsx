@@ -19,12 +19,9 @@ class App extends React.Component {
       if (err) {
         console.log(err)
       } else {
-        console.log('pid is', pid);
         this.singleItemRequest(pid);
       }
     });
-    //console.log('pid', g);
-
   }
 
   singleItemRequest (id) {
@@ -37,10 +34,10 @@ class App extends React.Component {
     };
 
     axios(config)
-      .then((resolve) => {
-        console.log(resolve.data.id);
+      .then((resolveProductInfo) => {
+        console.log(resolveProductInfo.data.id);
         this.setState({
-          product_id: resolve.data.id
+          product_id: resolveProductInfo.data.id
         })
       })
       .catch((err) => {
