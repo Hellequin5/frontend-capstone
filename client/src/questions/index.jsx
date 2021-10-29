@@ -5,7 +5,7 @@ const Questions = (props) => {
   return (
     <div>
 
-    Questions Component
+    Questions Component, Product_id is {props.product_id}
 
     </div>
   )

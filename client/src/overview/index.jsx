@@ -5,7 +5,7 @@ const Overview = (props) => {
   return (
     <div>
 
-    Overview Component
+    Overview Component, Product_id is {props.product_id}
 
     </div>
   )
