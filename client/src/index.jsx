@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import API_KEY from './config.js';
 import axios from 'axios';
+import getStartingPid from './getStartingPid.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,14 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.singleItemRequest(38322);
+    getStartingPid()
+    .then((id) => {
+      this.singleItemRequest(id);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+
   }
 
   singleItemRequest (id) {
@@ -26,10 +34,10 @@ class App extends React.Component {
     };
 
     axios(config)
-      .then((resolve) => {
-        console.log(resolve.data.id);
+      .then((resolveProductInfo) => {
+        console.log(resolveProductInfo.data.id);
         this.setState({
-          product_id: resolve.data.id
+          product_id: resolveProductInfo.data.id
         })
       })
       .catch((err) => {
