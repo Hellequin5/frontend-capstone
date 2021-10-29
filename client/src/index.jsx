@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import API_KEY from './config.js';
+//import API_KEY from './config.js';
 import axios from 'axios';
-import getStartingPid from './getStartingPid.jsx'
+//import getStartingPid from './getStartingPid.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -14,13 +14,13 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    getStartingPid()
-    .then((id) => {
-      this.singleItemRequest(id);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+    // getStartingPid()
+    // .then((id) => {
+    //   this.singleItemRequest(id);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // })
 
   }
 
