@@ -17,6 +17,9 @@ var getStartingPid = function() {
         resolve( itemsResponse.data[0].id );
       });
     })
+    .catch((error) => {
+      console.log(error);
+    })
 }
 
 module.exports = getStartingPid;

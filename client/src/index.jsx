@@ -18,6 +18,10 @@ class App extends React.Component {
     .then((id) => {
       this.singleItemRequest(id);
     })
+    .catch((error) => {
+      console.log(error);
+    })
+
   }
 
   singleItemRequest (id) {
