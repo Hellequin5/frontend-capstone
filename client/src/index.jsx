@@ -24,28 +24,25 @@ class App extends React.Component {
       console.log(error);
     })
 
+    //example usage for SIR
+    //this.singleItemRequest(38322);
   }
 
   singleItemRequest (id) {
     var config = {
       method:'get',
-      url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}`,
-      // headers: {
-      //   'Authorization': API_KEY
-      // }
+      url:`http://localhost:10038/singleItemRequest`,
+      params: {product_id: id}
     };
-
     axios(config)
       .then((resolveProductInfo) => {
-        console.log(resolveProductInfo.data.id);
         this.setState({
-          product_id: resolveProductInfo.data.id
+          product_id: resolveProductInfo.data.product_id
         })
       })
       .catch((err) => {
         console.error(err);
       })
-
   }
 
   render () {
