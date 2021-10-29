@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
-import API_KEY from './config.js';
+//import API_KEY from './config.js';
 import axios from 'axios';
 import getStartingPid from './getStartingPid.jsx'
 
@@ -16,34 +16,33 @@ class App extends React.Component {
   componentDidMount() {
     getStartingPid()
     .then((id) => {
-      this.singleItemRequest(id);
+      this.setState({
+        product_id: id
+      })
     })
     .catch((error) => {
       console.log(error);
     })
 
+    //example usage for SIR
+    //this.singleItemRequest(38322);
   }
 
   singleItemRequest (id) {
     var config = {
       method:'get',
-      url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}`,
-      headers: {
-        'Authorization': API_KEY
-      }
+      url:`http://localhost:10038/singleItemRequest`,
+      params: {product_id: id}
     };
-
     axios(config)
       .then((resolveProductInfo) => {
-        console.log(resolveProductInfo.data.id);
         this.setState({
-          product_id: resolveProductInfo.data.id
+          product_id: resolveProductInfo.data.product_id
         })
       })
       .catch((err) => {
         console.error(err);
       })
-
   }
 
   render () {
@@ -52,11 +51,5 @@ class App extends React.Component {
     )
   }
 }
-// const App = function() {
-//   return(
-//     <div>This is a test!</div>
-//   )
-// }
 
-// "this is a test commit"
 ReactDOM.render(<App />, document.getElementById('app'));
