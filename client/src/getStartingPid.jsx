@@ -1,7 +1,7 @@
 import axios from 'axios';
 import API_KEY from './config.js';
 
-var getStartingPid = function(callback) {
+var getStartingPid = function() {
 
   var config = {
     method: 'get',
@@ -11,15 +11,12 @@ var getStartingPid = function(callback) {
     }
   };
 
-  axios(config)
-  .then(function (itemsResponse) {
-    var id = itemsResponse.data[0].id;
-    callback(null, id);
-  })
-  .catch(function (error) {
-    callback(error, null);
-  });
+  return axios(config)
+    .then((itemsResponse) => {
+      return new Promise( (resolve, reject) => {
+        resolve( itemsResponse.data[0].id );
+      });
+    })
 }
-
 
 module.exports = getStartingPid;
