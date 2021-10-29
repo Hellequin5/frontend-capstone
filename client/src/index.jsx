@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 //import API_KEY from './config.js';
 import axios from 'axios';
-//import getStartingPid from './getStartingPid.jsx'
+import getStartingPid from './getStartingPid.jsx'
 
 class App extends React.Component {
   constructor(props) {
@@ -14,13 +14,15 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // getStartingPid()
-    // .then((id) => {
-    //   this.singleItemRequest(id);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
+    getStartingPid()
+    .then((id) => {
+      this.setState({
+        product_id: id
+      })
+    })
+    .catch((error) => {
+      console.log(error);
+    })
 
   }
 
@@ -28,9 +30,9 @@ class App extends React.Component {
     var config = {
       method:'get',
       url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}`,
-      headers: {
-        'Authorization': API_KEY
-      }
+      // headers: {
+      //   'Authorization': API_KEY
+      // }
     };
 
     axios(config)
@@ -52,11 +54,5 @@ class App extends React.Component {
     )
   }
 }
-// const App = function() {
-//   return(
-//     <div>This is a test!</div>
-//   )
-// }
 
-// "this is a test commit"
 ReactDOM.render(<App />, document.getElementById('app'));
