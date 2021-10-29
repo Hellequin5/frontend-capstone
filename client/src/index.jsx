@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import API_KEY from './config.js';
 import axios from 'axios';
+import getStartingPid from './getStartingPid.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -13,7 +14,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.singleItemRequest(38322);
+
+    getStartingPid( (err, pid) => {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log('pid is', pid);
+        this.singleItemRequest(pid);
+      }
+    });
+    //console.log('pid', g);
+
   }
 
   singleItemRequest (id) {
