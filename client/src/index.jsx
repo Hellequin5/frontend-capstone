@@ -1,9 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Overview from './overview/index.jsx'
-import Questions from './questions/index.jsx'
-import Reviews from './reviews/index.jsx'
+import Overview from './overview/index.jsx';
+import Questions from './questions/index.jsx';
+import Reviews from './reviews/index.jsx';
+import Product_Id_Context from './context.jsx';
 
 function App() {
   var [product_id, setProduct_id] = useState(0);
@@ -38,9 +39,11 @@ function App() {
 
   return (
     <div>
-      <Overview product_id={product_id} />
-      <Questions product_id={product_id} />
-      <Reviews product_id={product_id} />
+      <Product_Id_Context.Provider value={product_id}>
+        <Overview/>
+        <Questions/>
+        <Reviews/>
+      </Product_Id_Context.Provider>
     </div>
   )
 }
