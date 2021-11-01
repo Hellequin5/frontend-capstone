@@ -6,9 +6,9 @@ import Questions from './questions/index.jsx'
 import Reviews from './reviews/index.jsx'
 
 function App() {
-  let [product_id] = useState(0);
+  var [product_id, setProduct_id] = useState(0);
 
-  let singleItemRequest = (id) => {
+  var singleItemRequest = (id) => {
     var config = {}
     if (id) {
       config = {
@@ -24,12 +24,17 @@ function App() {
     }
     axios(config)
       .then((resolveProductInfo) => {
-          product_id = resolveProductInfo.data.product_id
+          setProduct_id(product_id = resolveProductInfo.data.product_id)
       })
       .catch((err) => {
         console.error(err);
       })
   }
+
+  /* Use Effects second paramenter makes sure that it only runs when the app is mounted like component did mount */
+  useEffect(() => {
+    singleItemRequest();
+  }, [])
 
   return (
     <div>
