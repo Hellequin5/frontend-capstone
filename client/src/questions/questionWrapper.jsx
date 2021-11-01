@@ -13,6 +13,9 @@ const QuestionWrapper = (props) => {
     <div>
     <Question />
     <Answer />
+    <Answer />
+    <Answer />
+    <Answer />
     <QuestionFooter />
 
     </div>
