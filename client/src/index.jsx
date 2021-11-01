@@ -1,25 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Overview from './overview/index.jsx'
-import Questions from './questions/index.jsx'
-import Reviews from './reviews/index.jsx'
+import Overview from './overview/index.jsx';
+import Questions from './questions/index.jsx';
+import Reviews from './reviews/index.jsx';
+import Product_Id_Context from './context.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      product_id: null
-    };
-    this.singleItemRequest = this.singleItemRequest.bind(this);
-  }
 
-  componentDidMount() {
-    this.singleItemRequest();
-  }
+function App() {
+  var [product_id, setProduct_id] = useState(0);
 
-  singleItemRequest (id) {
 
+  var singleItemRequest = (id) => {
     var config = {}
     if (id) {
       config = {
@@ -35,24 +27,28 @@ class App extends React.Component {
     }
     axios(config)
       .then((resolveProductInfo) => {
-        this.setState({
-          product_id: resolveProductInfo.data.product_id
-        })
+          setProduct_id(product_id = resolveProductInfo.data.product_id)
       })
       .catch((err) => {
         console.error(err);
       })
   }
 
-  render () {
-    return (
-      <div>
-        <Overview product_id={this.state.product_id} />
-        <Questions product_id={this.state.product_id} />
-        <Reviews product_id={this.state.product_id} />
-      </div>
-    )
-  }
+  /* Use Effects second paramenter makes sure that it only runs when the app is mounted like component did mount */
+  
+  useEffect(() => {
+    singleItemRequest();
+  }, [])
+
+  return (
+    <div>
+      <Product_Id_Context.Provider value={product_id}>
+        <Overview/>
+        <Questions/>
+        <Reviews/>
+      </Product_Id_Context.Provider>
+    </div>
+  )
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
