@@ -12,7 +12,6 @@ class App extends React.Component {
       product_id: null
     };
     this.singleItemRequest = this.singleItemRequest.bind(this);
-    this.getStartingPid = this.getStartingPid.bind(this);
   }
 
   componentDidMount() {
