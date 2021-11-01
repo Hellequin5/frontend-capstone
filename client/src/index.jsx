@@ -6,8 +6,10 @@ import Questions from './questions/index.jsx';
 import Reviews from './reviews/index.jsx';
 import Product_Id_Context from './context.jsx';
 
+
 function App() {
   var [product_id, setProduct_id] = useState(0);
+
 
   var singleItemRequest = (id) => {
     var config = {}
