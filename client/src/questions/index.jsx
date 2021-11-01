@@ -1,12 +1,22 @@
 import React, {useContext}  from 'react';
 import Product_Id_Context from '../context.jsx';
+import QuestionsSearch from './questionsSearch.jsx';
+import QuestionsBody from './questionsBody.jsx';
+import QuestionsFooter from './questionsFooter.jsx';
 
 const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);
+
+
+
   return (
     <div>
 
     Questions Component, Product_id is {product_id}
+
+    <QuestionsSearch />
+    <QuestionsBody />
+    <QuestionsFooter />
 
     </div>
   )
