@@ -9,10 +9,24 @@ module.exports = function(app) {
   app.get('/get_item_questions', (req, res) => {
     //console.log(req);
     var pid = req.query.pid
+    var page = req.query.page
+    if (page) {
+      page = '&page='+page;
+    }
+    else {
+      page = '';
+    }
+    var count = req.query.count
+    if (count) {
+      count = '&count='+count;
+    }
+    else {
+      count = '';
+    }
     console.log('pid is', pid);
     var config = {
       method: 'get',
-      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions?product_id=${pid}`,
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions?product_id=${pid}${page}${count}`,
       headers: {
         'Authorization': API_KEY
       }
