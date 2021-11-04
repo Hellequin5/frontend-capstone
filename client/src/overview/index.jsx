@@ -6,11 +6,15 @@ const Overview = (props) => {
 
   return (
     <div>
-
-    Overview Component, Product_id is {product_id}
-
+      <Reviews/>
+      <ProductCategory/>
+      <ProductTitle/>
+      <ProductPrice/>
+      <StyleSelector/>
+      <AddToCart/>
+      <ProductDescription/>
     </div>
-  )
+  );
 }
 
 module.exports = Overview;
