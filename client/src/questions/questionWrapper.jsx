@@ -22,10 +22,12 @@ const QuestionWrapper = (props) => {
 
 
 
-    <table><tbody>
+    <table width='800'><tbody>
     <tr><td><b>Q: </b></td><td><b>
     <Question text={props.question.question_body}/>
-    </b></td></tr>
+    </b></td><td align='right'>
+    Helpful? Yes({props.question.question_helpfulness}) | Add Answer
+    </td></tr>
 
 
     {answers.map((answer, index) => {
