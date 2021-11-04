@@ -27,4 +27,23 @@ module.exports = function(app) {
       })
   });
 
+  app.get('/productNameRequest/:product_id', (req, res) => {
+    var id = req.params.product_id;
+    var config = {
+      method: 'get',
+      url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}`,
+      headers: {
+        'Authorization': API_KEY
+      }
+    };
+    axios(config)
+      .then((productResponse) => {
+        var productInfo = { 'productName': productResponse.data.name };
+        res.status(200).send(productInfo)
+      })
+      .catch((error) => {
+        res.status(500).send('There was a problem retrieving the product category')
+      })
+  });
+
 }

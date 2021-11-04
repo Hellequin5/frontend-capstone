@@ -1,6 +1,7 @@
 import React, {useContext} from 'react';
 import Product_Id_Context from '../context.jsx';
 import ProductCategory from './productCategory.jsx'
+import ProductName from './productName.jsx'
 
 //<Reviews/>
 /* <ProductCategory/>
@@ -16,6 +17,7 @@ const Overview = (props) => {
   return (
     <div>
       <ProductCategory/>
+      <ProductName/>
     </div>
   );
 }

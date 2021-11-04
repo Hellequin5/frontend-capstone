@@ -6,13 +6,14 @@ import axios from 'axios'
 
 
 
-const ProductCategory = (props) => {
+const ProductName = (props) => {
   const product_id = useContext(Product_Id_Context);
-  let [category, setCategory] = useState(null);
+  let [name, setName] = useState(null);
 
-  axios.get(`http://localhost:10038/productCategoryRequest/${product_id}`)
+  axios.get(`http://localhost:10038/productNameRequest/${product_id}`)
     .then (response => {
-      setCategory(category = response.data.productCategory)
+     console.log(response)
+      setName(name = response.data.productName)
     })
     .catch (error => {
       console.log('failed to get product category')
@@ -20,11 +21,9 @@ const ProductCategory = (props) => {
 
   return (
     <p>
-      {category}
+      {name}
     </p>
   )
 }
 
-export default ProductCategory;
-
-
+export default ProductName;
