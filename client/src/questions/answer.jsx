@@ -1,5 +1,6 @@
 import React, {useContext}  from 'react';
 import Product_Id_Context from '../context.jsx';
+import AnswerFooter from './answerFooter.jsx';
 
 const Answer = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -9,7 +10,9 @@ const Answer = (props) => {
   return (
     <div>
 
-      <b>A:</b> {props.answer.body}
+      {props.answer.body}
+
+      <AnswerFooter />
 
     </div>
   )

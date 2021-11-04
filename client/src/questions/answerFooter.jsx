@@ -1,7 +1,7 @@
 import React, {useContext}  from 'react';
 import Product_Id_Context from '../context.jsx';
 
-const QuestionFooter = (props) => {
+const AnswerFooter = (props) => {
   const product_id = useContext(Product_Id_Context);
 
 
@@ -9,10 +9,10 @@ const QuestionFooter = (props) => {
   return (
     <div>
 
-    QuestionFooter
+      <i>AnswerFooter</i>
 
     </div>
   )
 }
 
-module.exports = QuestionFooter;
+module.exports = AnswerFooter;

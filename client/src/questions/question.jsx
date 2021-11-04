@@ -8,9 +8,9 @@ const Question = (props) => {
 
   return (
     <div>
-      <b>
-      Q: {props.text}
-      </b>
+
+      {props.text}
+
     </div>
   )
 }

@@ -9,7 +9,7 @@ const QuestionsFooter = (props) => {
   return (
     <div>
 
-    QuestionsFooter
+    [More Answered Questions] [Add a Question]
 
     </div>
   )

@@ -2,7 +2,6 @@ import React, {useContext}  from 'react';
 import Product_Id_Context from '../context.jsx';
 import Question from './question.jsx';
 import Answer from './answer.jsx';
-import QuestionFooter from './questionFooter.jsx';
 
 const QuestionWrapper = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -22,14 +21,20 @@ const QuestionWrapper = (props) => {
 
 
 
+
+    <table><tbody>
+    <tr><td><b>Q: </b></td><td><b>
     <Question text={props.question.question_body}/>
+    </b></td></tr>
 
 
-    {answers.map((answer) => {
-      return <Answer answer={answer} key={answer.id} />
+    {answers.map((answer, index) => {
+      return <tr><td valign='top'><b>A:</b></td><td>
+      <Answer answer={answer} key={answer.id} />
+      </td></tr>
     })}
 
-    <QuestionFooter />
+    </tbody></table>
 
     </div>
   )
