@@ -5,11 +5,10 @@ import QuestionsSearch from './questionsSearch.jsx';
 import QuestionsBody from './questionsBody.jsx';
 import QuestionsFooter from './questionsFooter.jsx';
 
-
-
 const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);
-  var [questions, setQuestions] = useState(0);
+
+  var [questions, setQuestions] = useState([]);
 
   console.log('product_id from context is ', product_id);
 

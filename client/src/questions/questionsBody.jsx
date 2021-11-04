@@ -9,11 +9,11 @@ const QuestionsBody = (props) => {
 
   return (
     <div>
+      {props.questions.map((question) => {
+        return <QuestionWrapper key={question.question_id} question={question}/>
+      })}
 
-    <QuestionWrapper />
-    <QuestionWrapper />
-    <QuestionWrapper />
-    <QuestionWrapper />
+
 
     </div>
   )

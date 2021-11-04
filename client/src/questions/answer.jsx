@@ -3,13 +3,13 @@ import Product_Id_Context from '../context.jsx';
 
 const Answer = (props) => {
   const product_id = useContext(Product_Id_Context);
-
+  console.log('Answer passed in is', props.answer);
 
 
   return (
     <div>
 
-    Answer
+      <b>A:</b> {props.answer.body}
 
     </div>
   )
