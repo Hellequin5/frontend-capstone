@@ -1,8 +1,9 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import Product_Id_Context from '../../context.jsx';
 
-const RatingData = () => {
+const RatingData = (props) => {
 
+  console.log(props);
   return (
     <div>
       Rating Data Component
