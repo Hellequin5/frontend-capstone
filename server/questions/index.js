@@ -35,7 +35,7 @@ module.exports = function(app) {
       .then((questionsResponse) => {
         var questions = questionsResponse.data.results;
         // var default_product_id = { 'product_id': itemsResponse.data[0].id };
-        res.status(200).json(questions)
+        res.status(200).send(questions)
         console.log('response was', questions);
       })
       .catch((error) => {
