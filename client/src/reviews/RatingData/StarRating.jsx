@@ -14,9 +14,12 @@ const Stars = (props) => {
         numOfRatings += num;
       }
     }
+    var average = total/numOfRatings;
+    var rounded = Number((Math.round(average * 4) / 4).toFixed(2));
+    console.log(rounded);
 
-    if (total/numOfRatings) {
-      return (total/numOfRatings)
+    if (rounded) {
+      return (rounded)
     } else {
       return 0;
     }
@@ -26,6 +29,7 @@ const Stars = (props) => {
   return(
     <div>
       Physical Star Ratings
+      <div>{averageRating}</div>
       <StarRatings
         rating= {averageRating}
 
