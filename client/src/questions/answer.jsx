@@ -12,7 +12,7 @@ const Answer = (props) => {
 
       {props.answer.body}
 
-      <AnswerFooter />
+      <AnswerFooter answer={props.answer}/>
 
     </div>
   )
