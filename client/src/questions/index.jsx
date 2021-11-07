@@ -79,7 +79,7 @@ const Questions = (props) => {
 
     <QuestionsSearch />
     <QuestionsBody questions={questions} questions_view={questions_view} answers_view={answers_view} moreAnswersClick={moreAnswersClick}/>
-    <QuestionsFooter />
+    <QuestionsFooter questions_view={questions_view} />
 
     </div>
   )

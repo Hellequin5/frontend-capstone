@@ -8,9 +8,8 @@ const QuestionsFooter = (props) => {
 
   return (
     <div>
-
-    [More Answered Questions] [Add a Question]
-
+    <input type='button' value='MORE ANSWERED QUESTIONS' id='more_questions'></input>
+    <input type='button' value='ADD A QUESTION' id='add_question'></input>
     </div>
   )
 }
