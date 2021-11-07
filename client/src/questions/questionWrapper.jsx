@@ -7,10 +7,13 @@ const QuestionWrapper = (props) => {
   const product_id = useContext(Product_Id_Context);
   console.log('Question passed in to wrapper is', props.question);
   var answers_in_view = [];
+  var total_answers_count = 0;
+  var total_answers_in_view_count = 0;
   if (props.question.answers) {
     for (var key in props.question.answers) {
       answers_in_view.push(props.question.answers[key])
     }
+    total_answers_count = answers_in_view.length;
     //1. SORT
     answers_in_view = answers_in_view.sort((ans1, ans2)=> {
       return ans2.helpfulness - ans1.helpfulness;
@@ -20,9 +23,17 @@ const QuestionWrapper = (props) => {
     if (props.answers_view === 'partial') {
       answers_in_view = answers_in_view.slice(0,2);
     }
+    // total_answers_in_view_count = answers_in_view.length;
+    // console.log('total_answers_in_view is', total_answers_in_view_count);
   }
-  console.log('answers is', answers_in_view);
+  //console.log('answers_in_view is', answers_in_view);
 
+  // useEffect(() => {
+  //   console.log('loading answers again');
+  //   if (product_id) {
+  //     getQuestions(product_id);
+  //   }
+  // }, [props.answers_in_view])
 
 
   return (
@@ -41,6 +52,10 @@ const QuestionWrapper = (props) => {
       </td></tr>
     })}
 
+    <tr><td></td><td>
+    { (total_answers_count < 3 || answers_in_view.length > 2) ? null : <input type='button' value='LOAD MORE ANSWERS' id='more_answers' onClick={props.more_answers}></input>}
+    { (total_answers_count < 3 || answers_in_view.length < 3) ? null : <input type='button' value='HIDE MORE ANSWERS' id='more_answers' onClick={props.more_answers}></input>}
+    </td></tr>
     </tbody></table>
 
     </div>
