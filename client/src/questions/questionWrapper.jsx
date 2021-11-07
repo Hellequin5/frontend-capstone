@@ -12,7 +12,7 @@ const QuestionWrapper = (props) => {
       answers.push(props.question.answers[key])
     }
     answers.sort((ans1, ans2)=> {
-      return ((ans1.helpfulness < ans2.helpfulness) ? 1 : -1);
+      return ans2.helpfulness - ans1.helpfulness;
     })
   }
   console.log('answers is', answers);
@@ -21,10 +21,6 @@ const QuestionWrapper = (props) => {
 
   return (
     <div>
-
-
-
-
     <table width='800'><tbody>
     <tr><td><b>Q: </b></td><td><b>
     <Question text={props.question.question_body}/>

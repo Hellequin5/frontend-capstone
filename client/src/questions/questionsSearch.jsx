@@ -9,7 +9,7 @@ const QuestionsSearch = (props) => {
   return (
     <div>
 
-    <input type='text' id='questionSearch' value='Have a Question? Search for answers...' size='100'></input>
+    <input type='text' id='questionSearch' defaultValue='Have a Question? Search for answers...' size='100'></input>
 
 
     </div>

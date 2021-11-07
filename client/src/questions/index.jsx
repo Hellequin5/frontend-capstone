@@ -9,21 +9,21 @@ const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);
 
   var [questions, setQuestions] = useState([]);
-  var [questionsView, setQuestionsView] = useState('partial');
-  var [answersView, setAnswersView] = useState('partial');
+  var [questions_view, setQuestionsView] = useState('partial');
+  var [answers_view, setAnswersView] = useState('partial');
 
 
-  console.log('product_id from context is ', product_id);
+  //console.log('product_id from context is ', product_id);
 
   var getQuestions = function(pid, page, count) {
 
     console.log('pid is', pid);
-    console.log('prod_id is', product_id);
+    //console.log('prod_id is', product_id);
     if (pid === undefined) {
       pid = product_id;
     }
     pid = `?pid=${pid}`;
-    console.log('pid is now', pid);
+    //console.log('pid is now', pid);
     if (page === undefined) {
       page = 1;
     }
@@ -41,7 +41,7 @@ const Questions = (props) => {
 
       // params: {product_id: id}
     };
-    console.log('endpoint is', endpoint);
+    //console.log('endpoint is', endpoint);
 
     axios(config)
       .then((resolveQuestions) => {
@@ -57,7 +57,7 @@ const Questions = (props) => {
 
 
 
-  console.log('this pid is', product_id)
+  //console.log('this pid is', product_id)
   useEffect(() => {
     console.log('getting Questions');
     if (product_id) {
@@ -71,7 +71,7 @@ const Questions = (props) => {
     Questions Component Start, Product_id is {product_id}
 
     <QuestionsSearch />
-    <QuestionsBody questions={questions}/>
+    <QuestionsBody questions={questions} questions_view={questions_view} answers_view={answers_view} />
     <QuestionsFooter />
 
     </div>
