@@ -6,16 +6,22 @@ import Answer from './answer.jsx';
 const QuestionWrapper = (props) => {
   const product_id = useContext(Product_Id_Context);
   console.log('Question passed in to wrapper is', props.question);
-  var answers = [];
+  var answers_in_view = [];
   if (props.question.answers) {
     for (var key in props.question.answers) {
-      answers.push(props.question.answers[key])
+      answers_in_view.push(props.question.answers[key])
     }
-    answers.sort((ans1, ans2)=> {
+    //1. SORT
+    answers_in_view = answers_in_view.sort((ans1, ans2)=> {
       return ans2.helpfulness - ans1.helpfulness;
     })
+
+    //2. Display partial or full
+    if (props.answers_view === 'partial') {
+      answers_in_view = answers_in_view.slice(0,2);
+    }
   }
-  console.log('answers is', answers);
+  console.log('answers is', answers_in_view);
 
 
 
@@ -29,7 +35,7 @@ const QuestionWrapper = (props) => {
     </td></tr>
 
 
-    {answers.map((answer, index) => {
+    {answers_in_view.map((answer, index) => {
       return <tr><td valign='top'><b>{( index === 0 ) ? 'A:' : null}</b></td><td>
       <Answer answer={answer} key={answer.id} />
       </td></tr>
