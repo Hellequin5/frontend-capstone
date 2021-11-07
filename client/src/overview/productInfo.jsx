@@ -21,12 +21,11 @@ const ProductInfo = (props) => {
   let getProductInfo = () => {
     axios.get(`http://localhost:10038/productInfoRequest/${product_id}`)
       .then (productInfo => {
-        console.log(productInfo.data)
         setProductInfo({
           category: productInfo.data.category,
           name: productInfo.data.name,
           description: productInfo.data.description
-        });
+        })
         // setCategory(category = productInfo.data.category)
         // setName(name = productInfo.data.name)
         // setDescription(description = productInfo.data.description)
@@ -39,7 +38,7 @@ const ProductInfo = (props) => {
 
   useEffect(() => {
     getProductInfo();
-  },[])
+  }, [product_id])
 
 
 

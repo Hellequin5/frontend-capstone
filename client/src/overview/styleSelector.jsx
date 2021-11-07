@@ -7,17 +7,20 @@ import axios from 'axios'
 
 const StyleSelector = (props) => {
   const product_id = useContext(Product_Id_Context);
-  let [price, setPrice] = useState('');
-  let [selectedStyle, setSelectedStyle] = useState('')
-  let [styles, setStyles] = useState([])
+  let [productStylesInfo, setProductStylesInfo] = useState({
+    price: '',
+    selectedStyle: '',
+    styles: []
+  })
 
   let styleSetter = () => {
     axios.get(`http://localhost:10038/productStylesRequest/${product_id}`)
       .then (productStyles => {
-        //console.log(productStyles.data)
-        setPrice(productStyles.data[0].original_price)
-        setSelectedStyle(productStyles.data[0].name)
-        //setStyles(productStyles.data)
+        setProductStylesInfo({
+          price: productStyles.data[0].original_price,
+          selectedStyle: productStyles.data[0].name,
+          styles: productStyles.data
+        })
       })
       .catch (error => {
         console.log('failed to get product styles')
@@ -27,19 +30,23 @@ const StyleSelector = (props) => {
 
   useEffect(() => {
     styleSetter();
-  })
+  }, [product_id])
 
 
   return (
     <div id='styleSelector'>
       <div id='price'>
-        <p>{price}</p>
+        <p>{productStylesInfo.price}</p>
       </div>
       <div id='style'>
-        <p> <b>STYLE: </b> {selectedStyle}</p>
+        <p> <b>STYLE: </b> {productStylesInfo.selectedStyle}</p>
       </div>
       <div id='thumbnails'>
-        thumnail images go here
+        {productStylesInfo.styles.map(style => {
+          return (
+            <img src={style.photos[0].thumbnail_url}/>
+          )
+        })}
       </div>
     </div>
   )
