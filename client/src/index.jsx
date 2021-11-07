@@ -35,7 +35,7 @@ function App() {
   }
 
   /* Use Effects second paramenter makes sure that it only runs when the app is mounted like component did mount */
-  
+
   useEffect(() => {
     singleItemRequest();
   }, [])

@@ -8,7 +8,7 @@ app.use(express.json());
 
 
 module.exports = function(app) {
-  app.get('/productCategoryRequest/:product_id', (req, res) => {
+  app.get('/productInfoRequest/:product_id', (req, res) => {
     var id = req.params.product_id;
     var config = {
       method: 'get',
@@ -19,7 +19,7 @@ module.exports = function(app) {
     };
     axios(config)
       .then((productResponse) => {
-        var productInfo = { 'productCategory': productResponse.data.category };
+        var productInfo = productResponse.data;
         res.status(200).send(productInfo)
       })
       .catch((error) => {
@@ -27,22 +27,22 @@ module.exports = function(app) {
       })
   });
 
-  app.get('/productNameRequest/:product_id', (req, res) => {
+  app.get('/productStylesRequest/:product_id', (req, res) => {
     var id = req.params.product_id;
     var config = {
       method: 'get',
-      url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}`,
+      url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}/styles`,
       headers: {
         'Authorization': API_KEY
       }
     };
     axios(config)
       .then((productResponse) => {
-        var productInfo = { 'productName': productResponse.data.name };
-        res.status(200).send(productInfo)
+        var productStyles = productResponse.data.results;
+        res.status(200).send(productStyles)
       })
       .catch((error) => {
-        res.status(500).send('There was a problem retrieving the product category')
+        res.status(500).send('There was a problem retrieving the product styles')
       })
   });
 
