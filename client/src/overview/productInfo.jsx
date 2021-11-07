@@ -8,18 +8,28 @@ import axios from 'axios'
 
 const ProductInfo = (props) => {
   const product_id = useContext(Product_Id_Context);
-  let [category, setCategory] = useState('');
-  let [name, setName] = useState('');
-  let [description, setDescription] = useState('');
-  let [testing, setTesting] = useState({})
+  let [productInfo, setProductInfo] = useState({
+    category: '',
+    name: '',
+    description: ''
+  })
+  // let [category, setCategory] = useState('');
+  // let [name, setName] = useState('');
+  // let [description, setDescription] = useState('');
+  // let [testing, setTesting] = useState({})
 
   let getProductInfo = () => {
     axios.get(`http://localhost:10038/productInfoRequest/${product_id}`)
       .then (productInfo => {
         console.log(productInfo.data)
-        setCategory(category = productInfo.data.category)
-        setName(name = productInfo.data.name)
-        setDescription(description = productInfo.data.description)
+        setProductInfo({
+          category: productInfo.data.category,
+          name: productInfo.data.name,
+          description: productInfo.data.description
+        });
+        // setCategory(category = productInfo.data.category)
+        // setName(name = productInfo.data.name)
+        // setDescription(description = productInfo.data.description)
         //setTesting(testing = productInfo.data)
       })
       .catch (error => {
@@ -29,7 +39,7 @@ const ProductInfo = (props) => {
 
   useEffect(() => {
     getProductInfo();
-  })
+  },[])
 
 
 
@@ -37,13 +47,13 @@ const ProductInfo = (props) => {
   return (
     <div id='productInfo'>
       <div id='productCategory'>
-        <p>{category}</p>
+        <p>{productInfo.category}</p>
       </div>
       <div id='productName'>
-        <b>{name}</b>
+        <b>{productInfo.name}</b>
       </div>
       <div id='productDescription'>
-        <p>{description}</p>
+        <p>{productInfo.description}</p>
       </div>
     </div>
   )
