@@ -31,7 +31,7 @@ const QuestionWrapper = (props) => {
 
 
     {answers.map((answer, index) => {
-      return <tr><td valign='top'><b>A:</b></td><td>
+      return <tr><td valign='top'><b>{( index === 0 ) ? 'A:' : null}</b></td><td>
       <Answer answer={answer} key={answer.id} />
       </td></tr>
     })}
