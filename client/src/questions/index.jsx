@@ -9,6 +9,9 @@ const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);
 
   var [questions, setQuestions] = useState([]);
+  var [questionsView, setQuestionsView] = useState('partial');
+  var [answersView, setAnswersView] = useState('partial');
+
 
   console.log('product_id from context is ', product_id);
 

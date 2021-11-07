@@ -11,6 +11,9 @@ const QuestionWrapper = (props) => {
     for (var key in props.question.answers) {
       answers.push(props.question.answers[key])
     }
+    answers.sort((ans1, ans2)=> {
+      return ((ans1.helpfulness < ans2.helpfulness) ? 1 : -1);
+    })
   }
   console.log('answers is', answers);
 
