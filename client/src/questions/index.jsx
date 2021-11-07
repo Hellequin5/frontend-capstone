@@ -63,6 +63,13 @@ const Questions = (props) => {
     }
   }
 
+  var moreQuestionsClick = function() {
+    if (questions_view === 'partial') {
+      setQuestionsView('full');
+    } else {
+      setQuestionsView('partial');
+    }
+  }
 
   //console.log('this pid is', product_id)
   useEffect(() => {
@@ -79,7 +86,7 @@ const Questions = (props) => {
 
     <QuestionsSearch />
     <QuestionsBody questions={questions} questions_view={questions_view} answers_view={answers_view} moreAnswersClick={moreAnswersClick}/>
-    <QuestionsFooter questions_view={questions_view} />
+    <QuestionsFooter questions_view={questions_view} moreQuestionsClick={moreQuestionsClick} />
 
     </div>
   )

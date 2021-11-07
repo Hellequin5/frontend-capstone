@@ -23,17 +23,8 @@ const QuestionWrapper = (props) => {
     if (props.answers_view === 'partial') {
       answers_in_view = answers_in_view.slice(0,2);
     }
-    // total_answers_in_view_count = answers_in_view.length;
-    // console.log('total_answers_in_view is', total_answers_in_view_count);
   }
-  //console.log('answers_in_view is', answers_in_view);
 
-  // useEffect(() => {
-  //   console.log('loading answers again');
-  //   if (product_id) {
-  //     getQuestions(product_id);
-  //   }
-  // }, [props.answers_in_view])
 
 
   return (
