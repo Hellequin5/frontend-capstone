@@ -1,4 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
+// import Container from 'react-bootstrap/Container';
 import Product_Id_Context from '../context.jsx';
 import ReviewList from './Reviews List/ReviewList.jsx';
 import RatingData from './RatingData/RatingData.jsx';

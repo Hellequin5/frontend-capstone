@@ -33,6 +33,7 @@ const StarBreakdown = (props) => {
             key={index}
             value={value}
             total={total}
+            rating={index+1}
           />
         )
       })}

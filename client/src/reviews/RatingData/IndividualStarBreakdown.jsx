@@ -6,7 +6,7 @@ const IndividualStarBreakdown = (props) => {
   var percent = Math.round((props.value * 100) / props.total)
   return(
     <div>
-      <Progress completed={percent} />
+      {props.rating} stars <Progress completed={percent} />
     </div>
   )
 }
