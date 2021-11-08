@@ -27,6 +27,13 @@ const StyleSelector = (props) => {
       })
   }
 
+  let thumbnailClick = (style) => {
+    setProductStylesInfo(prevState => ({
+      ...prevState,
+      price: style.original_price,
+      selectedStyle: style.name
+    }));
+  }
 
   useEffect(() => {
     styleSetter();
@@ -44,7 +51,7 @@ const StyleSelector = (props) => {
       <div id='thumbnails'>
         {productStylesInfo.styles.map(style => {
           return (
-            <img src={style.photos[0].thumbnail_url}/>
+            <img src={style.photos[0].thumbnail_url} onClick={() => thumbnailClick(style)}/>
           )
         })}
       </div>
