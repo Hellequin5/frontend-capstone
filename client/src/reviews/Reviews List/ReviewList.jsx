@@ -17,6 +17,10 @@ const ReviewList = (props) => {
   // }
 
   var numOfReviews = 0;
+  for (var key in ratingContext[0].ratings) {
+    // console.log(Number(ratingContext[0].ratings[key]))
+    numOfReviews += Number(ratingContext[0].ratings[key])
+  }
   // for (var key of ratingContext[0].ratings) {
   //   numOfReviews =+ ratingContext[0].ratings[key]
   // };
