@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 var SRC_DIR = path.join(__dirname, '/client/src');
 var DIST_DIR = path.join(__dirname, '/client/dist');
@@ -10,15 +11,17 @@ module.exports = {
     path: DIST_DIR
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?/,
         include: SRC_DIR,
-        loader: 'babel-loader',
-        query: {
-          presets: ['react', 'es2015']
-        }
-      }
+        use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+     }
     ]
-  }
+  },
+  mode: 'development'
 };
