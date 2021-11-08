@@ -4,7 +4,7 @@ import StarRatings from 'react-star-ratings';
 const Stars = (props) => {
   const average = (obj) => {
     //Potentially refactor to use array and reduce to account for possiblity of more ratings than five for reusability
-    console.log(obj)
+    // console.log(obj)
     var total = 0;
     var numOfRatings = 0;
     if (obj) {
@@ -16,7 +16,7 @@ const Stars = (props) => {
     }
     var average = total/numOfRatings;
     var rounded = Number((Math.round(average * 4) / 4).toFixed(2));
-    console.log(rounded);
+    // console.log(rounded);
 
     if (rounded) {
       return (rounded)
@@ -25,7 +25,7 @@ const Stars = (props) => {
     }
   }
   var averageRating = average(props.ratings);
-  console.log(averageRating)
+  // console.log(averageRating)
   return(
     <div>
       Physical Star Ratings

@@ -22,7 +22,7 @@ const StarBreakdown = (props) => {
     total = individualRatingArr.reduce((a, b) => a + b, 0)
   }
 
-  console.log(individualRatingArr);
+  // console.log(individualRatingArr);
   return (
     <div>
       Star Breakdown

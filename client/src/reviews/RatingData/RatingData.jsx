@@ -5,7 +5,6 @@ import StarBreakdown from './StarBreakdown.jsx';
 
 const RatingData = (props) => {
 
-  console.log(props);
   return (
     <div>
       Rating Data Component
