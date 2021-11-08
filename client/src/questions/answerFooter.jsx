@@ -11,7 +11,10 @@ const AnswerFooter = (props) => {
   return (
     <div>
 
-      <i>by {props.answer.answerer_name} {displayDate}</i>
+      <i>by {(props.answer.answerer_name.toLowerCase() === 'seller') ? '<b>' : null}
+        {props.answer.answerer_name}
+        {(props.answer.answerer_name.toLowerCase() === 'seller') ? '</b>' : null}
+        &nbsp; {displayDate}</i>
 
     </div>
   )
