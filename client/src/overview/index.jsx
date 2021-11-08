@@ -13,4 +13,4 @@ const Overview = (props) => {
   )
 }
 
-module.exports = Overview;
+export default Overview;

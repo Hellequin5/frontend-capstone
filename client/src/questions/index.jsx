@@ -12,4 +12,4 @@ const Questions = (props) => {
   )
 }
 
-module.exports = Questions;
+export default Questions;
