@@ -15,4 +15,4 @@ const Question = (props) => {
   )
 }
 
-module.exports = Question;
+export default Question;

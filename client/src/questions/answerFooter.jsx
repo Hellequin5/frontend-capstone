@@ -20,4 +20,5 @@ const AnswerFooter = (props) => {
   )
 }
 
-module.exports = AnswerFooter;
+
+export default AnswerFooter;

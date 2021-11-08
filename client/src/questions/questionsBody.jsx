@@ -28,4 +28,4 @@ const QuestionsBody = (props) => {
   )
 }
 
-module.exports = QuestionsBody;
+export default QuestionsBody;

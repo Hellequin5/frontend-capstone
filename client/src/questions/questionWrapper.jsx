@@ -53,4 +53,4 @@ const QuestionWrapper = (props) => {
   )
 }
 
-module.exports = QuestionWrapper;
+export default QuestionWrapper;

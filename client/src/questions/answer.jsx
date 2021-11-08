@@ -18,4 +18,4 @@ const Answer = (props) => {
   )
 }
 
-module.exports = Answer;
+export default Answer;

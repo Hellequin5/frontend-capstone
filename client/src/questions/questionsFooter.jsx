@@ -19,4 +19,4 @@ const QuestionsFooter = (props) => {
   )
 }
 
-module.exports = QuestionsFooter;
+export default QuestionsFooter;

@@ -16,4 +16,4 @@ const QuestionsSearch = (props) => {
   )
 }
 
-module.exports = QuestionsSearch;
+export default QuestionsSearch;
