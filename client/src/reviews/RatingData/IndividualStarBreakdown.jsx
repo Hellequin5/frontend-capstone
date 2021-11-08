@@ -1,11 +1,11 @@
-import React from 'react';
-import Progress from 'react-progressbar';
+import React, {useContext} from 'react';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 const IndividualStarBreakdown = (props) => {
   var percent = Math.round((props.value * 100) / props.total)
   return(
     <div>
-      {props.rating} stars <Progress completed={percent} />
+      {props.rating} stars <ProgressBar now={percent} />
     </div>
   )
 }
