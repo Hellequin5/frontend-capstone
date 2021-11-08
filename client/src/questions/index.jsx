@@ -10,7 +10,7 @@ const Questions = (props) => {
 
   var [questions, setQuestions] = useState([]);
   var [questions_view, setQuestionsView] = useState('partial');
-  var [answers_view, setAnswersView] = useState('partial');
+  var [answers_view, setAnswersView] = useState({});
 
 
   //console.log('product_id from context is ', product_id);
@@ -47,7 +47,13 @@ const Questions = (props) => {
       .then((resolveQuestions) => {
         console.log('Questions are: ', resolveQuestions.data)
         questions = resolveQuestions.data;
-        setQuestions(questions = resolveQuestions.data)
+        setQuestions(questions = resolveQuestions.data);
+        questions.forEach((question)=> {
+          setAnswersView((answers_view)=> {
+            answers_view[question.question_id] = 'partial';
+            return answers_view;
+          });
+        });
       })
       .catch((err) => {
         console.error(err);
@@ -55,12 +61,22 @@ const Questions = (props) => {
 
   }
 
-  var moreAnswersClick = function() {
-    if (answers_view === 'partial') {
-      setAnswersView('full');
+  var moreAnswersClick = function(question_id) {
+    console.log(question_id)
+    if (answers_view[question_id] === 'partial') {
+      console.log('switch to full')
+      setAnswersView((answers_view)=> {
+        answers_view[question_id] = 'full';
+        return answers_view;
+      });
     } else {
-      setAnswersView('partial');
+      console.log('switch to partial')
+      setAnswersView((answers_view)=> {
+        answers_view[question_id] = 'partial';
+        return answers_view;
+      });
     }
+    console.log('answers_view is now', answers_view)
   }
 
   var moreQuestionsClick = function() {

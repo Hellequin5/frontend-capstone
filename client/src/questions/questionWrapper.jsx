@@ -9,7 +9,7 @@ const QuestionWrapper = (props) => {
   var answers_in_view = [];
   var total_answers_count = 0;
   var total_answers_in_view_count = 0;
-  if (props.question.answers) {
+  //if (props.question.answers) {
     for (var key in props.question.answers) {
       answers_in_view.push(props.question.answers[key])
     }
@@ -20,10 +20,13 @@ const QuestionWrapper = (props) => {
     })
 
     //2. Display partial or full
-    if (props.answers_view === 'partial') {
+    console.log ('qw answers view is', props.answers_view)
+    if (props.answers_view[props.question.question_id] !== 'full') {
       answers_in_view = answers_in_view.slice(0,2);
+    } else {
+      console.log ('this answers view is', props.answers_view[props.question.question_id])
     }
-  }
+  //}
 
 
 
@@ -44,8 +47,8 @@ const QuestionWrapper = (props) => {
     })}
 
     <tr><td></td><td>
-    { (total_answers_count < 3 || answers_in_view.length > 2) ? null : <input type='button' value='LOAD MORE ANSWERS' id='more_answers' onClick={props.more_answers}></input>}
-    { (total_answers_count < 3 || answers_in_view.length < 3) ? null : <input type='button' value='HIDE MORE ANSWERS' id='more_answers' onClick={props.more_answers}></input>}
+    { (total_answers_count < 3 || answers_in_view.length > 2) ? null : <input type='button' value='LOAD MORE ANSWERS' id='more_answers' onClick={props.more_answers.bind(null, props.question.question_id)}></input>}
+    { (total_answers_count < 3 || answers_in_view.length < 3) ? null : <input type='button' value='HIDE MORE ANSWERS' id='more_answers' onClick={props.more_answers.bind(null, props.question.question_id)}></input>}
     </td></tr>
     </tbody></table>
 

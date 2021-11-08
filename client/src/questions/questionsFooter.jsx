@@ -11,7 +11,7 @@ const QuestionsFooter = (props) => {
     <div>
     { (props.questions_view === 'full') ? null : <input type='button' value='MORE ANSWERED QUESTIONS' id='more_questions' onClick={props.moreQuestionsClick}></input>}
     {/* Product spec: comment out line below!  Added for testing */}
-    {/* { (props.questions_view === 'partial') ? null : <input type='button' value='LESS ANSWERED QUESTIONS' id='more_questions' onClick={props.moreQuestionsClick}></input>} */}
+    { (props.questions_view === 'partial') ? null : <input type='button' value='LESS ANSWERED QUESTIONS' id='more_questions' onClick={props.moreQuestionsClick}></input>}
 
 
     <input type='button' value='ADD A QUESTION' id='add_question'></input>
