@@ -45,13 +45,13 @@ const QuestionWrapper = (props) => {
 
     {short_answers_in_view.map((answer, index) => {
       return <tr><td valign='top'><b>{( index === 0 ) ? 'A:' : null}</b></td><td>
-      <Answer answer={answer} key={answer.id} />
+      <Answer key={answer.id} answer={answer}  />
       </td></tr>
     })}
 
     {(ans_view === 'full') ? long_answers_in_view.map((answer, index) => {
       return <tr><td valign='top'></td><td>
-      <Answer answer={answer} key={answer.id} />
+      <Answer key={answer.id} answer={answer} />
       </td></tr>
     }) : null}
 

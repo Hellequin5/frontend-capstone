@@ -18,7 +18,7 @@ const QuestionsBody = (props) => {
 
   return (
     <div>
-      {questions_in_view.map((question) => {
+      {questions_in_view.map((question, index) => {
         return <QuestionWrapper key={question.question_id} question={question} />
       })}
 
