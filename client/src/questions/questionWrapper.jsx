@@ -24,14 +24,26 @@ const QuestionWrapper = (props) => {
     })
 
     //2. Display partial or full
-    var short_answers_in_view = answers_in_view.slice(0,2);
-    var long_answers_in_view = answers_in_view.slice(2,answers_in_view.length);
-    if (props.answers_view === 'partial') {
-      answers_in_view = answers_in_view.slice(0,2);
+    // var short_answers_in_view = answers_in_view.slice(0,2);
+    // var long_answers_in_view = answers_in_view.slice(2,answers_in_view.length);
+    // if (props.answers_view === 'partial') {
+    //   answers_in_view = answers_in_view.slice(0,2);
+    // }
+
+    var short_answers_in_view = [];
+    var long_answers_in_view = [];
+    if (answers_in_view.length > 2) {
+      short_answers_in_view = answers_in_view.slice(0,2);
+      long_answers_in_view = answers_in_view.slice(2,answers_in_view.length);
+    } else {
+      short_answers_in_view = answers_in_view;
     }
+    // if (props.answers_view === 'partial') {
+    //   answers_in_view = answers_in_view.slice(0,2);
+    // }
   }
 
-
+  console.log('ans_view is !!!', ans_view, answers_in_view.length);
 
   return (
     <div>
@@ -56,8 +68,8 @@ const QuestionWrapper = (props) => {
     }) : null}
 
     <tr><td></td><td>
-    { (total_answers_count < 3 || answers_in_view.length > 2) ? null : <input type='button' value='LOAD MORE ANSWERS' id='more_answers' onClick={setAnsView.bind(null, 'full')}></input>}
-    { (total_answers_count < 3 || answers_in_view.length < 3) ? null : <input type='button' value='HIDE MORE ANSWERS' id='more_answers' onClick={setAnsView.bind(null, 'partial')}></input>}
+    { (ans_view === 'partial' && answers_in_view.length > 2) ? <input type='button' value='LOAD MORE ANSWERS' id='more_answers' onClick={setAnsView.bind(null, 'full')}></input> : null}
+    { (ans_view !== 'partial' && answers_in_view.length > 2) ? <input type='button' value='HIDE MORE ANSWERS' id='more_answers' onClick={setAnsView.bind(null, 'partial')}></input> : null}
     </td></tr>
     </tbody></table>
 
