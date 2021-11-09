@@ -20,6 +20,7 @@ const QuestionWrapper = (props) => {
     })
 
     //2. Display partial or full
+    var short_answers_in_view = answers_in_view.slice(0,2);
     if (props.answers_view === 'partial') {
       answers_in_view = answers_in_view.slice(0,2);
     }
