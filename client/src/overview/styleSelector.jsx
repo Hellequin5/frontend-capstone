@@ -14,7 +14,7 @@ const StyleSelector = (props) => {
     styleName: '',
     styles: [],
     selectSize: [],
-    selectedSize: 'SELECTSIZE',
+    selectedSize: 'SELECT SIZE',
     selectQuantity: 0,
     displayQuantity: 'SELECT QUANTITY'
 
@@ -74,6 +74,12 @@ const StyleSelector = (props) => {
     return result;
   }
 
+  let checkSize = () => {
+    if (productStylesInfo.selectedSize === 'SELECT SIZE') {
+      alert('please select a size')
+    }
+  }
+
   useEffect(() => {
     styleSetter();
   }, [product_id])
@@ -111,6 +117,9 @@ const StyleSelector = (props) => {
             )
           })}
         </DropdownButton>
+      </div>
+      <div id='addToCart'>
+        <button type="button" onClick={() => checkSize()}>ADD TO CART</button>
       </div>
     </div>
   )
