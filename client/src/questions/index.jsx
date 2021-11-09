@@ -10,8 +10,6 @@ const Questions = (props) => {
 
   var [questions, setQuestions] = useState([]);
   var [questions_view, setQuestionsView] = useState('partial');
-  var [answers_view, setAnswersView] = useState('partial');
-
 
   //console.log('product_id from context is ', product_id);
 
@@ -55,14 +53,6 @@ const Questions = (props) => {
 
   }
 
-  var moreAnswersClick = function() {
-    if (answers_view === 'partial') {
-      setAnswersView('full');
-    } else {
-      setAnswersView('partial');
-    }
-  }
-
   var moreQuestionsClick = function() {
     if (questions_view === 'partial') {
       setQuestionsView('full');
@@ -85,7 +75,7 @@ const Questions = (props) => {
     Questions Component Start, Product_id is {product_id}
 
     <QuestionsSearch />
-    <QuestionsBody questions={questions} questions_view={questions_view} answers_view={answers_view} moreAnswersClick={moreAnswersClick}/>
+    <QuestionsBody questions={questions} questions_view={questions_view} />
     <QuestionsFooter questions_view={questions_view} moreQuestionsClick={moreQuestionsClick} />
 
     </div>

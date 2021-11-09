@@ -9,7 +9,6 @@ const QuestionWrapper = (props) => {
 
   var [ans_view, setAnsView] = useState('partial');
 
-
   var answers_in_view = [];
   var total_answers_count = 0;
   var total_answers_in_view_count = 0;
@@ -24,12 +23,6 @@ const QuestionWrapper = (props) => {
     })
 
     //2. Display partial or full
-    // var short_answers_in_view = answers_in_view.slice(0,2);
-    // var long_answers_in_view = answers_in_view.slice(2,answers_in_view.length);
-    // if (props.answers_view === 'partial') {
-    //   answers_in_view = answers_in_view.slice(0,2);
-    // }
-
     var short_answers_in_view = [];
     var long_answers_in_view = [];
     if (answers_in_view.length > 2) {
@@ -38,12 +31,7 @@ const QuestionWrapper = (props) => {
     } else {
       short_answers_in_view = answers_in_view;
     }
-    // if (props.answers_view === 'partial') {
-    //   answers_in_view = answers_in_view.slice(0,2);
-    // }
   }
-
-  console.log('ans_view is !!!', ans_view, answers_in_view.length);
 
   return (
     <div>
