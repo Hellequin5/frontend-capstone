@@ -1,4 +1,4 @@
-import React, {useContext}  from 'react';
+import React, {useContext, useState}  from 'react';
 import Product_Id_Context from '../context.jsx';
 import Question from './question.jsx';
 import Answer from './answer.jsx';
@@ -6,6 +6,10 @@ import Answer from './answer.jsx';
 const QuestionWrapper = (props) => {
   const product_id = useContext(Product_Id_Context);
   console.log('Question passed in to wrapper is', props.question);
+
+  var [ans_view, setAnsView] = useState('partial');
+
+
   var answers_in_view = [];
   var total_answers_count = 0;
   var total_answers_in_view_count = 0;
@@ -21,6 +25,7 @@ const QuestionWrapper = (props) => {
 
     //2. Display partial or full
     var short_answers_in_view = answers_in_view.slice(0,2);
+    var long_answers_in_view = answers_in_view.slice(2,answers_in_view.length);
     if (props.answers_view === 'partial') {
       answers_in_view = answers_in_view.slice(0,2);
     }
@@ -38,15 +43,21 @@ const QuestionWrapper = (props) => {
     </td></tr>
 
 
-    {answers_in_view.map((answer, index) => {
+    {short_answers_in_view.map((answer, index) => {
       return <tr><td valign='top'><b>{( index === 0 ) ? 'A:' : null}</b></td><td>
       <Answer answer={answer} key={answer.id} />
       </td></tr>
     })}
 
+    {(ans_view === 'full') ? long_answers_in_view.map((answer, index) => {
+      return <tr><td valign='top'></td><td>
+      <Answer answer={answer} key={answer.id} />
+      </td></tr>
+    }) : null}
+
     <tr><td></td><td>
-    { (total_answers_count < 3 || answers_in_view.length > 2) ? null : <input type='button' value='LOAD MORE ANSWERS' id='more_answers' onClick={props.more_answers}></input>}
-    { (total_answers_count < 3 || answers_in_view.length < 3) ? null : <input type='button' value='HIDE MORE ANSWERS' id='more_answers' onClick={props.more_answers}></input>}
+    { (total_answers_count < 3 || answers_in_view.length > 2) ? null : <input type='button' value='LOAD MORE ANSWERS' id='more_answers' onClick={setAnsView.bind(null, 'full')}></input>}
+    { (total_answers_count < 3 || answers_in_view.length < 3) ? null : <input type='button' value='HIDE MORE ANSWERS' id='more_answers' onClick={setAnsView.bind(null, 'partial')}></input>}
     </td></tr>
     </tbody></table>
 
