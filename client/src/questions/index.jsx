@@ -45,7 +45,7 @@ const Questions = (props) => {
       .then((resolveQuestions) => {
         console.log('Questions are: ', resolveQuestions.data)
         questions = resolveQuestions.data;
-        setQuestions(questions = resolveQuestions.data)
+        questionsFilter(questions = resolveQuestions.data)
       })
       .catch((err) => {
         console.error(err);
@@ -61,6 +61,16 @@ const Questions = (props) => {
     }
   }
 
+  var getSearchString = function(searchString) {
+    console.log(searchString);
+  }
+
+  var questionsFilter = function(questions) {
+    console.log('do some work on questions, then set them')
+    var newQuestions = questions;
+    setQuestions(newQuestions)
+  }
+
   //console.log('this pid is', product_id)
   useEffect(() => {
     console.log('getting Questions');
@@ -74,7 +84,7 @@ const Questions = (props) => {
 
     Questions Component Start, Product_id is {product_id}
 
-    <QuestionsSearch />
+    <QuestionsSearch getSearchString={getSearchString}/>
     <QuestionsBody questions={questions} questions_view={questions_view} />
     <QuestionsFooter questions_view={questions_view} moreQuestionsClick={moreQuestionsClick} />
 

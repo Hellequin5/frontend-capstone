@@ -4,12 +4,15 @@ import Product_Id_Context from '../context.jsx';
 const QuestionsSearch = (props) => {
   const product_id = useContext(Product_Id_Context);
 
+  var handleChange = function(e) {
+    props.getSearchString(e.target.value);
+  }
 
 
   return (
     <div>
 
-    <input type='text' id='questionSearch' defaultValue='Have a Question? Search for answers...' size='100'></input>
+    <input type='text' id='questionSearch' defaultValue='Have a Question? Search for answers...' size='100' onChange={handleChange}></input>
 
 
     </div>
