@@ -13,21 +13,24 @@ const StyleSelector = (props) => {
     price: '',
     styleName: '',
     styles: [],
-    selectSize: []
+    selectSize: [],
+    selectedSize: 'SELECTSIZE',
+    selectQuantity: 0,
+    displayQuantity: 'SELECT QUANTITY'
+
   })
 
   let styleSetter = () => {
     axios.get(`http://localhost:10038/productStylesRequest/${product_id}`)
       .then (productStyles => {
         let arrayOfSkus = Object.entries(productStyles.data[0].skus).map(key => ({ ...key[1]}));
-        setProductStylesInfo({
+        setProductStylesInfo(prevState => ({
+          ...prevState,
           styles: productStyles.data,
           price: productStyles.data[0].original_price,
           styleName: productStyles.data[0].name,
           selectSize: arrayOfSkus,
-          selectedSize: 'SELECT SIZE'
-
-        })
+        }));
       })
       .catch (error => {
         console.log('failed to get product styles')
@@ -44,11 +47,31 @@ const StyleSelector = (props) => {
     }));
   }
 
-  let selectSizeClick = (size) => {
+  let selectSizeClick = (sku) => {
     setProductStylesInfo(prevState => ({
       ...prevState,
-      selectedSize: size
+      selectedSize: sku.size,
+      selectQuantity: sku.quantity
     }));
+  }
+
+  let selectQuantityClick = (quantity) => {
+    setProductStylesInfo(prevState => ({
+      ...prevState,
+      displayQuantity: quantity
+    }));
+  }
+
+  let quantityArray = (num) => {
+    let result = [];
+
+    for (let i = 0; i <= num; i++) {
+      if (i === 16) {
+        return result
+      }
+      result.push(i)
+    }
+    return result;
   }
 
   useEffect(() => {
@@ -75,7 +98,16 @@ const StyleSelector = (props) => {
         <DropdownButton id="selectSize" title={productStylesInfo.selectedSize}>
           {productStylesInfo.selectSize.map(sku => {
             return (
-              <Dropdown.Item onClick={() => selectSizeClick(sku.size)}>{sku.size}</Dropdown.Item>
+              <Dropdown.Item onClick={() => selectSizeClick(sku)}>{sku.size}</Dropdown.Item>
+            )
+          })}
+        </DropdownButton>
+      </div>
+      <div id='quantitySelector'>
+        <DropdownButton id="selectQuantity" title={productStylesInfo.displayQuantity}>
+          {quantityArray(productStylesInfo.selectQuantity).map(num => {
+            return (
+              <Dropdown.Item onClick={() => selectQuantityClick(num)}>{num}</Dropdown.Item>
             )
           })}
         </DropdownButton>
