@@ -24,7 +24,8 @@ const StyleSelector = (props) => {
           styles: productStyles.data,
           price: productStyles.data[0].original_price,
           styleName: productStyles.data[0].name,
-          selectSize: arrayOfSkus
+          selectSize: arrayOfSkus,
+          selectedSize: 'SELECT SIZE'
 
         })
       })
@@ -40,6 +41,13 @@ const StyleSelector = (props) => {
       price: style.original_price,
       styleName: style.name,
       selectSize: arrayOfSkus
+    }));
+  }
+
+  let selectSizeClick = (size) => {
+    setProductStylesInfo(prevState => ({
+      ...prevState,
+      selectedSize: size
     }));
   }
 
@@ -64,10 +72,10 @@ const StyleSelector = (props) => {
         })}
       </div>
       <div id='sizeSelector'>
-        <DropdownButton id="selectSize" title="SELECT SIZE">
+        <DropdownButton id="selectSize" title={productStylesInfo.selectedSize}>
           {productStylesInfo.selectSize.map(sku => {
             return (
-              <Dropdown.Item>{sku.size}</Dropdown.Item>
+              <Dropdown.Item onClick={() => selectSizeClick(sku.size)}>{sku.size}</Dropdown.Item>
             )
           })}
         </DropdownButton>
