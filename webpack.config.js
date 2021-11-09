@@ -23,5 +23,6 @@ module.exports = {
      }
     ]
   },
-  mode: 'development'
+  mode: 'development',
+  watch: true
 };
