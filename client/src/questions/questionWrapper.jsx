@@ -1,11 +1,12 @@
 import React, {useContext, useState}  from 'react';
 import Product_Id_Context from '../context.jsx';
+import axios from 'axios';
 import Question from './question.jsx';
 import Answer from './answer.jsx';
 
 const QuestionWrapper = (props) => {
   const product_id = useContext(Product_Id_Context);
-  //console.log('Question passed in to wrapper is', props.question);
+  console.log('Question passed in to wrapper is', props.question);
 
   var [ans_view, setAnsView] = useState('partial');
 
@@ -42,13 +43,38 @@ const QuestionWrapper = (props) => {
     }
   }
 
+
+  var helpfulQuestion = (qid) => {
+    console.log('helpful clicked! qid is', `${qid}`)
+
+    var config = {}
+    if (qid) {
+      config = {
+        method:'put',
+        url:`http://localhost:10038/helpful_question`,
+        params: {'qid': qid}
+      };
+    }
+    axios(config)
+      .then((helpfulResponse) => {
+        //update questions
+        console.log('helpful response is', helpfulResponse);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+
+  }
+
+
   return (
     <div>
     <table width='800'><tbody>
     <tr><td><b>Q: </b></td><td><b>
     <Question text={props.question.question_body}/>
     </b></td><td align='right'>
-    Helpful? Yes({props.question.question_helpfulness}) | Add Answer
+      <a onClick={helpfulQuestion.bind(null,props.question.question_id)}>Helpful? Yes
+    </a>({props.question.question_helpfulness}) | Add Answer
     </td></tr>
 
 
