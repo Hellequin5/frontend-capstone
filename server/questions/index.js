@@ -59,11 +59,11 @@ module.exports = function(app) {
       }
     };
     axios(config)
-      .then((questionsResponse) => {
-        var questions = questionsResponse.data;
+      .then((helpfulQuestionResponse) => {
+        var questions = helpfulQuestionResponse.data;
         // var default_product_id = { 'product_id': itemsResponse.data[0].id };
-        res.status(204).send(questions)
-        console.log('helpful question response was "', questions, '"');
+        res.status(helpfulQuestionResponse.status).send(questions)
+        console.log('helpful question response was "', questions, '" status:', helpfulQuestionResponse.status);
       })
       .catch((error) => {
         console.error(error);
