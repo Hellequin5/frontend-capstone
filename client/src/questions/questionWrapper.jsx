@@ -22,7 +22,16 @@ const QuestionWrapper = (props) => {
       return ans2.helpfulness - ans1.helpfulness;
     })
 
-    //2. Display partial or full
+    //2. PULL SELLER TO TOP
+    answers_in_view = answers_in_view.filter((answer) => {
+      return answer.answerer_name.toLowerCase() === 'seller';
+    }).concat(
+      answers_in_view.filter((answer) => {
+        return answer.answerer_name.toLowerCase() !== 'seller';
+      })
+    )
+
+    //3. DISPLAY PARTIAL OR FULL
     var short_answers_in_view = [];
     var long_answers_in_view = [];
     if (answers_in_view.length > 2) {
