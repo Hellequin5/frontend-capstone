@@ -5,7 +5,7 @@ import QuestionWrapper from './questionWrapper.jsx';
 const QuestionsBody = (props) => {
   const product_id = useContext(Product_Id_Context);
 
-  console.log('questions passed in to body are', props.questions);
+  //console.log('questions passed in to body are', props.questions);
   //1. SORT BY HELPFULNESS
   var questions_in_view = props.questions.sort((q1, q2) => {
     return q2.question_helpfulness - q1.question_helpfulness;
@@ -18,7 +18,7 @@ const QuestionsBody = (props) => {
 
   return (
     <div>
-      {questions_in_view.map((question, index) => {
+      {questions_in_view.map((question) => {
         return <QuestionWrapper key={question.question_id} question={question} />
       })}
 

@@ -5,7 +5,7 @@ import Answer from './answer.jsx';
 
 const QuestionWrapper = (props) => {
   const product_id = useContext(Product_Id_Context);
-  console.log('Question passed in to wrapper is', props.question);
+  //console.log('Question passed in to wrapper is', props.question);
 
   var [ans_view, setAnsView] = useState('partial');
 

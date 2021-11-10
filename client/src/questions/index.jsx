@@ -16,7 +16,7 @@ const Questions = (props) => {
 
   var getQuestions = function(pid, page, count) {
 
-    console.log('pid is', pid);
+    //console.log('pid is', pid);
     //console.log('prod_id is', product_id);
     if (pid === undefined) {
       pid = product_id;
@@ -44,7 +44,7 @@ const Questions = (props) => {
 
     axios(config)
       .then((resolveQuestions) => {
-        console.log('Questions are: ', resolveQuestions.data)
+        //console.log('Questions are: ', resolveQuestions.data)
         questions = resolveQuestions.data;
         questionsFilter(questions = resolveQuestions.data)
         setactual_questions(actual_questions = questions);
@@ -64,35 +64,28 @@ const Questions = (props) => {
   }
 
   var getSearchString = function(searchString) {
-    console.log(searchString);
     if(searchString.length > 2) {
-      // var qs = [];
-      // questions.forEach((q)=> {
-      //   qs.push(q.question_body);
-      // })
-      // console.log('questions search', qs);
-      // console.log('qs[0].question_body is', qs[0].question_body)
-      var resultantQuestions = [];
+      var resultant_questions = [];
       for (var k = 0; k < actual_questions.length; k++) {
         if (actual_questions[k].question_body.toLowerCase().includes(searchString.toLowerCase())) {
-          resultantQuestions.push(actual_questions[k]);
+          resultant_questions.push(actual_questions[k]);
         }
       }
-      setQuestions(resultantQuestions);
+      setQuestions(resultant_questions);
     } else {
       setQuestions(actual_questions);
     }
   }
 
   var questionsFilter = function(questions) {
-    console.log('do some work on questions, then set them')
     var newQuestions = questions;
+    //Do work on questions before saving.  Maybe deleteme?
     setQuestions(newQuestions)
   }
 
   //console.log('this pid is', product_id)
   useEffect(() => {
-    console.log('getting Questions');
+    //console.log('getting Questions');
     if (product_id) {
       getQuestions(product_id);
     }

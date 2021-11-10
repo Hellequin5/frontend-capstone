@@ -4,7 +4,7 @@ import AnswerFooter from './answerFooter.jsx';
 
 const Answer = (props) => {
   const product_id = useContext(Product_Id_Context);
-  console.log('Answer passed in is', props.answer);
+  //console.log('Answer passed in is', props.answer);
 
 
   return (
