@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import Product_Id_Context from '../../context.jsx';
 import ReviewStarRating from './ReviewStarRating.jsx';
 import NameTime from './NameTime.jsx';
@@ -7,9 +7,11 @@ import axios from 'axios';
 
 const ReviewTile = (props) => {
   console.log(props);
+  const [reported, setReported] = useState(false);
+  const [wasHelpful, setWasHelpful] = useState(false);
+  let [amountHelpful, setAmountHelpful] = useState(0)
 
   const handleHelpfulReport = (event) => {
-    console.log(props.data.review_id);
     var config = {
       method: 'put',
       url:'http://localhost:10038/reviews',
@@ -21,8 +23,11 @@ const ReviewTile = (props) => {
 
     axios(config)
       .then((response) => {
-        if (config.type = 'helpful') {
-          props.data.helpfullness ++;
+        if (event === 'helpful') {
+          setAmountHelpful(amountHelpful++);
+          setWasHelpful(true);
+        } else {
+          setReported(true);
         }
       })
       .catch((err) => {
@@ -30,6 +35,11 @@ const ReviewTile = (props) => {
       })
   }
 
+  useEffect(() => {
+    if (props.data) {
+      setAmountHelpful(props.data.helpfulness)
+    }
+  }, [])
   if (props.data) {
     return (
       <div>
@@ -39,8 +49,8 @@ const ReviewTile = (props) => {
         <h6>{props.data.summary}</h6>
         <ReviewBody text={props.data.body}/>
         {}
-        <div>Helpful? <a value='helpful' onClick={() => handleHelpfulReport('helpful')}>Yes</a> ({props.data.helpfulness})</div>
-        <a value ='report' onClick={() => handleHelpfulReport('report')}>Report</a>
+        <div>Helpful<a value='helpful' onClick={() => handleHelpfulReport('helpful')}>{wasHelpful ? null : '? Yes'}</a> ({amountHelpful})</div>
+        <a value ='report' onClick={() => handleHelpfulReport('report')}>{reported ? 'Reported' : 'Report'}</a>
       </div>
     )
   }
