@@ -5,17 +5,23 @@ import NameTime from './NameTime.jsx';
 
 const ReviewTile = (props) => {
   console.log(props);
+
+  if (props.data) {
+    return (
+      <div>
+        ____________________________________________________________________________________________
+        <ReviewStarRating rating= {props.data.rating} />
+        <NameTime name={props.data.reviewer_name} time={props.data.date}/>
+        <div>{props.data.summary}</div>
+        <div>{props.data.body}</div>
+        {}
+        <div>Helpful? Yes ({props.data.helpfulness})</div>
+        <div>Report</div>
+      </div>
+    )
+  }
   return (
-    <div>
-      ____________________________________________________________________________________________
-      <ReviewStarRating rating= {props.data.rating} />
-      <NameTime name={props.data.reviewer_name} time={props.data.date}/>
-      <div>{props.data.summary}</div>
-      <div>{props.data.body}</div>
-      {}
-      <div>Helpful? Yes ({props.data.helpfulness})</div>
-      <div>Report</div>
-    </div>
+    <div></div>
   )
 }
 
