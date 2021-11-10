@@ -25,7 +25,6 @@ const StarBreakdown = (props) => {
   // console.log(individualRatingArr);
   return (
     <div>
-      Star Breakdown
       <div>{recommendPercent(props.recommended)}% of reviews recommend this product</div>
       {individualRatingArr.map((value, index) => {
         return (
