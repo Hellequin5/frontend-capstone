@@ -9,6 +9,7 @@ const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);
 
   var [questions, setQuestions] = useState([]);
+  var [actual_questions, setactual_questions] = useState([]);
   var [questions_view, setQuestionsView] = useState('partial');
 
   //console.log('product_id from context is ', product_id);
@@ -46,6 +47,7 @@ const Questions = (props) => {
         console.log('Questions are: ', resolveQuestions.data)
         questions = resolveQuestions.data;
         questionsFilter(questions = resolveQuestions.data)
+        setactual_questions(actual_questions = questions);
       })
       .catch((err) => {
         console.error(err);
@@ -63,6 +65,23 @@ const Questions = (props) => {
 
   var getSearchString = function(searchString) {
     console.log(searchString);
+    if(searchString.length > 2) {
+      // var qs = [];
+      // questions.forEach((q)=> {
+      //   qs.push(q.question_body);
+      // })
+      // console.log('questions search', qs);
+      // console.log('qs[0].question_body is', qs[0].question_body)
+      var resultantQuestions = [];
+      for (var k = 0; k < actual_questions.length; k++) {
+        if (actual_questions[k].question_body.includes(searchString)) {
+          resultantQuestions.push(actual_questions[k]);
+        }
+      }
+      setQuestions(resultantQuestions);
+    } else {
+      setQuestions(actual_questions);
+    }
   }
 
   var questionsFilter = function(questions) {
