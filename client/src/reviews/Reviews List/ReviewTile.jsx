@@ -7,11 +7,14 @@ const ReviewTile = (props) => {
   console.log(props);
   return (
     <div>
-      Review Tile Component
+      ____________________________________________________________________________________________
       <ReviewStarRating rating= {props.data.rating} />
       <NameTime name={props.data.reviewer_name} time={props.data.date}/>
       <div>{props.data.summary}</div>
       <div>{props.data.body}</div>
+      {}
+      <div>Helpful? Yes ({props.data.helpfulness})</div>
+      <div>Report</div>
     </div>
   )
 }
