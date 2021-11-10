@@ -74,7 +74,7 @@ const Questions = (props) => {
       // console.log('qs[0].question_body is', qs[0].question_body)
       var resultantQuestions = [];
       for (var k = 0; k < actual_questions.length; k++) {
-        if (actual_questions[k].question_body.includes(searchString)) {
+        if (actual_questions[k].question_body.toLowerCase().includes(searchString.toLowerCase())) {
           resultantQuestions.push(actual_questions[k]);
         }
       }
