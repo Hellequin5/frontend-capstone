@@ -93,7 +93,7 @@ const Reviews = (props) => {
       retrieveReviewData(product_id);
 
     }
-  }, [product_id])
+  }, [product_id, reviewData])
 
   return (
     <div>

@@ -93,6 +93,25 @@ app.get('/productMetaData', (req, res) => {
     })
 })
 
+app.put('/reviews', (req, res) => {
+  var id = req.query.review_id;
+  var type = req.query.type;
+  var config = {
+    method: 'put',
+    url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/reviews/${id}/${type}`,
+    headers: {
+      'Authorization': API_KEY
+    }
+  };
+  axios(config)
+    .then((response) => {
+      res.status(204).send('request accepted')
+    })
+    .catch((err) => {
+      res.status(500).send('request failed')
+    })
+})
+
 app.listen(PORT, () => {
   console.log(`server is listening on port ${PORT}`)
 })
