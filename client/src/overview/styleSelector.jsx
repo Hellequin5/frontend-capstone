@@ -3,6 +3,7 @@ import Product_Id_Context from '../context.jsx';
 import axios from 'axios'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
+import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
 
 
@@ -16,7 +17,8 @@ const StyleSelector = (props) => {
     selectSize: [],
     selectedSize: 'SELECT SIZE',
     selectQuantity: 0,
-    displayQuantity: 'SELECT QUANTITY'
+    displayQuantity: 'SELECT QUANTITY',
+    carouselImages: []
   })
 
   let styleSetter = () => {
@@ -119,6 +121,9 @@ const StyleSelector = (props) => {
       </div>
       <div id='addToCart'>
         <button type="button" onClick={() => checkSize()}>ADD TO CART</button>
+      </div>
+      <div class='imageGallery'>
+        <ImageGallery thumbnailPosition='left' items={images} />
       </div>
     </div>
   )
