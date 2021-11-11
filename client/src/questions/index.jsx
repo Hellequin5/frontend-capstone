@@ -16,9 +16,7 @@ const Questions = (props) => {
   //console.log('product_id from context is ', product_id);
 
   var getQuestions = function(pid, page, count, callback) {
-
-    //console.log('pid is', pid);
-    //console.log('prod_id is', product_id);
+    //TODO: change callback to promise
     if (pid === undefined) {
       pid = product_id;
     }
