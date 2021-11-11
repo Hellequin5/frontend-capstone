@@ -24,7 +24,7 @@ const ReviewTile = (props) => {
     axios(config)
       .then((response) => {
         if (event === 'helpful') {
-          setAmountHelpful(amountHelpful++);
+          setAmountHelpful(amountHelpful + 1);
           setWasHelpful(true);
         } else {
           setReported(true);
@@ -37,7 +37,7 @@ const ReviewTile = (props) => {
 
   useEffect(() => {
     if (props.data) {
-      setAmountHelpful(props.data.helpfulness)
+      setAmountHelpful(amountHelpful + props.data.helpfulness)
     }
   }, [])
   if (props.data) {

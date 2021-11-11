@@ -32,10 +32,12 @@ const ReviewList = (props) => {
   return (
     <div>
       {numOfReviews} reviews, sorted by relevence
+      <div id={'RR_List'}>
       {reviews.map((value) => {
         return<ReviewTile data={value} key={value ? value.review_id : null}/>
       })}
-      <Button variant="outline-primary" onClick={() => setCurrentReviews(currentReviews += 2)}>MORE REVIEWS</Button>{' '}
+      </div>
+      <Button variant="outline-primary" onClick={() => setCurrentReviews(currentReviews = numOfReviews)}>MORE REVIEWS</Button>{' '}
       <Button variant="outline-primary" onClick={() => setSubmissionModal(true)}>ADD A REVIEW +</Button>
       <SubmitReviewModal
         show={submissionModal}

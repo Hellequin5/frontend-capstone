@@ -6,7 +6,6 @@ const API_KEY = require('../config.js');
 const app = express();
 
 module.exports = function(app) {
-
   app.get('/productReviews', (req, res) => {
     var config = {
       method: 'get',
@@ -48,27 +47,22 @@ module.exports = function(app) {
       })
   })
 
-  //NEW REVIEW POST REQUEST
-
-  //ADD HELPFUL TO REVIEW
-  // app.put('/reviews', (req, res) => {
-  //   var id = req.query.review_id;
-  //   var type = req.query.type;
-  //   var config = {
-  //     method: 'put',
-  //     url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/reviews/?review_id=${id}/${type}`,
-  //     headers: {
-  //       'Authorization': API_KEY
-  //     }
-  //   };
-  //   axios(config)
-  //     .then((response) => {
-  //       res.status(204)
-  //     })
-  //     .catch((err) => {
-  //       res.status(404)
-  //     })
-  // })
-
-  //REPORT REVIEW
+  app.put('/reviews', (req, res) => {
+    var id = req.query.review_id;
+    var type = req.query.type;
+    var config = {
+      method: 'put',
+      url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/reviews/${id}/${type}`,
+      headers: {
+        'Authorization': API_KEY
+      }
+    };
+    axios(config)
+      .then((response) => {
+        res.status(204).send('request accepted')
+      })
+      .catch((err) => {
+        res.status(500).send('request failed')
+      })
+  })
 }
