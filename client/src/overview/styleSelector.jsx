@@ -3,6 +3,7 @@ import Product_Id_Context from '../context.jsx';
 import axios from 'axios'
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
+import ImageGallery from 'react-image-gallery';
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 
 
@@ -25,17 +26,26 @@ const StyleSelector = (props) => {
     axios.get(`http://localhost:10038/productStylesRequest/${product_id}`)
       .then (productStyles => {
         let arrayOfSkus = Object.entries(productStyles.data[0].skus).map(key => ({ ...key[1]}));
+        let carouselImagesArray = productStyles.data[0].photos.map(photo =>
+          ({
+            original: photo.url,
+            thumbnail: photo.thumbnail_url
+          })
+        );
+
         setProductStylesInfo(prevState => ({
           ...prevState,
           styles: productStyles.data,
           price: productStyles.data[0].original_price,
           styleName: productStyles.data[0].name,
           selectSize: arrayOfSkus,
+          carouselImages: carouselImagesArray
         }));
       })
+
       .catch (error => {
         console.log('failed to get product styles')
-      })
+      });
   }
 
   let thumbnailClick = (style) => {
@@ -122,8 +132,8 @@ const StyleSelector = (props) => {
       <div id='addToCart'>
         <button type="button" onClick={() => checkSize()}>ADD TO CART</button>
       </div>
-      <div class='imageGallery'>
-        <ImageGallery thumbnailPosition='left' items={images} />
+      <div>
+        <ImageGallery items={productStylesInfo.carouselImages} thumbnailPosition='left'/>
       </div>
     </div>
   )
