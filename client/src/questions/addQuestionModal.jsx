@@ -4,16 +4,16 @@ import Product_Id_Context from '../context.jsx';
 const AddQuestionModal = (props) => {
   const product_id = useContext(Product_Id_Context);
 
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
 
   return (
     <div>
 
-
+{/*
       <Button variant="primary" onClick={handleShow}>
         Launch demo modal
       </Button>
@@ -32,7 +32,7 @@ const AddQuestionModal = (props) => {
           </Button>
         </Modal.Footer>
       </Modal>
-
+ */}
 
     </div>
   )
