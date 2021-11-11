@@ -1,4 +1,3 @@
-const questionsRoutes = require('./questions')
 const reviewsRoutes = require('./reviews')
 
 const express = require('express');
@@ -7,9 +6,12 @@ const PORT = 10038; //Galvanize NYC zipcode
 const API_KEY = require('./config.js')
 
 const app = express();
+const questionsRoutes = require('./questions')(app)
 const overviewRoutes = require('./overview')(app)
+
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
+
 
 app.get('/starting_product_id', (req, res) => {
   var config = {
