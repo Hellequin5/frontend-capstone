@@ -17,7 +17,6 @@ const StyleSelector = (props) => {
     selectedSize: 'SELECT SIZE',
     selectQuantity: 0,
     displayQuantity: 'SELECT QUANTITY'
-
   })
 
   let styleSetter = () => {
