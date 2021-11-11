@@ -26,8 +26,7 @@ const StyleSelector = (props) => {
     axios.get(`http://localhost:10038/productStylesRequest/${product_id}`)
       .then (productStyles => {
         let arrayOfSkus = Object.entries(productStyles.data[0].skus).map(key => ({ ...key[1]}));
-        let carouselImagesArray = productStyles.data[0].photos.map(photo =>
-          ({
+        let carouselImagesArray = productStyles.data[0].photos.map(photo => ({
             original: photo.url,
             thumbnail: photo.thumbnail_url
           })
@@ -50,11 +49,17 @@ const StyleSelector = (props) => {
 
   let thumbnailClick = (style) => {
     let arrayOfSkus = Object.entries(style.skus).map(key => ({ ...key[1]}));
+    let selectedStyleCarousel = style.photos.map(photo => ({
+      original: photo.url,
+      thumbnail: photo.thumbnail_url
+    }));
+
     setProductStylesInfo(prevState => ({
       ...prevState,
       price: style.original_price,
       styleName: style.name,
-      selectSize: arrayOfSkus
+      selectSize: arrayOfSkus,
+      carouselImages: selectedStyleCarousel
     }));
   }
 
