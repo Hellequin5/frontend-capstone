@@ -91,8 +91,8 @@ const QuestionWrapper = (props) => {
     }) : null}
 
     <tr><td></td><td>
-    { (ans_view === 'partial' && answers_in_view.length > 2) ? <input type='button' value='LOAD MORE ANSWERS' id='more_answers' onClick={setAnsView.bind(null, 'full')}></input> : null}
-    { (ans_view !== 'partial' && answers_in_view.length > 2) ? <input type='button' value='HIDE MORE ANSWERS' id='more_answers' onClick={setAnsView.bind(null, 'partial')}></input> : null}
+    { (ans_view === 'partial' && answers_in_view.length > 2) ? <input type='button' value='See more answers' id='more_answers' onClick={setAnsView.bind(null, 'full')}></input> : null}
+    { (ans_view !== 'partial' && answers_in_view.length > 2) ? <input type='button' value='Collapse answers' id='more_answers' onClick={setAnsView.bind(null, 'partial')}></input> : null}
     </td></tr>
     </tbody></table>
 
