@@ -46,7 +46,7 @@ const ReviewTile = (props) => {
         ____________________________________________________________________________________________
         <ReviewStarRating rating= {props.data.rating} />
         <NameTime name={props.data.reviewer_name} time={props.data.date}/>
-        <h6>{props.data.summary}</h6>
+        <b>{props.data.summary}</b>
         <ReviewBody text={props.data.body}/>
         {props.data.recommend ? <h6> This user recommended this product</h6> : null}
 
