@@ -8,8 +8,6 @@ const HelpfulQuestion = (props) => {
   var [helpfulVal, setHelpfulVal] = useState(props.question.question_helpfulness);
 
   var helpfulQuestion = (qid) => {
-    //console.log('helpful clicked! qid is', `${qid}`)
-
     var config = {}
     if (qid) {
       config = {
@@ -20,7 +18,6 @@ const HelpfulQuestion = (props) => {
     }
     axios(config)
       .then((helpfulResponse) => {
-        //update questions
         console.log('helpful response is', helpfulResponse);
         if (helpfulResponse.status === 204) {
           setHelpfulClick(helpfulClick = true);
@@ -32,23 +29,16 @@ const HelpfulQuestion = (props) => {
   }
 
   useEffect(() => {
-    //singleItemRequest();
-    console.log('helpful Click is hopefully now true.  It is actually... ', helpfulClick);
-
     setHelpfulVal(helpfulVal = helpfulVal + 1);
-
-
   }, [helpfulClick])
 
-  var yes = <>Helpful? Yes({helpfulVal})</>;
-  var no = (<a onClick={helpfulQuestion.bind(null,props.question.question_id)}><u>Helpful? Yes
+  var alreadyClicked = <>Helpful? Yes({helpfulVal})</>;
+  var notYetClicked = (<a onClick={helpfulQuestion.bind(null,props.question.question_id)}><u>Helpful? Yes
   ({helpfulVal})</u></a>);
-
 
   return (
     <div>
-      { (helpfulClick) ? yes : no }
-
+      { (helpfulClick) ? alreadyClicked : notYetClicked }
     </div>
   )
 }
