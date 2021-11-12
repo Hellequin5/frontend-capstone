@@ -4,6 +4,7 @@ import RR_Context from '../RR_Context.jsx';
 import ReviewTile from './ReviewTile.jsx'
 import Button from 'react-bootstrap/Button';
 import SubmitReviewModal from './SubmitReviewModal.jsx';
+import MoreReviewsButton from './MoreReviewsButton.jsx';
 
 const ReviewList = (props) => {
   const ratingContext = useContext(RR_Context);
@@ -37,7 +38,11 @@ const ReviewList = (props) => {
         return<ReviewTile data={value} key={value ? value.review_id : null}/>
       })}
       </div>
-      <Button variant="outline-primary" onClick={() => setCurrentReviews(currentReviews = numOfReviews)}>MORE REVIEWS</Button>{' '}
+      <MoreReviewsButton
+        currentReviews={currentReviews}
+        numOfReviews={numOfReviews}
+        setCurrentReviews={() => setCurrentReviews(currentReviews=numOfReviews)}
+      />
       <Button variant="outline-primary" onClick={() => setSubmissionModal(true)}>ADD A REVIEW +</Button>
       <SubmitReviewModal
         show={submissionModal}

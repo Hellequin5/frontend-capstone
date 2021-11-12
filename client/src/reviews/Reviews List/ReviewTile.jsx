@@ -49,9 +49,14 @@ const ReviewTile = (props) => {
         <h6>{props.data.summary}</h6>
         <ReviewBody text={props.data.body}/>
         {props.data.recommend ? <h6> This user recommended this product</h6> : null}
+
         {props.data.photos.length >= 1 ? props.data.photos.map ((value, index) => {
-          return <img key= {value.id} src={value.url} alt={'This is supposed to be an image'}/>
+          return <img class={'RR_image'} key= {value.id} src={value.url} alt={'This is supposed to be an image'}
+          width='50'
+          height='auto'
+          />
         }) : null}
+
         <div>Helpful<a value='helpful' onClick={() => handleHelpfulReport('helpful')}>{wasHelpful ? null : '? Yes'}</a> ({amountHelpful})</div>
         <a value ='report' onClick={() => handleHelpfulReport('report')}>{reported ? 'Reported' : 'Report'}</a>
       </div>
