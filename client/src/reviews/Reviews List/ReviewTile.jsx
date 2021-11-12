@@ -3,6 +3,7 @@ import Product_Id_Context from '../../context.jsx';
 import ReviewStarRating from './ReviewStarRating.jsx';
 import NameTime from './NameTime.jsx';
 import ReviewBody from './ReviewBody.jsx';
+import ReviewPhoto from './ReviewPhoto.jsx'
 import axios from 'axios';
 
 const ReviewTile = (props) => {
@@ -50,10 +51,10 @@ const ReviewTile = (props) => {
         <ReviewBody text={props.data.body}/>
         {props.data.recommend ? <h6> This user recommended this product</h6> : null}
 
-        {props.data.photos.length >= 1 ? props.data.photos.map ((value, index) => {
-          return <img class={'RR_image'} key= {value.id} src={value.url} alt={'This is supposed to be an image'}
-          width='50'
-          height='auto'
+        {props.data.photos.length >= 1 ? props.data.photos.map ((value) => {
+          return <ReviewPhoto
+          key={value.id}
+          url={value.url}
           />
         }) : null}
 
