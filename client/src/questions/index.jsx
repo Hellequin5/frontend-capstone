@@ -1,4 +1,5 @@
 import React, {useContext, useState, useEffect}  from 'react';
+import util from 'util';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
 import QuestionsSearch from './questionsSearch.jsx';
@@ -78,21 +79,38 @@ const Questions = (props) => {
       var qCount = actual_questions.length;
       setQuestionsPage(questions_page = questions_page + 1);
       console.log('questions page is', questions_page);
-      getQuestions(product_id, questions_page, undefined, (moreQuestions) => {
+      const getQuestionsPromise = util.promisify(getQuestions);
+      getQuestionsPromise(product_id, questions_page, undefined)
+        .then((moreQuestions) => {
+          if (moreQuestions) {
+            //more results!
+            console.log('there were more results!');
+            setQuestionsView(questions_view = 'full*')
+          } else {
+            //no more results
+            console.log('there were NOT more results!');
+            setQuestionsView('full');
+          }
+        })
+        .catch((err) => {
+          console.log('there was an error getting questions!', err);
+        })
 
-        console.log('moreQuestions is', moreQuestions);
-        if (moreQuestions) {
-          //more results!
-          console.log('there were more results!');
-          setQuestionsView(questions_view = 'full*')
-        } else {
-          //no more results
-          console.log('there were NOT more results!');
-          setQuestionsView('full');
-        }
+      // getQuestions(product_id, questions_page, undefined, (moreQuestions) => {
+
+      //   console.log('moreQuestions is', moreQuestions);
+      //   if (moreQuestions) {
+      //     //more results!
+      //     console.log('there were more results!');
+      //     setQuestionsView(questions_view = 'full*')
+      //   } else {
+      //     //no more results
+      //     console.log('there were NOT more results!');
+      //     setQuestionsView('full');
+      //   }
 
 
-      });
+      // });
 
     }
   }
