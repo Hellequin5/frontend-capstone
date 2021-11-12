@@ -73,8 +73,8 @@ const QuestionWrapper = (props) => {
     <tr><td><b>Q: </b></td><td><b>
     <Question text={props.question.question_body}/>
     </b></td><td align='right'>
-      <a onClick={helpfulQuestion.bind(null,props.question.question_id)}>Helpful? Yes
-    </a>({props.question.question_helpfulness}) | Add Answer
+      <a onClick={helpfulQuestion.bind(null,props.question.question_id)}><u>Helpful? Yes
+    ({props.question.question_helpfulness})</u></a> | Add Answer
     </td></tr>
 
 

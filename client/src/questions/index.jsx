@@ -65,7 +65,7 @@ const Questions = (props) => {
       })
       .catch((err) => {
         console.error(err);
-        callback(undefined);
+        //callback(undefined); //??
       })
 
   }
