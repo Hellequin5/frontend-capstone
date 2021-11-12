@@ -3,6 +3,7 @@ import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
 import Question from './question.jsx';
 import Answer from './answer.jsx';
+import HelpfulQuestion from './helpfulQuestion.jsx';
 
 const QuestionWrapper = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -44,27 +45,6 @@ const QuestionWrapper = (props) => {
   }
 
 
-  var helpfulQuestion = (qid) => {
-    console.log('helpful clicked! qid is', `${qid}`)
-
-    var config = {}
-    if (qid) {
-      config = {
-        method:'put',
-        url:`http://localhost:10038/helpful_question`,
-        params: {'qid': qid}
-      };
-    }
-    axios(config)
-      .then((helpfulResponse) => {
-        //update questions
-        console.log('helpful response is', helpfulResponse);
-      })
-      .catch((err) => {
-        console.error(err);
-      })
-
-  }
 
 
   return (
@@ -73,8 +53,7 @@ const QuestionWrapper = (props) => {
     <tr><td><b>Q: </b></td><td><b>
     <Question text={props.question.question_body}/>
     </b></td><td align='right'>
-      <a onClick={helpfulQuestion.bind(null,props.question.question_id)}><u>Helpful? Yes
-    ({props.question.question_helpfulness})</u></a> | Add Answer
+      <HelpfulQuestion question={props.question} />  | Add Answer
     </td></tr>
 
 
