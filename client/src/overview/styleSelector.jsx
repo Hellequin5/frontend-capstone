@@ -102,14 +102,14 @@ const StyleSelector = (props) => {
 
 
   return (
-    <div id='styleSelector'>
-      <div id='price'>
+    <div id='OV_styleSelector'>
+      <div id='OV_price'>
         <p>{productStylesInfo.price}</p>
       </div>
-      <div id='style'>
+      <div id='OV_style'>
         <p> <b>STYLE: </b> {productStylesInfo.styleName}</p>
       </div>
-      <div id='thumbnails'>
+      <div class='OV_thumbnails'>
         {productStylesInfo.styles.map(style => {
           return (
             <img src={style.photos[0].thumbnail_url} onClick={() => thumbnailClick(style)}/>
