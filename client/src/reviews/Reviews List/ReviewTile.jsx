@@ -4,6 +4,7 @@ import ReviewStarRating from './ReviewStarRating.jsx';
 import NameTime from './NameTime.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import ReviewPhoto from './ReviewPhoto.jsx'
+import ReviewResponse from './ReviewResponse.jsx';
 import axios from 'axios';
 
 const ReviewTile = (props) => {
@@ -49,7 +50,7 @@ const ReviewTile = (props) => {
         <NameTime name={props.data.reviewer_name} time={props.data.date}/>
         <b>{props.data.summary}</b>
         <ReviewBody text={props.data.body}/>
-        {props.data.recommend ? <h6> This user recommended this product</h6> : null}
+        {props.data.recommend ? <h6><span>&#10003;</span> This user recommended this product</h6> : null}
 
         {props.data.photos.length >= 1 ? props.data.photos.map ((value) => {
           return <ReviewPhoto
@@ -57,7 +58,7 @@ const ReviewTile = (props) => {
           url={value.url}
           />
         }) : null}
-
+        <ReviewResponse response={props.data.response}/>
         <div>Helpful<a value='helpful' onClick={() => handleHelpfulReport('helpful')}>{wasHelpful ? null : '? Yes'}</a> ({amountHelpful})</div>
         <a value ='report' onClick={() => handleHelpfulReport('report')}>{reported ? 'Reported' : 'Report'}</a>
       </div>
