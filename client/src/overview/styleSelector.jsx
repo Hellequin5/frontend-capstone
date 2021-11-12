@@ -1,6 +1,9 @@
 import React, {useContext, useState, useEffect}  from 'react';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios'
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import ImageGallery from 'react-image-gallery';
@@ -109,12 +112,16 @@ const StyleSelector = (props) => {
       <div id='OV_style'>
         <p> <b>STYLE: </b> {productStylesInfo.styleName}</p>
       </div>
-      <div class='OV_thumbnails'>
-        {productStylesInfo.styles.map(style => {
-          return (
-            <img src={style.photos[0].thumbnail_url} onClick={() => thumbnailClick(style)}/>
-          )
-        })}
+      <div className='OV_thumbnails'>
+        <Container>
+          <Row>
+            {productStylesInfo.styles.map(style => {
+              return (
+                <Col className='OV_thumbnail' md={3}> <img src={style.photos[0].thumbnail_url} onClick={() => thumbnailClick(style)}/> </Col>
+              )
+            })}
+          </Row>
+        </Container>
       </div>
       <div id='sizeSelector'>
         <DropdownButton id="selectSize" title={productStylesInfo.selectedSize}>
