@@ -7,7 +7,6 @@ const RatingData = (props) => {
 
   return (
     <div>
-      Rating Data Component
       <Stars ratings={props.data.ratings}/>
       <StarBreakdown
         ratings={props.data.ratings}

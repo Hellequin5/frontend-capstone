@@ -28,8 +28,7 @@ const Stars = (props) => {
   // console.log(averageRating)
   return(
     <div>
-      Physical Star Ratings
-      <div>{averageRating}</div>
+      <h2>{averageRating}</h2>
       <StarRatings
         rating= {averageRating}
 

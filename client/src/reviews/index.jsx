@@ -68,21 +68,15 @@ const Reviews = (props) => {
       }
     }
 
-
-    // axios(metaConfig)
-    //   .then((response) => {
-    //     console.log('meta data', response.data)
-    //     setReviewMetaData(response.data);
-    //     return axios(reviewConfig);
-    //   })
-    //   .then((secondResponse) => {
-    //     console.log('review data', secondResponse.data)
-    //     setReviewData(secondResponse.data);
-    //   })
     axios(metaConfig)
     .then((response) => {
       console.log('meta data', response.data)
       setReviewMetaData(response.data);
+      var numOfReviews = 0;
+      for (var key in response.data.ratings) {
+        numOfReviews += Number(response.data.ratings[key])
+      }
+      reviewConfig.params.count ? null :reviewConfig.params.count = numOfReviews;
       return axios(reviewConfig);
     })
     .then((secondResponse) => {
