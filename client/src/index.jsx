@@ -29,8 +29,8 @@ function App() {
     }
     axios(config)
       .then((resolveProductInfo) => {
-        setProduct_id(product_id = 38322) //DEBUG
-        setProduct_id(product_id = 38227) //DEBUG
+        setProduct_id(product_id = 38323) //DEBUG
+        //setProduct_id(product_id = 38227) //DEBUG
         //setProduct_id(product_id = resolveProductInfo.data.product_id)
       })
       .catch((err) => {

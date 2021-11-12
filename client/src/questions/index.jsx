@@ -88,7 +88,7 @@ const Questions = (props) => {
         } else {
           //no more results
           console.log('there were NOT more results!');
-          setQuestionsView('partial');
+          setQuestionsView('full');
         }
 
 
