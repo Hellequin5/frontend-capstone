@@ -6,13 +6,12 @@ import FormControl from 'react-bootstrap/FormControl';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
 
-const AddQuestionModal = (props) => {
-  const product_id = useContext(Product_Id_Context);
-
-  const [show, setShow] = useState(false);
+const AddAnswerModal = (props) => {
+  const question_id = props.question_id;
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -29,18 +28,19 @@ const AddQuestionModal = (props) => {
     setEmail(e.target.value);
   }
 
-  var addQuestionRequest = function(callback) {
-    var debug = `addQuestion called with ${body} ${name} ${email} ${product_id}`
+  var addAnswerRequest = function(callback) {
+    //add promise to handle results
+    var debug = `addAnswer called with ${body} ${name} ${email} ${question_id}`
     console.log(debug)
     var config = {}
 
 
-    var endpoint = `http://localhost:10038/add_question`;
+    var endpoint = `http://localhost:10038/add_answer`;
     config = {
       method:'post',
-      url:`http://localhost:10038/add_question`,
+      url:`http://localhost:10038/add_answer`,
       params: {
-        product_id: product_id,
+        qid: question_id,
         body: body,
         name: name,
         email: email
@@ -49,27 +49,11 @@ const AddQuestionModal = (props) => {
     //console.log('endpoint is', endpoint);
 
     axios(config)
-      .then((resolveQuestionAdd) => {
-        console.log('Response is: ', resolveQuestionAdd.data)
-        // //questions = resolveQuestions.data;
-        // var moreQuestions = false;
-        // resolveQuestions.data.forEach((question) => {
-        //   if(!questions.includes(question)) {
-        //     questionsFilter(questions = questions.concat(resolveQuestions.data));
-        //     moreQuestions = true;
-        //   }
-        //   if (!actual_questions.includes(question)) {
-        //     setActualQuestions(actual_questions = actual_questions.concat(resolveQuestions.data));
-        //     moreQuestions = true;
-        //   }
-        // })
-
-        //console.log('after', debug, 'questions is', actual_questions)
-        //callback(moreQuestions);
+      .then((resolveAnswerAdd) => {
+        console.log('Response is: ', resolveAnswerAdd.data)
       })
       .catch((err) => {
         console.error(err);
-       // callback(undefined);
       })
 
       handleClose();
@@ -79,13 +63,13 @@ const AddQuestionModal = (props) => {
     <div>
 
 
-      <Button variant="light" onClick={handleShow}>
-        ADD A QUESTION +
-      </Button>
+      <a onClick={handleShow}>
+        Add Answer
+      </a>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add a Question!</Modal.Title>
+          <Modal.Title>Add an Answer!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
 
@@ -104,7 +88,7 @@ const AddQuestionModal = (props) => {
         </InputGroup>
         <br></br>
         <InputGroup>
-          <InputGroup.Text>Question</InputGroup.Text>
+          <InputGroup.Text>Answer</InputGroup.Text>
           <FormControl as="textarea" aria-label="With textarea" onChange={handleBodyChange}  />
         </InputGroup>
 
@@ -113,8 +97,8 @@ const AddQuestionModal = (props) => {
           <Button variant="light" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="secondary" onClick={addQuestionRequest}>
-            Submit Question
+          <Button variant="second" onClick={addAnswerRequest}>
+            Submit Answer
           </Button>
         </Modal.Footer>
       </Modal>
@@ -124,4 +108,4 @@ const AddQuestionModal = (props) => {
   )
 }
 
-export default AddQuestionModal;
+export default AddAnswerModal;

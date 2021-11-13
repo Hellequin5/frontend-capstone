@@ -4,6 +4,7 @@ import axios from 'axios';
 import Question from './question.jsx';
 import Answer from './answer.jsx';
 import HelpfulQuestion from './helpfulQuestion.jsx';
+import AddAnswerModal from './addAnswerModal.jsx'
 
 const QuestionWrapper = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -53,7 +54,7 @@ const QuestionWrapper = (props) => {
     <tr><td><b>Q: </b></td><td><b>
     <Question text={props.question.question_body}/>
     </b></td><td align='right'>
-      <HelpfulQuestion question={props.question} />  | Add Answer
+      <HelpfulQuestion question={props.question} />  | <AddAnswerModal question_id={props.question.question_id} />
     </td></tr>
 
 

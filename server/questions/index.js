@@ -102,10 +102,42 @@ module.exports = function(app) {
         console.error(error);
         res.status(500).send(`There was a problem inserting a question.`)
       })
-
-
-
   });
 
+
+
+  app.post('/add_answer', (req, res) => {
+    //console.log(req);
+    //var qid = req.query.qid.toString();
+    var qid = parseInt(req.query.qid);
+    var my_body = req.query.body.toString();
+    var my_name = req.query.name.toString();
+    var my_email = req.query.email.toString();
+    console.log('request query is', req.query)
+    //console.log('fields are ', product_id, body, name, email);
+    var request_body = {
+      body : my_body,
+      name : my_name,
+      email : my_email
+    };
+    var params = {
+      question_id: qid
+    }
+    var endpoint = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${qid}/answers`;
+    var headers = {
+      'Authorization': API_KEY
+    };
+
+    axios.post(endpoint, request_body, { headers, params } )
+      .then((addAnswerResponse) => {
+        var answers = addAnswerResponse.data;
+        res.status(addAnswerResponse.status).send(answers)
+        console.log('add answer response was "', answers , '" status:', addAnswerResponse.status);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send(`There was a problem inserting a question.`)
+      })
+  });
   console.log('questions finished loading');
 }
