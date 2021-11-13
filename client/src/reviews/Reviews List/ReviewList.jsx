@@ -12,8 +12,6 @@ const ReviewList = (props) => {
   let [currentReviews, setCurrentReviews] = React.useState(1);
   const [reviews, setReviews] = React.useState([])
 
-  console.log('this should be context', ratingContext)
-
   var numOfReviews = 0;
   for (var key in ratingContext[0].ratings) {
     numOfReviews += Number(ratingContext[0].ratings[key])

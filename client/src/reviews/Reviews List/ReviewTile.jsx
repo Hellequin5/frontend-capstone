@@ -8,7 +8,6 @@ import ReviewResponse from './ReviewResponse.jsx';
 import axios from 'axios';
 
 const ReviewTile = (props) => {
-  console.log(props);
   const [reported, setReported] = useState(false);
   const [wasHelpful, setWasHelpful] = useState(false);
   let [amountHelpful, setAmountHelpful] = useState(0)

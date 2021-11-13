@@ -5,7 +5,7 @@ const API_KEY = require('./config.js')
 
 const app = express();
 const reviewsRoutes = require('./reviews')(app)
-const questionsRoutes = require('./questions')(app)
+// const questionsRoutes = require('./questions')(app)
 const overviewRoutes = require('./overview')(app)
 
 app.use(express.static(__dirname + '/../client/dist'));

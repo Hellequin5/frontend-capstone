@@ -71,7 +71,6 @@ const Reviews = (props) => {
 
     axios(metaConfig)
     .then((response) => {
-      console.log('meta data', response.data)
       setReviewMetaData(response.data);
       var numOfReviews = 0;
       for (var key in response.data.ratings) {
@@ -81,7 +80,6 @@ const Reviews = (props) => {
       return axios(reviewConfig);
     })
     .then((secondResponse) => {
-      console.log('review data', secondResponse.data)
       setReviewData(secondResponse.data);
     })
       .catch((err) => {
