@@ -16,11 +16,13 @@ const AddQuestionModal = (props) => {
   const [product_name, setProductName] = useState('');
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = () => {
+    getProductName(product_id);
+    setShow(true);
+  }
 
   var handleBodyChange = function(e) {
     setBody(e.target.value);
-    getProductName(product_id);
   }
 
   var handleNameChange = function(e) {
@@ -103,10 +105,12 @@ const AddQuestionModal = (props) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add a Question!</Modal.Title>
+          <Modal.Title>Ask Your Question</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-
+        About the {product_name}
+        <br></br>
+        <br></br>
         <InputGroup className="qa-name">
           <InputGroup.Text id="name">
             Your Name
