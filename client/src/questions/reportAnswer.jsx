@@ -30,11 +30,9 @@ const ReportAnswer = (props) => {
       })
   }
 
-  useEffect(() => {
-    // if(reportClick) {
-    //   setHelpfulVal(helpfulVal = helpfulVal + 1);
-    // }
-  }, [reportClick])
+  // useEffect(() => {
+
+  // }, [reportClick])
 
   var alreadyClicked = <>Reported.</>;
   var notYetClicked = (<a onClick={reportAnswer.bind(null,props.answer.id)}><u>Report</u></a>);

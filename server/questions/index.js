@@ -110,11 +110,9 @@ module.exports = function(app) {
   });
 
   app.put('/report_answer', (req, res) => {
-    //console.log(req);
     var aid = req.query.aid.toString();
     console.log('endpoint is', `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/answers/${aid}/report`)
 
-    //console.log('qid is [', qid, ']');
     var config = {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/answers/${aid}/report`,
