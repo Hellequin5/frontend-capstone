@@ -1,13 +1,9 @@
 import React, {useContext, useState, useEffect}  from 'react';
-import util from 'util';
 import Product_Id_Context from '../context.jsx';
-import axios from 'axios';
-import QuestionsSearch from './questionsSearch.jsx';
-import QuestionsBody from './questionsBody.jsx';
-import QuestionsFooter from './questionsFooter.jsx';
 
 const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);
+
 
   var [questions, setQuestions] = useState([]);
   var [actual_questions, setActualQuestions] = useState([]);
@@ -137,11 +133,7 @@ const Questions = (props) => {
   return (
     <div>
 
-    Questions Component Start, Product_id is {product_id}
-
-    <QuestionsSearch getSearchString={getSearchString}/>
-    <QuestionsBody questions={questions} questions_view={questions_view} />
-    <QuestionsFooter questions_view={questions_view} moreQuestionsClick={moreQuestionsClick} />
+    Questions Component, Product_id is {product_id}
 
     </div>
   )
