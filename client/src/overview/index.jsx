@@ -83,12 +83,16 @@ const Overview = (props) => {
   return (
     <OV_Context.Provider value={{productInfo: productInfo, setProductInfo: setProductInfo, productStylesInfo: productStylesInfo, setProductStylesInfo: setProductStylesInfo}}>
       <div id='overview'>
-        <ProductSpec/>
-        <StyleSelector/>
-        <SelectSizeButton/>
-        <SelectQuantityButton/>
-        <AddToCartButton/>
-        <ImageCarousel/>
+        <Container>
+          <Row>
+            <Col md={6}> <ImageCarousel/> </Col>
+            <Col md={{ span: 4, offset: 2 }}> <ProductSpec/>  </Col>
+          </Row>
+          <Row> <StyleSelector/> </Row>
+          <Row> <SelectSizeButton/> </Row>
+          <Row> <SelectQuantityButton/> </Row>
+          <Row> <AddToCartButton/> </Row>
+        </Container>
       </div>
     </OV_Context.Provider>
   );
