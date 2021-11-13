@@ -13,8 +13,9 @@ const AnswerFooter = (props) => {
   return (
     <div class='container'>
       <i>
-        by {(props.answer.answerer_name.toLowerCase() === 'seller') ? <p class='qa-thick'>
-        {props.answer.answerer_name} </p> : props.answer.answerer_name}
+        {(props.answer.answerer_name.toLowerCase() === 'seller')
+        ? <> by <p class='qa-thick'> {props.answer.answerer_name} </p> </>
+        : <> by {props.answer.answerer_name} </>}
 
 
         {/* {(props.answer.answerer_name.toLowerCase() !== 'seller') ?  : null}
