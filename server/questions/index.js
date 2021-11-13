@@ -28,9 +28,7 @@ module.exports = function(app) {
     axios(config)
       .then((questionsResponse) => {
         var questions = questionsResponse.data.results;
-        // var default_product_id = { 'product_id': itemsResponse.data[0].id };
         res.status(200).send(questions)
-        //console.log('response was', questions);
       })
       .catch((error) => {
         console.error(error);
@@ -54,7 +52,6 @@ module.exports = function(app) {
     axios(config)
       .then((helpfulQuestionResponse) => {
         var questions = helpfulQuestionResponse.data;
-        // var default_product_id = { 'product_id': itemsResponse.data[0].id };
         res.status(helpfulQuestionResponse.status).send(questions)
         console.log('helpful question response was "', questions, '" status:', helpfulQuestionResponse.status);
       })
@@ -65,14 +62,11 @@ module.exports = function(app) {
   });
 
   app.post('/add_question', (req, res) => {
-    //console.log(req);
-    //var qid = req.query.qid.toString();
     var my_product_id = parseInt(req.query.product_id);
     var my_body = req.query.body.toString();
     var my_name = req.query.name.toString();
     var my_email = req.query.email.toString();
-    console.log('request query is', req.query)
-    //console.log('fields are ', product_id, body, name, email);
+
     var request_body = {
       body : my_body,
       name : my_name,
@@ -89,15 +83,12 @@ module.exports = function(app) {
       .then((addQuestionResponse) => {
         var questions = addQuestionResponse.data;
         res.status(addQuestionResponse.status).send(questions)
-        console.log('add question response was "', questions, '" status:', addQuestionResponse.status);
       })
       .catch((error) => {
         console.error(error);
         res.status(500).send(`There was a problem inserting a question.`)
       })
   });
-
-
 
   app.post('/add_answer', (req, res) => {
     var qid = parseInt(req.query.qid);
