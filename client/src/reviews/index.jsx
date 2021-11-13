@@ -47,8 +47,9 @@ const Reviews = (props) => {
       true: ''
     }
   });
-
-  const retrieveReviewData = (product_id, page = null, count = null, sort = null) => {
+  const [reviewSort, setReviewSort] = useState('relevence');
+  const [reviewFilter, setReviewFilter] = useState()
+  const retrieveReviewData = (product_id) => {
     var metaConfig = {
       method:'get',
       //Talk about baseurl variable somewhere else for deployment
@@ -61,9 +62,9 @@ const Reviews = (props) => {
       method:'get',
       url:'http://localhost:10038/productReviews/',
       params: {
-        page: page,
-        count: count,
-        sort: sort,
+        // page: page,
+        // count: count,
+        sort: reviewSort,
         product_id: product_id
       }
     }
@@ -103,12 +104,17 @@ const Reviews = (props) => {
       <Row>
         <Col>
         <RatingData
-        data={reviewMetaData}/>
+        data={reviewMetaData}
+        filter={() => setReviewFilter()}
+        />
         </Col>
         <Col>
         <ReviewList
           data={reviewData}
-          metaInfo={reviewMetaData.ratings}/>
+          metaInfo={reviewMetaData.ratings}
+          typeSort={(event) => setReviewSort(event.target.value)}
+          sortedBy={reviewSort}
+          />
 
         </Col>
       </Row>

@@ -32,7 +32,11 @@ const ReviewList = (props) => {
 
   return (
     <div>
-      {numOfReviews} reviews, sorted by relevence
+      {numOfReviews} reviews, sorted by <select name='sort' value={props.sortedBy} onChange={props.typeSort}>
+        <option value='relevent'>relevence</option>
+        <option value='newest'>newest</option>
+        <option value='helpful'>helpfulness</option>
+      </select>
       <div id={'RR_List'}>
       {reviews.map((value) => {
         return<ReviewTile data={value} key={value ? value.review_id : null}/>
