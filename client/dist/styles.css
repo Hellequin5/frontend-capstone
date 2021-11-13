@@ -1,7 +1,9 @@
 .container {
   display: flex;
+  box-sizing: border-box;
  }
 
  p.qa-thick {
+  display: flex;
   font-weight: bold;
  }
