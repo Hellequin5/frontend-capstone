@@ -106,6 +106,7 @@ const Reviews = (props) => {
         <RatingData
         data={reviewMetaData}
         filter={() => setReviewFilter()}
+        filterBy={reviewFilter}
         />
         </Col>
         <Col>
