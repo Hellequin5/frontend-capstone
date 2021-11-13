@@ -11,13 +11,13 @@ const AnswerFooter = (props) => {
   var displayDate = `${longMonth} ${date.getDate()}, ${date.getFullYear()}`
 
   return (
-    <div>
+    <div class='container'>
 
-      <i>by {(props.answer.answerer_name.toLowerCase() === 'seller') ? '<b>' : null}
+      <i>by {(props.answer.answerer_name.toLowerCase() === 'seller') ? '<p class=qa-bold>' : null}
         {props.answer.answerer_name}
         {(props.answer.answerer_name.toLowerCase() === 'seller') ? '</b>' : null}
         &nbsp; {displayDate}</i>
-        <HelpfulAnswer answer={props.answer}/> | <ReportAnswer answer={props.answer}/>
+        &nbsp;<HelpfulAnswer answer={props.answer}/>&nbsp;|&nbsp;<ReportAnswer answer={props.answer}/>
     </div>
   )
 }

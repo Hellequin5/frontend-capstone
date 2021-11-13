@@ -1,0 +1,7 @@
+.container {
+  display: flex;
+ }
+
+ p.qa-thick {
+  font-weight: bold;
+ }

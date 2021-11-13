@@ -53,8 +53,8 @@ const QuestionWrapper = (props) => {
     <table width='800'><tbody>
     <tr><td><b>Q: </b></td><td><b>
     <Question text={props.question.question_body}/>
-    </b></td><td align='right'>
-      <HelpfulQuestion question={props.question} />  | <AddAnswerModal question_id={props.question.question_id} />
+    </b></td><td align='right' class='container'>
+      <HelpfulQuestion question={props.question} /> &nbsp;|&nbsp; <AddAnswerModal question_id={props.question.question_id} />
     </td></tr>
 
 
