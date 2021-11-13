@@ -23,6 +23,6 @@ module.exports = {
      }
     ]
   },
-  mode: 'development',
-  watch: true
+  watch: true,
+  mode: 'development'
 };
