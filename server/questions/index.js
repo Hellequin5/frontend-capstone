@@ -84,6 +84,31 @@ module.exports = function(app) {
       })
   });
 
+  app.put('/helpful_answer', (req, res) => {
+    //console.log(req);
+    var aid = req.query.aid.toString();
+    console.log('endpoint is', `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/answers/${aid}/helpful`)
+
+    //console.log('qid is [', qid, ']');
+    var config = {
+      method: 'put',
+      url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/answers/${aid}/helpful`,
+      headers: {
+        'Authorization': API_KEY
+      }
+    };
+    axios(config)
+      .then((helpfulAnswerResponse) => {
+        var response = helpfulAnswerResponse.data;
+        res.status(helpfulAnswerResponse.status).send(response)
+        console.log('helpful question response was "', response, '" status:', helpfulAnswerResponse.status);
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send(`There was a problem marking answer#${aid} as helpful.`)
+      })
+  });
+
   app.post('/add_question', (req, res) => {
     var my_product_id = parseInt(req.query.product_id);
     var my_body = req.query.body.toString();
