@@ -17,11 +17,6 @@ const AnswerFooter = (props) => {
         ? <> by <p class='qa-thick'> {props.answer.answerer_name} </p> </>
         : <> by {props.answer.answerer_name} </>}
 
-
-        {/* {(props.answer.answerer_name.toLowerCase() !== 'seller') ?  : null}
-        {props.answer.answerer_name}
-        {(props.answer.answerer_name.toLowerCase() === 'seller') ? '</b>' : null} */}
-
         &nbsp; {displayDate}</i>
         &nbsp;<HelpfulAnswer answer={props.answer}/>&nbsp;|&nbsp;<ReportAnswer answer={props.answer}/>
     </div>
