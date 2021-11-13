@@ -48,7 +48,7 @@ function App() {
   return (
     <div>
       <Product_Id_Context.Provider value={product_id}>
-        {/* <Overview/> */}
+        <Overview/>
         <Questions/>
         <Reviews/>
       </Product_Id_Context.Provider>
