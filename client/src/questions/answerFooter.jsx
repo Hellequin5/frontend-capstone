@@ -1,6 +1,7 @@
 import React, {useContext}  from 'react';
 import Product_Id_Context from '../context.jsx';
 import HelpfulAnswer from './helpfulAnswer.jsx';
+import ReportAnswer from './reportAnswer.jsx';
 
 const AnswerFooter = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -16,7 +17,7 @@ const AnswerFooter = (props) => {
         {props.answer.answerer_name}
         {(props.answer.answerer_name.toLowerCase() === 'seller') ? '</b>' : null}
         &nbsp; {displayDate}</i>
-        <HelpfulAnswer answer={props.answer}/>
+        <HelpfulAnswer answer={props.answer}/> | <ReportAnswer answer={props.answer}/>
     </div>
   )
 }
