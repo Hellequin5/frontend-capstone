@@ -16,7 +16,7 @@ const Questions = (props) => {
 
   //console.log('product_id from context is ', product_id);
 
-  var getQuestions = function(pid, page, count, callback) {
+  var getQuestions = function(pid, page, count) {
     //TODO: change callback to promise
     if (pid === undefined) {
       pid = product_id;
@@ -61,11 +61,19 @@ const Questions = (props) => {
         })
 
         console.log('after', debug, 'questions is', actual_questions)
-        callback(moreQuestions);
+        return new Promise( (resolve, reject) => {
+          if (resolveQuestions !== undefined) {
+            resolve(moreQuestions);
+          } else {
+            reject(undefined);
+          }
+        });
       })
       .catch((err) => {
         console.error(err);
-        //callback(undefined); //??
+        return new Promise( (resolve, reject) => {
+          reject(undefined);
+        });
       })
 
   }
@@ -79,8 +87,8 @@ const Questions = (props) => {
       var qCount = actual_questions.length;
       setQuestionsPage(questions_page = questions_page + 1);
       console.log('questions page is', questions_page);
-      const getQuestionsPromise = util.promisify(getQuestions);
-      getQuestionsPromise(product_id, questions_page, undefined)
+      //const getQuestionsPromise = util.promisify(getQuestions);
+      getQuestions(product_id, questions_page, undefined)
         .then((moreQuestions) => {
           if (moreQuestions) {
             //more results!

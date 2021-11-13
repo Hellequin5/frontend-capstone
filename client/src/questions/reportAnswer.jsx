@@ -30,10 +30,6 @@ const ReportAnswer = (props) => {
       })
   }
 
-  // useEffect(() => {
-
-  // }, [reportClick])
-
   var alreadyClicked = <>Reported.</>;
   var notYetClicked = (<a onClick={reportAnswer.bind(null,props.answer.id)}><u>Report</u></a>);
 
