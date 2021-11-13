@@ -95,23 +95,6 @@ const Questions = (props) => {
         .catch((err) => {
           console.log('there was an error getting questions!', err);
         })
-
-      // getQuestions(product_id, questions_page, undefined, (moreQuestions) => {
-
-      //   console.log('moreQuestions is', moreQuestions);
-      //   if (moreQuestions) {
-      //     //more results!
-      //     console.log('there were more results!');
-      //     setQuestionsView(questions_view = 'full*')
-      //   } else {
-      //     //no more results
-      //     console.log('there were NOT more results!');
-      //     setQuestionsView('full');
-      //   }
-
-
-      // });
-
     }
   }
 

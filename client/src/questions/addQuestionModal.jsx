@@ -13,12 +13,14 @@ const AddQuestionModal = (props) => {
   const [body, setBody] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [product_name, setProductName] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   var handleBodyChange = function(e) {
     setBody(e.target.value);
+    getProductName(product_id);
   }
 
   var handleNameChange = function(e) {
@@ -28,6 +30,38 @@ const AddQuestionModal = (props) => {
   var handleEmailChange = function(e) {
     setEmail(e.target.value);
   }
+
+  var getProductName= function(pid) {
+    if (pid === undefined) {
+      pid = product_id;
+    }
+    pid = `?pid=${pid}`;
+
+    var debug = `getProductName called with ${pid}`
+    console.log(debug)
+    var config = {}
+
+    var endpoint = `http://localhost:10038/get_item_name/${pid}`;
+    config = {
+      method:'get',
+      url:`http://localhost:10038/get_item_name/${pid}`
+    };
+    //console.log('endpoint is', endpoint);
+
+    axios(config)
+      .then((resolveName) => {
+        var productName = resolveName.data;
+        setProductName(productName);
+        console.log('after', debug, 'name is', productName)
+
+      })
+      .catch((err) => {
+        console.error(err);
+        //callback(undefined); //??
+      })
+  }
+
+
 
   var addQuestionRequest = function(callback) {
     var debug = `addQuestion called with ${body} ${name} ${email} ${product_id}`
@@ -46,26 +80,10 @@ const AddQuestionModal = (props) => {
         email: email
       }
     };
-    //console.log('endpoint is', endpoint);
-
+    //TODO: do something with response
     axios(config)
       .then((resolveQuestionAdd) => {
         console.log('Response is: ', resolveQuestionAdd.data)
-        // //questions = resolveQuestions.data;
-        // var moreQuestions = false;
-        // resolveQuestions.data.forEach((question) => {
-        //   if(!questions.includes(question)) {
-        //     questionsFilter(questions = questions.concat(resolveQuestions.data));
-        //     moreQuestions = true;
-        //   }
-        //   if (!actual_questions.includes(question)) {
-        //     setActualQuestions(actual_questions = actual_questions.concat(resolveQuestions.data));
-        //     moreQuestions = true;
-        //   }
-        // })
-
-        //console.log('after', debug, 'questions is', actual_questions)
-        //callback(moreQuestions);
       })
       .catch((err) => {
         console.error(err);

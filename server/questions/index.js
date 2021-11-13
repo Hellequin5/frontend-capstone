@@ -36,6 +36,29 @@ module.exports = function(app) {
       })
   });
 
+  app.get('/get_item_name', (req, res) => {
+    var pid = req.query.pid;
+    var endpoint =  `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${pid}`;
+
+    console.log('get endpoint is', endpoint);
+    var config = {
+      method: 'get',
+      url: endpoint,
+      headers: {
+        'Authorization': API_KEY
+      }
+    };
+    axios(config)
+      .then((nameResponse) => {
+        var name = nameResponse.data.name;
+        res.status(200).send(name)
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send(`There was a problem retrieving the name for item#${pid}`)
+      })
+  });
+
   app.put('/helpful_question', (req, res) => {
     //console.log(req);
     var qid = req.query.qid.toString();
