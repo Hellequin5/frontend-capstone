@@ -3,7 +3,7 @@
   box-sizing: border-box;
  }
 
- p.qa-thick {
+ .qa-thick {
   display: flex;
   font-weight: bold;
  }

@@ -12,21 +12,18 @@ const AnswerFooter = (props) => {
 
   return (
     <div class='container'>
-      <table width='100%' border='1'><tbody><tr>
 
-      <td><i>
+      <i>
         {(props.answer.answerer_name.toLowerCase() === 'seller')
-        ? <> by <p class='qa-thick'> {props.answer.answerer_name} </p> </>
+        ? <div class='container'> by &nbsp; <div class='qa-thick'> &nbsp; {props.answer.answerer_name} </div> </div>
         : <> by {props.answer.answerer_name} </>}
-      </i></td>
-      <td>
+      </i>
+
         &nbsp; <i>{displayDate}</i>
-      </td>
-      <td width='400' align='right'>
+
+
         &nbsp;<HelpfulAnswer answer={props.answer}/>&nbsp;|&nbsp;<ReportAnswer answer={props.answer}/>
-      </td>
-      </tr></tbody></table>
-      </div>
+    </div>
   )
 }
 
