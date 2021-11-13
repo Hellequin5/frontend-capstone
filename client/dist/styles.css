@@ -1,9 +1,14 @@
+
+.container {
+  display: flex;
+ }
+
+ .qa-thick {
+  display: flex;
+  font-weight: bold;
+ }
+
 #RR_List {
   height: 500px;
   overflow-y: scroll;
 };
-/* 
-.RR_image {
-  max-width: 50px;
-  height:auto;
-} */
