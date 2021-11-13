@@ -32,7 +32,7 @@ const StyleSelector = (props) => {
 
   return (
     <div className='OV_styleSelector'>
-        <Container>
+        <Container className='OV_thumbnails'>
           <Row>
             {productStylesInfo.styles.map(style => {
               return (

@@ -1,6 +1,6 @@
-.OV_styleSelector {
+/* .OV_styleSelector {
   width: 25%;
-}
+} */
 
 .OV_thumbnail > * {
   width:  50px;
@@ -9,42 +9,11 @@
   object-fit: cover;
 }
 
-/* .OV_productSpec {
-  float: right;
-  width: 40%;
-} */
-
-/* .OV_styleSelector{
-  float: right;
-  width: 40%;
-} */
-
-/* .OV_imageCarousel {
-  position: absolute;
-  top: 0;
-  left: 0;
-} */
-
-
-
-
-
-/* .OV_price {
-  float: right;
+.OV_thumbnails.container {
+  padding-left: 0;
 }
 
-.OV_style {
-  float: right;
+.row{
+  margin-bottom: 10px
 }
 
-.OV_thumbnails {
-  float: right;
-}
-
-.OV_sizeSelector {
-  float: right;
-}
-
-.OV_quantitySelector {
-  float: right;
-} */

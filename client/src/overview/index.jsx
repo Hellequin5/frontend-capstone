@@ -88,10 +88,16 @@ const Overview = (props) => {
             <Col md={6}> <ImageCarousel/> </Col>
             <Col md={{ span: 4, offset: 2 }}> <ProductSpec/>  </Col>
           </Row>
-          <Row> <StyleSelector/> </Row>
-          <Row> <SelectSizeButton/> </Row>
-          <Row> <SelectQuantityButton/> </Row>
-          <Row> <AddToCartButton/> </Row>
+          <Row>
+            <Col md={{ span: 4, offset: 8 }}> <StyleSelector/> </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 1, offset: 8 }}> <SelectSizeButton/> </Col>
+            <Col md={{ span: 1, offset: 1 }}> <SelectQuantityButton/> </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 4, offset: 8 }}> <AddToCartButton/> </Col>
+          </Row>
         </Container>
       </div>
     </OV_Context.Provider>

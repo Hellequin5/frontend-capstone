@@ -7,6 +7,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 
 
 
+
 const SelectSizeButton = (props) => {
   const {productStylesInfo, setProductStylesInfo} = useContext(OV_Context)
 
@@ -20,13 +21,13 @@ const SelectSizeButton = (props) => {
 
   return (
     <div className='OV_SizeButton'>
-      <DropdownButton id="selectSize" title={productStylesInfo.selectedSize}>
-          {productStylesInfo.selectSize.map(sku => {
-            return (
-              <Dropdown.Item onClick={() => selectSizeClick(sku)}>{sku.size}</Dropdown.Item>
-            )
-          })}
-        </DropdownButton>
+            <DropdownButton id="selectSize" title={productStylesInfo.selectedSize}>
+                {productStylesInfo.selectSize.map(sku => {
+                  return (
+                    <Dropdown.Item onClick={() => selectSizeClick(sku)}>{sku.size}</Dropdown.Item>
+                  )
+                })}
+              </DropdownButton>
     </div>
   )
 }
