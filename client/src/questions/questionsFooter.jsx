@@ -10,8 +10,8 @@ const QuestionsFooter = (props) => {
 
 
   return (
-    <div>
-    <AddQuestionModal/> <ShowMoreQuestions questions_view={props.questions_view} moreQuestionsClick={props.moreQuestionsClick}/>
+    <div class='container'>
+      <ShowMoreQuestions questions_view={props.questions_view} moreQuestionsClick={props.moreQuestionsClick}/> <AddQuestionModal/>
 
     </div>
   )
