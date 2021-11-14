@@ -1,13 +1,13 @@
 //console.log('overview routes loaded loaded')
 const express = require('express');
+const cors = require('cors');
 const axios = require('axios');
 const PORT = 10038; //Galvanize NYC zipcode
-const API_KEY = require('../config.js')
-const app = express();
-app.use(express.json());
-
+const API_KEY = require('../config.js');
 
 module.exports = function(app) {
+  app.use(express.json());
+  app.use(cors());
   app.get('/productInfoRequest/:product_id', (req, res) => {
     var id = req.params.product_id;
     var config = {

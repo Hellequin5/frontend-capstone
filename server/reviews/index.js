@@ -1,11 +1,14 @@
 console.log('Reviews routes loaded');
 const express = require('express');
+const cors = require('cors');
 const axios = require('axios');
 const PORT = 10038;
 const API_KEY = require('../config.js');
-const app = express();
+//const app = express();
+
 
 module.exports = function(app) {
+  app.use(cors());
   app.get('/productReviews', (req, res) => {
     var config = {
       method: 'get',

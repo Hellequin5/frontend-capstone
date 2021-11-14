@@ -3,12 +3,10 @@ const cors = require('cors');
 const axios = require('axios');
 const PORT = 10038; //Galvanize NYC zipcode
 const API_KEY = require('../config.js')
-const app = express();
-app.use(express.json());
-app.use(cors());
 
 module.exports = function(app) {
-
+  app.use(express.json());
+  app.use(cors());
   app.get('/get_item_questions', (req, res) => {
     //console.log(req);
     var pid = req.query.pid;
