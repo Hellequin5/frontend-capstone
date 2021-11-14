@@ -20,6 +20,7 @@ module.exports = function(app) {
     axios(config)
       .then((productResponse) => {
         var productInfo = productResponse.data;
+        res.set('access-control-allow-origin', '*');
         res.status(200).send(productInfo)
       })
       .catch((error) => {
@@ -39,6 +40,7 @@ module.exports = function(app) {
     axios(config)
       .then((productResponse) => {
         var productStyles = productResponse.data.results;
+        res.set('access-control-allow-origin', '*');
         res.status(200).send(productStyles)
       })
       .catch((error) => {

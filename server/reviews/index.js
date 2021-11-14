@@ -25,6 +25,7 @@ module.exports = function(app) {
     }
       axios(config)
         .then((response) => {
+          res.set('access-control-allow-origin', '*');
           res.status(200).send(response.data)
         })
         .catch((err) => {
@@ -43,6 +44,7 @@ module.exports = function(app) {
     };
     axios(config)
       .then((response) => {
+        res.set('access-control-allow-origin', '*');
         res.status(200).send(response.data);
       })
       .catch((err) => {
@@ -62,6 +64,7 @@ module.exports = function(app) {
     };
     axios(config)
       .then((response) => {
+        res.set('access-control-allow-origin', '*');
         res.status(204).send('request accepted')
       })
       .catch((err) => {
