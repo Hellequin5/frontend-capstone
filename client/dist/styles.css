@@ -17,3 +17,10 @@
   margin-bottom: 10px
 }
 
+.button-container {
+  display: flex;
+}
+
+.OV_SizeButton {
+  margin: 0 1rem 1rem 0;
+}
