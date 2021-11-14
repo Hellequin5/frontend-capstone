@@ -5,6 +5,9 @@ import NameTime from './NameTime.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import ReviewPhoto from './ReviewPhoto.jsx'
 import ReviewResponse from './ReviewResponse.jsx';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
 const ReviewTile = (props) => {
@@ -44,22 +47,44 @@ const ReviewTile = (props) => {
   if (props.data) {
     return (
       <div>
-        ____________________________________________________________________________________________
-        <ReviewStarRating rating= {props.data.rating} />
-        <NameTime name={props.data.reviewer_name} time={props.data.date}/>
-        <b>{props.data.summary}</b>
-        <ReviewBody text={props.data.body}/>
-        {props.data.recommend ? <h6><span>&#10003;</span> This user recommended this product</h6> : null}
+        <Container fluid>
+          <Row>
+            <Col>
+              <ReviewStarRating rating= {props.data.rating} />
+            </Col>
+            <Col>
+              <NameTime name={props.data.reviewer_name} time={props.data.date}/>
+            </Col>
+          </Row>
+          <Row>
+            <b>{props.data.summary}</b>
+          </Row>
+          <Row>
+            <ReviewBody text={props.data.body}/>
+          </Row>
+          <Row>
+            {props.data.recommend ? <h6><span>&#10003;</span> This user recommended this product</h6> : null}
+          </Row>
+          <Row>
+            {props.data.photos.length >= 1 ? props.data.photos.map ((value) => {
+              return <Col>
+              <ReviewPhoto
+              key={value.id}
+              url={value.url}
+              /></Col>
+            }) : null}
+          </Row>
+          <Row>
+          <div>Helpful<a value='helpful' onClick={() => handleHelpfulReport('helpful')}>{wasHelpful ? null : '? Yes'}</a> ({amountHelpful})</div>
 
-        {props.data.photos.length >= 1 ? props.data.photos.map ((value) => {
-          return <ReviewPhoto
-          key={value.id}
-          url={value.url}
-          />
-        }) : null}
-        <ReviewResponse response={props.data.response}/>
-        <div>Helpful<a value='helpful' onClick={() => handleHelpfulReport('helpful')}>{wasHelpful ? null : '? Yes'}</a> ({amountHelpful})</div>
-        <a value ='report' onClick={() => handleHelpfulReport('report')}>{reported ? 'Reported' : 'Report'}</a>
+          </Row>
+          <Row>
+          <ReviewResponse response={props.data.response}/>
+          <a value ='report' onClick={() => handleHelpfulReport('report')}>{reported ? 'Reported' : 'Report'}</a>
+
+          </Row>
+
+        </Container>
       </div>
     )
   }

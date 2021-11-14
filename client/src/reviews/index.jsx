@@ -95,19 +95,19 @@ const Reviews = (props) => {
   }, [product_id])
 
   return (
-    <div>
+    <div id='RR_Index'>
     <RR_Context.Provider value={[reviewMetaData, reviewData]}>
-    <Container>
+    <Container fluid='md'>
       <Row>Ratings & Reviews </Row>
       <Row>
-        <Col>
+        <Col xs={3}>
         <RatingData
         data={reviewMetaData}
         filter={() => setReviewFilter()}
         filterBy={reviewFilter}
         />
         </Col>
-        <Col>
+        <Col xs={9}>
         <ReviewList
           data={reviewData}
           metaInfo={reviewMetaData.ratings}
