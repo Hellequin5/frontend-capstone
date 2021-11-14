@@ -16,7 +16,6 @@ const ReviewTile = (props) => {
   const [reported, setReported] = useState(false);
   const [wasHelpful, setWasHelpful] = useState(false);
   let [amountHelpful, setAmountHelpful] = useState(0)
-
   const handleHelpfulReport = (event) => {
     var config = {
       method: 'put',
@@ -26,7 +25,6 @@ const ReviewTile = (props) => {
         type: event
       }
     }
-
     axios(config)
       .then((response) => {
         if (event === 'helpful') {
@@ -40,16 +38,19 @@ const ReviewTile = (props) => {
         console.error('unable to update helpful/report', err)
       })
   }
+  const filterConditional = (Object.values(props.reviewFilter)).includes(true);
+  const filterIncluded = props.data ? props.reviewFilter[props.data.rating]: true;
+  console.log('FILTER CONDITIONAL', filterConditional)
 
   useEffect(() => {
     if (props.data) {
       setAmountHelpful(amountHelpful + props.data.helpfulness)
     }
   }, [])
-  if (props.data) {
+  if (props.data && (!filterConditional || (filterConditional && filterIncluded))) {
     return (
       <div style={{borderBottom: '1px solid black'}} class='my-3'>
-        <Container fluid>
+        <Container fluid style={{paddingLeft:'0'}}>
           <Row className='my-4'>
             <Col>
               <ReviewStarRating rating= {props.data.rating} />
@@ -109,7 +110,7 @@ const ReviewTile = (props) => {
     )
   }
   return (
-    <div></div>
+    null
   )
 }
 

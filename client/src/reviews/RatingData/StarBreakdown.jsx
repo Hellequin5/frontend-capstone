@@ -1,9 +1,13 @@
-import React from 'react'
-import IndividualStarBreakdown from './IndividualStarBreakdown.jsx'
+import React from 'react';
+import IndividualStarBreakdown from './IndividualStarBreakdown.jsx';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 const StarBreakdown = (props) => {
-  var individualRatingArr = [];
+  let mapArr = [];
+  let totalArr = [];
 
   var recommendPercent = (obj) => {
     if (obj) {
@@ -17,16 +21,40 @@ const StarBreakdown = (props) => {
   var total = 0;
   if (ratings) {
     for (var key in ratings) {
-      individualRatingArr[key - 1]= (Number(ratings[key]))
+      totalArr[key - 1]= (Number(ratings[key]))
     }
-    total = individualRatingArr.reduce((a, b) => a + b, 0)
   }
+  total = totalArr.reduce((a, b) => a + b, 0)
+  for (var i = 5; i >= 1; i--) {
+    let amountOfCurrent = props.ratings[i] ? Number(props.ratings[i]) : 0;
+    const percent = Math.round((amountOfCurrent * 100) / total);
+    mapArr.push([amountOfCurrent, percent, i]);
+  };
+
+  console.log('mapArr', mapArr)
 
   // console.log(individualRatingArr);
   return (
     <div>
-      <div>{recommendPercent(props.recommended)}% of reviews recommend this product</div>
-      {individualRatingArr.map((value, index) => {
+      <Container fluid className='px-0'>
+        <Row xs='auto'>
+          <div>{recommendPercent(props.recommended)}% of reviews recommend this product</div>
+        </Row>
+      </Container>
+      {mapArr.map((value, index) => {
+        return (
+          <IndividualStarBreakdown
+          key={index}
+          total={value[0]}
+          percent={value[1]}
+          rating={value[2]}
+          reviewFilter={props.reviewFilter}
+          setReviewFilter={props.setReviewFilter}
+          />
+        )
+      })}
+
+      {/* {individualRatingArr.map((value, index) => {
         return (
           <IndividualStarBreakdown
             key={index}
@@ -35,8 +63,7 @@ const StarBreakdown = (props) => {
             rating={index+1}
           />
         )
-      })}
-
+      })} */}
     </div>
   )
 }

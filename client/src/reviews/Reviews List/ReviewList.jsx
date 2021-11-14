@@ -20,7 +20,7 @@ const ReviewList = (props) => {
   for (var key in ratingContext[0].ratings) {
     numOfReviews += Number(ratingContext[0].ratings[key])
   }
-
+  console.log('reviews', props)
   const amountOfReviews = (count) => {
     let test = []
     for (var i = 0; i <= count; i++) {
@@ -30,7 +30,7 @@ const ReviewList = (props) => {
   }
   useEffect(() => {
     amountOfReviews(currentReviews);
-  }, [currentReviews, ratingContext])
+  }, [currentReviews, ratingContext, props.filter])
 
   return (
     <div>
@@ -46,7 +46,7 @@ const ReviewList = (props) => {
       <div id={'RR_List'}>
       {reviews.map((value) => {
         count = count + 1;
-        return<ReviewTile data={value} key={value ? value.review_id : count}/>
+        return<ReviewTile data={value} key={value ? value.review_id : count} reviewFilter={props.reviewFilter}/>
       })}
       </div>
       <Container className='mt-2'>

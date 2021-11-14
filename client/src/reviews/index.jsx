@@ -32,7 +32,8 @@ const Reviews = (props) => {
       Comfort: {id: 0, value: ''},
       Fit: {id: 0, value: ''},
       Length: {id: 0, value: ''},
-      Quality: {id: 0, value: ''}
+      Quality: {id: 0, value: ''},
+      Size: {id: 0, value: ''}
     },
     product_id: '',
     ratings: {
@@ -48,7 +49,13 @@ const Reviews = (props) => {
     }
   });
   const [reviewSort, setReviewSort] = useState('relevence');
-  const [reviewFilter, setReviewFilter] = useState()
+  const [reviewFilter, setReviewFilter] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false
+  })
   const retrieveReviewData = (product_id) => {
     var metaConfig = {
       method:'get',
@@ -68,7 +75,6 @@ const Reviews = (props) => {
         product_id: product_id
       }
     }
-    console.log('ran')
     axios(metaConfig)
     .then((response) => {
       setReviewMetaData(response.data);
@@ -90,7 +96,6 @@ const Reviews = (props) => {
   useEffect(() => {
     if (product_id) {
       retrieveReviewData(product_id);
-
     }
   }, [product_id, reviewSort])
 
@@ -98,13 +103,16 @@ const Reviews = (props) => {
     <div class='my-4'>
     <RR_Context.Provider value={[reviewMetaData, reviewData]}>
     <Container fluid='md'>
-      <Row>Ratings & Reviews </Row>
+      <Row>RATINGS & REVIEWS</Row>
       <Row>
-        <Col xs={3}>
+        <Col xs={3} style={{paddingLeft:'0'}}>
         <RatingData
         data={reviewMetaData}
-        filter={() => setReviewFilter()}
-        filterBy={reviewFilter}
+        setReviewFilter={(rating) => setReviewFilter((prevState) => ({
+          ...prevState,
+          [rating]: !reviewFilter[rating]
+        }))}
+        reviewFilter={reviewFilter}
         />
         </Col>
         <Col xs={9}>
@@ -113,6 +121,7 @@ const Reviews = (props) => {
           metaInfo={reviewMetaData.ratings}
           typeSort={(event) => setReviewSort(event.target.value)}
           sortedBy={reviewSort}
+          reviewFilter={reviewFilter}
           />
 
         </Col>
