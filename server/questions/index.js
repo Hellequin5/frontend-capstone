@@ -28,6 +28,7 @@ module.exports = function(app) {
     axios(config)
       .then((questionsResponse) => {
         var questions = questionsResponse.data.results;
+        res.set('access-control-allow-origin', '*');
         res.status(200).send(questions)
       })
       .catch((error) => {
@@ -51,6 +52,7 @@ module.exports = function(app) {
     axios(config)
       .then((nameResponse) => {
         var name = nameResponse.data.name;
+        res.set('access-control-allow-origin', '*');
         res.status(200).send(name)
       })
       .catch((error) => {
@@ -75,6 +77,7 @@ module.exports = function(app) {
     axios(config)
       .then((helpfulQuestionResponse) => {
         var questions = helpfulQuestionResponse.data;
+        res.set('access-control-allow-origin', '*');
         res.status(helpfulQuestionResponse.status).send(questions)
         console.log('helpful question response was "', questions, '" status:', helpfulQuestionResponse.status);
       })
@@ -100,6 +103,7 @@ module.exports = function(app) {
     axios(config)
       .then((helpfulAnswerResponse) => {
         var response = helpfulAnswerResponse.data;
+        res.set('access-control-allow-origin', '*');
         res.status(helpfulAnswerResponse.status).send(response)
         console.log('helpful question response was "', response, '" status:', helpfulAnswerResponse.status);
       })
@@ -123,6 +127,7 @@ module.exports = function(app) {
     axios(config)
       .then((reportedAnswerResponse) => {
         var response = reportedAnswerResponse.data;
+        res.set('access-control-allow-origin', '*');
         res.status(reportedAnswerResponse.status).send(response)
         console.log('helpful question response was "', response, '" status:', reportedAnswerResponse.status);
       })
@@ -153,6 +158,7 @@ module.exports = function(app) {
     axios.post(endpoint, request_body, { headers } )
       .then((addQuestionResponse) => {
         var questions = addQuestionResponse.data;
+        res.set('access-control-allow-origin', '*');
         res.status(addQuestionResponse.status).send(questions)
       })
       .catch((error) => {
@@ -183,6 +189,7 @@ module.exports = function(app) {
     axios.post(endpoint, request_body, { headers, params } )
       .then((addAnswerResponse) => {
         var answers = addAnswerResponse.data;
+        res.set('access-control-allow-origin', '*');
         res.status(addAnswerResponse.status).send(answers)
       })
       .catch((error) => {
