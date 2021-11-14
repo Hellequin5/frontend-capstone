@@ -24,6 +24,8 @@ app.get('/starting_product_id', (req, res) => {
   axios(config)
     .then((itemsResponse) => {
       var default_product_id = { 'product_id': itemsResponse.data[0].id };
+      res.header('Access-Control-Allow-Origin', '*');
+      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
       res.status(200).json((default_product_id))
     })
     .catch((error) => {

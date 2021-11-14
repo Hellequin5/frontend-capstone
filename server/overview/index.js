@@ -20,7 +20,8 @@ module.exports = function(app) {
     axios(config)
       .then((productResponse) => {
         var productInfo = productResponse.data;
-        res.set('access-control-allow-origin', '*');
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         res.status(200).send(productInfo)
       })
       .catch((error) => {
@@ -40,7 +41,8 @@ module.exports = function(app) {
     axios(config)
       .then((productResponse) => {
         var productStyles = productResponse.data.results;
-        res.set('access-control-allow-origin', '*');
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         res.status(200).send(productStyles)
       })
       .catch((error) => {
