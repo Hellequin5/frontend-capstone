@@ -22,7 +22,8 @@ module.exports = function(app) {
       method: 'get',
       url: endpoint,
       headers: {
-        'Authorization': API_KEY
+        'Authorization': API_KEY,
+        'access-control-allow-origin': '*'
       }
     };
     axios(config)
@@ -46,7 +47,8 @@ module.exports = function(app) {
       method: 'get',
       url: endpoint,
       headers: {
-        'Authorization': API_KEY
+        'Authorization': API_KEY,
+        'access-control-allow-origin': '*'
       }
     };
     axios(config)
@@ -71,7 +73,8 @@ module.exports = function(app) {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${qid}/helpful`,
       headers: {
-        'Authorization': API_KEY
+        'Authorization': API_KEY,
+        'access-control-allow-origin': '*'
       }
     };
     axios(config)
@@ -97,7 +100,8 @@ module.exports = function(app) {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/answers/${aid}/helpful`,
       headers: {
-        'Authorization': API_KEY
+        'Authorization': API_KEY,
+        'access-control-allow-origin': '*'
       }
     };
     axios(config)
@@ -121,7 +125,8 @@ module.exports = function(app) {
       method: 'put',
       url: `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/answers/${aid}/report`,
       headers: {
-        'Authorization': API_KEY
+        'Authorization': API_KEY,
+        'access-control-allow-origin': '*'
       }
     };
     axios(config)
@@ -152,7 +157,8 @@ module.exports = function(app) {
 
     var endpoint = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/`;
     var headers = {
-      'Authorization': API_KEY
+      'Authorization': API_KEY,
+      'access-control-allow-origin': '*'
     };
 
     axios.post(endpoint, request_body, { headers } )
@@ -183,7 +189,8 @@ module.exports = function(app) {
     }
     var endpoint = `https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/qa/questions/${qid}/answers`;
     var headers = {
-      'Authorization': API_KEY
+      'Authorization': API_KEY,
+      'access-control-allow-origin': '*'
     };
 
     axios.post(endpoint, request_body, { headers, params } )
