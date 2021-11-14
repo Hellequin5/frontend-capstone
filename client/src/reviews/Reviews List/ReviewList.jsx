@@ -30,7 +30,7 @@ const ReviewList = (props) => {
 
   return (
     <div>
-      {numOfReviews} reviews, sorted by <select name='sort' value={props.sortedBy} onChange={props.typeSort}>
+      {numOfReviews} reviews, sorted by <select style={{border: 'none', background: 'none'}} name='sort' value={props.sortedBy} onChange={props.typeSort}>
         <option value='relevent'>relevence</option>
         <option value='newest'>newest</option>
         <option value='helpful'>helpfulness</option>
