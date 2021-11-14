@@ -4,7 +4,9 @@ import Button from 'react-bootstrap/Button';
 const MoreReviewsButton = (props) => {
   let numOfReviews = props.numOfReviews;
   if  (props.numOfReviews === props.currentReviews) {
-    return null;
+    return <div>
+      <Button variant='outline-primary' disabled>MORE REVIEWS</Button>
+    </div>;
   }
   if(props.numOfReviews >= 2) {
     return (

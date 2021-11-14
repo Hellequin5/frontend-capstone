@@ -5,6 +5,8 @@ import NameTime from './NameTime.jsx';
 import ReviewBody from './ReviewBody.jsx';
 import ReviewPhoto from './ReviewPhoto.jsx'
 import ReviewResponse from './ReviewResponse.jsx';
+import WasHelpful from './WasHelpful.jsx';
+import ReportReview from './ReportReview.jsx';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -46,9 +48,9 @@ const ReviewTile = (props) => {
   }, [])
   if (props.data) {
     return (
-      <div>
+      <div style={{borderBottom: '1px solid black'}} class='my-3'>
         <Container fluid>
-          <Row>
+          <Row className='my-4'>
             <Col>
               <ReviewStarRating rating= {props.data.rating} />
             </Col>
@@ -56,32 +58,50 @@ const ReviewTile = (props) => {
               <NameTime name={props.data.reviewer_name} time={props.data.date}/>
             </Col>
           </Row>
-          <Row>
+          <Row className='my-4'>
             <b>{props.data.summary}</b>
           </Row>
           <Row>
             <ReviewBody text={props.data.body}/>
           </Row>
-          <Row>
-            {props.data.recommend ? <h6><span>&#10003;</span> This user recommended this product</h6> : null}
-          </Row>
-          <Row>
-            {props.data.photos.length >= 1 ? props.data.photos.map ((value) => {
-              return <Col>
-              <ReviewPhoto
-              key={value.id}
-              url={value.url}
-              /></Col>
-            }) : null}
-          </Row>
-          <Row>
-          <div>Helpful<a value='helpful' onClick={() => handleHelpfulReport('helpful')}>{wasHelpful ? null : '? Yes'}</a> ({amountHelpful})</div>
-
-          </Row>
-          <Row>
-          <ReviewResponse response={props.data.response}/>
-          <a value ='report' onClick={() => handleHelpfulReport('report')}>{reported ? 'Reported' : 'Report'}</a>
-
+          {props.data.recommend ?
+            <Row className='my-4'>
+              {<h6><span>&#10003;</span> This user recommended this product</h6>}
+            </Row> : null
+          }
+          {props.data.response === null || props.data.response === '' ? null:
+            <Row className='my-4'>
+              <ReviewResponse response={props.data.response}/>
+            </Row>
+          }
+          {props.data.photos.length >= 1 ?
+            <Row className='my-4'>
+              {props.data.photos.map ((value) => {
+                return <Col>
+                <ReviewPhoto
+                key={value.id}
+                url={value.url}
+                /></Col>
+              })}
+            </Row>
+          : null}
+          <Row className='my-4' xs='auto'>
+            <Col>
+            <WasHelpful
+              wasHelpful={wasHelpful}
+              setWasHelpful={setWasHelpful}
+              handleHelpfulReport={handleHelpfulReport}
+              amountHelpful={amountHelpful}
+              setAmountHelpful={setAmountHelpful}
+            />
+            </Col>
+            <Col><div> | </div></Col>
+            <Col>
+            <ReportReview
+              reported={reported}
+              handleHelpfulReport={handleHelpfulReport}
+            />
+            </Col>
           </Row>
 
         </Container>

@@ -68,7 +68,7 @@ const Reviews = (props) => {
         product_id: product_id
       }
     }
-
+    console.log('ran')
     axios(metaConfig)
     .then((response) => {
       setReviewMetaData(response.data);
@@ -92,10 +92,10 @@ const Reviews = (props) => {
       retrieveReviewData(product_id);
 
     }
-  }, [product_id])
+  }, [product_id, reviewSort])
 
   return (
-    <div id='RR_Index'>
+    <div class='my-4'>
     <RR_Context.Provider value={[reviewMetaData, reviewData]}>
     <Container fluid='md'>
       <Row>Ratings & Reviews </Row>
