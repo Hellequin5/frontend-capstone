@@ -32,7 +32,8 @@ const Reviews = (props) => {
       Comfort: {id: 0, value: ''},
       Fit: {id: 0, value: ''},
       Length: {id: 0, value: ''},
-      Quality: {id: 0, value: ''}
+      Quality: {id: 0, value: ''},
+      Size: {id: 0, value: ''}
     },
     product_id: '',
     ratings: {
@@ -47,8 +48,15 @@ const Reviews = (props) => {
       true: ''
     }
   });
-
-  const retrieveReviewData = (product_id, page = null, count = null, sort = null) => {
+  const [reviewSort, setReviewSort] = useState('relevence');
+  const [reviewFilter, setReviewFilter] = useState({
+    1: false,
+    2: false,
+    3: false,
+    4: false,
+    5: false
+  })
+  const retrieveReviewData = (product_id) => {
     var metaConfig = {
       method:'get',
       //Talk about baseurl variable somewhere else for deployment
@@ -61,16 +69,14 @@ const Reviews = (props) => {
       method:'get',
       url:'http://localhost:10038/productReviews/',
       params: {
-        page: page,
-        count: count,
-        sort: sort,
+        // page: page,
+        // count: count,
+        sort: reviewSort,
         product_id: product_id
       }
     }
-
     axios(metaConfig)
     .then((response) => {
-      console.log('meta data', response.data)
       setReviewMetaData(response.data);
       var numOfReviews = 0;
       for (var key in response.data.ratings) {
@@ -80,7 +86,6 @@ const Reviews = (props) => {
       return axios(reviewConfig);
     })
     .then((secondResponse) => {
-      console.log('review data', secondResponse.data)
       setReviewData(secondResponse.data);
     })
       .catch((err) => {
@@ -91,24 +96,33 @@ const Reviews = (props) => {
   useEffect(() => {
     if (product_id) {
       retrieveReviewData(product_id);
-
     }
-  }, [product_id])
+  }, [product_id, reviewSort])
 
   return (
-    <div>
+    <div class='my-4'>
     <RR_Context.Provider value={[reviewMetaData, reviewData]}>
-    <Container>
-      <Row>Ratings & Reviews </Row>
+    <Container fluid='md'>
+      <Row>RATINGS & REVIEWS</Row>
       <Row>
-        <Col>
+        <Col xs={3} style={{paddingLeft:'0'}}>
         <RatingData
-        data={reviewMetaData}/>
+        data={reviewMetaData}
+        setReviewFilter={(rating) => setReviewFilter((prevState) => ({
+          ...prevState,
+          [rating]: !reviewFilter[rating]
+        }))}
+        reviewFilter={reviewFilter}
+        />
         </Col>
-        <Col>
+        <Col xs={9}>
         <ReviewList
           data={reviewData}
-          metaInfo={reviewMetaData.ratings}/>
+          metaInfo={reviewMetaData.ratings}
+          typeSort={(event) => setReviewSort(event.target.value)}
+          sortedBy={reviewSort}
+          reviewFilter={reviewFilter}
+          />
 
         </Col>
       </Row>
