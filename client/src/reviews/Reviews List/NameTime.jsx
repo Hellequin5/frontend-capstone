@@ -12,7 +12,7 @@ const NameTime= (props) => {
   }
 
   return (
-    <div>
+    <div style={{textAlign: 'right', fontStyle: 'italic', fontWeight: 'lighter', }} >
       {`${props.name}, ${setTime(props.time)}`}
     </div>
   )
