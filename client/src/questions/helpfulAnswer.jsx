@@ -2,7 +2,7 @@ import React, {useState, useEffect}  from 'react';
 import axios from 'axios'
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
-var baseUrl = process.env.baseURL || "http://localhost:10038"
+var baseUrl = process.env.baseURL || "http://fec-buttercup.herokuapp.com:"+PORT;
 
 const HelpfulAnswer = (props) => {
 

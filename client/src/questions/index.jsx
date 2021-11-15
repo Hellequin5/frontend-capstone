@@ -7,7 +7,7 @@ import QuestionsBody from './questionsBody.jsx';
 import QuestionsFooter from './questionsFooter.jsx';
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
-var baseUrl = process.env.baseURL || "http://localhost:10038"
+var baseUrl = process.env.baseURL || "http://fec-buttercup.herokuapp.com:"+PORT;
 
 const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);
