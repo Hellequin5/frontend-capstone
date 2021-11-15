@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-postbuild": "webpack -p", // runs after installation
+    "heroku-postbuild": "webpack -p",
     "start": "node server/server.js",
     "dev": "webpack -d --watch"
   },
