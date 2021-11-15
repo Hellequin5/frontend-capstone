@@ -15,15 +15,14 @@ module.exports = function(app) {
       url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}`,
       headers: {
         'Authorization': API_KEY,
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        'Access-Control-Allow-Origin': '*'
       }
     };
     axios(config)
       .then((productResponse) => {
         var productInfo = productResponse.data;
         res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         res.status(200).send(productInfo)
       })
       .catch((error) => {
@@ -38,8 +37,8 @@ module.exports = function(app) {
       url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}/styles`,
       headers: {
         'Authorization': API_KEY,
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
+        'Access-Control-Allow-Origin': '*'
+        // 'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept'
       }
     };
     axios(config)
