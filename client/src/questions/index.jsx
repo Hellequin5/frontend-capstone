@@ -5,6 +5,7 @@ import axios from 'axios';
 import QuestionsSearch from './questionsSearch.jsx';
 import QuestionsBody from './questionsBody.jsx';
 import QuestionsFooter from './questionsFooter.jsx';
+import PORT from '../server/server.js';
 
 const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -35,10 +36,10 @@ const Questions = (props) => {
     console.log(debug)
     var config = {}
 
-    var endpoint = `http://localhost:10038/get_item_questions/${pid}${page}${count}`;
+    var endpoint = `http://localhost:${PORT}/get_item_questions/${pid}${page}${count}`;
     config = {
       method:'get',
-      url:`http://localhost:10038/get_item_questions/${pid}${page}${count}`
+      url:`http://localhost:${PORT}/get_item_questions/${pid}${page}${count}`
 
       // params: {product_id: id}
     };

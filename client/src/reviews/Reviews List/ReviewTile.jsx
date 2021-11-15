@@ -6,6 +6,7 @@ import ReviewBody from './ReviewBody.jsx';
 import ReviewPhoto from './ReviewPhoto.jsx'
 import ReviewResponse from './ReviewResponse.jsx';
 import axios from 'axios';
+import PORT from '../server/server.js';
 
 const ReviewTile = (props) => {
   const [reported, setReported] = useState(false);

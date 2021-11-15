@@ -2,7 +2,7 @@
 import React, {useContext, useState, useEffect}  from 'react';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios'
-
+import PORT from '../server/server.js';
 
 
 
@@ -19,7 +19,7 @@ const ProductInfo = (props) => {
   // let [testing, setTesting] = useState({})
 
   let getProductInfo = () => {
-    axios.get(`http://localhost:10038/productInfoRequest/${product_id}`)
+    axios.get(`http://localhost:${PORT}/productInfoRequest/${product_id}`)
       .then (productInfo => {
         setProductInfo({
           category: productInfo.data.category,

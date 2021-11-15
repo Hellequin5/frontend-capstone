@@ -5,6 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
+import PORT from '../server/server.js';
 
 const AddAnswerModal = (props) => {
   const question_id = props.question_id;
@@ -35,10 +36,10 @@ const AddAnswerModal = (props) => {
     var config = {}
 
 
-    var endpoint = `http://localhost:10038/add_answer`;
+    var endpoint = `http://localhost:${PORT}/add_answer`;
     config = {
       method:'post',
-      url:`http://localhost:10038/add_answer`,
+      url:`http://localhost:${PORT}/add_answer`,
       params: {
         qid: question_id,
         body: body,

@@ -7,6 +7,7 @@ import RR_Context from './RR_Context.jsx';
 import ReviewList from './Reviews List/ReviewList.jsx';
 import RatingData from './RatingData/RatingData.jsx';
 import axios from 'axios';
+import PORT from '../server/server.js';
 
 const Reviews = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -53,14 +54,14 @@ const Reviews = (props) => {
     var metaConfig = {
       method:'get',
       //Talk about baseurl variable somewhere else for deployment
-      url:'http://localhost:10038/productMetaData',
+      url:`http://localhost:${PORT}/productMetaData`,
       params: {
         product_id: product_id
       }
     }
     var reviewConfig = {
       method:'get',
-      url:'http://localhost:10038/productReviews/',
+      url:`http://localhost:${PORT}/productReviews/`,
       params: {
         // page: page,
         // count: count,

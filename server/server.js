@@ -61,5 +61,10 @@ app.get('/singleItemRequest', (req, res) => {
 // app.listen(PORT, () => {
 //   console.log(`server is listening on port ${PORT}`)
 // })
+if (process.env.PORT) {
+  PORT = process.env.PORT;
+}
 
 app.listen(process.env.PORT || PORT)
+
+export default PORT;

@@ -1,6 +1,6 @@
 import React, {useState, useEffect}  from 'react';
 import axios from 'axios'
-
+import PORT from '../server/server.js';
 
 const HelpfulAnswer = (props) => {
 
@@ -14,7 +14,7 @@ const HelpfulAnswer = (props) => {
     if (aid) {
       config = {
         method:'put',
-        url:`http://localhost:10038/helpful_answer`,
+        url:`http://localhost:${PORT}/helpful_answer`,
         params: {'aid': aid}
       };
     }

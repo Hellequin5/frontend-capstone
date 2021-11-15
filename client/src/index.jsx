@@ -8,6 +8,7 @@ import Overview from './overview/index.jsx';
 import Questions from './questions/index.jsx';
 import Reviews from './reviews/index.jsx';
 import Product_Id_Context from './context.jsx';
+import PORT from '../server/server.js';
 
 function App() {
   var [product_id, setProduct_id] = useState(0);
@@ -18,13 +19,13 @@ function App() {
     if (id) {
       config = {
         method:'get',
-        url:`http://localhost:10038/singleItemRequest`,
+        url:`http://localhost:${PORT}/singleItemRequest`,
         params: {product_id: id}
       };
     } else {
       config = {
         method: 'get',
-        url: 'http://localhost:10038/starting_product_id'
+        url: `http://localhost:${PORT}/starting_product_id`
       }
     }
     axios(config)

@@ -5,7 +5,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import ImageGallery from 'react-image-gallery';
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
-
+import PORT from '../server/server.js';
 
 
 
@@ -23,7 +23,7 @@ const StyleSelector = (props) => {
   })
 
   let styleSetter = () => {
-    axios.get(`http://localhost:10038/productStylesRequest/${product_id}`)
+    axios.get(`http://localhost:${PORT}/productStylesRequest/${product_id}`)
       .then (productStyles => {
         let arrayOfSkus = Object.entries(productStyles.data[0].skus).map(key => ({ ...key[1]}));
         let carouselImagesArray = productStyles.data[0].photos.map(photo => ({
