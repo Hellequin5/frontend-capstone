@@ -58,6 +58,8 @@ app.get('/singleItemRequest', (req, res) => {
     })
 });
 
-app.listen(PORT, () => {
-  console.log(`server is listening on port ${PORT}`)
-})
+// app.listen(PORT, () => {
+//   console.log(`server is listening on port ${PORT}`)
+// })
+
+.listen(process.env.PORT || PORT)
