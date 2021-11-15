@@ -1,5 +1,5 @@
 const aws = require('aws-sdk');
-
+console.log('STARTING SEARCH FOR KEY')
 let s3 = new aws.S3({
   accessKeyId: process.env.S3_KEY,
   secretAccessKey: process.env.S3_SECRET
