@@ -36,7 +36,7 @@ const StarBreakdown = (props) => {
   // console.log(individualRatingArr);
   return (
     <div>
-      <Container fluid className='px-0'>
+      <Container fluid className='px-0 py-3'>
         <Row xs='auto'>
           <div>{recommendPercent(props.recommended)}% of reviews recommend this product</div>
         </Row>

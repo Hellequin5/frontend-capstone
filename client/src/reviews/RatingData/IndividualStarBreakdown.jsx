@@ -16,9 +16,9 @@ const IndividualStarBreakdown = (props) => {
       props.setReviewFilter(props.rating)
     }}>
       <Row>
-        <Col>{props.rating === 1 ? '1 Star' : `${props.rating} Stars`}</Col>
-        <Col><ProgressBar variant='success' now={props.percent}/></Col>
-        <Col>({props.total})</Col>
+        <Col xs='3'>{props.rating === 1 ? '1 Star' : `${props.rating} Stars`}</Col>
+        <Col className='px-0 pt-2'><ProgressBar variant='success' now={props.percent}/></Col>
+        <Col xs='2'>({props.total})</Col>
       </Row>
     </div>
   )

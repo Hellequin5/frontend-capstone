@@ -21,7 +21,7 @@ const RatingData = (props) => {
           setReviewFilter={props.setReviewFilter}
         />
         <FilteredResults reviewFilter={props.reviewFilter}/>
-        <CharacteristicBreakdown characteristics={props.data.characteristics}/>
+        {/* <CharacteristicBreakdown characteristics={props.data.characteristics}/> */}
 
       </Container>
     </div>
