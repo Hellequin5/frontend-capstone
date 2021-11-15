@@ -5,7 +5,7 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import Dropdown from 'react-bootstrap/Dropdown'
 import ImageGallery from 'react-image-gallery';
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
-import PORT from '../server/server.js';
+//import PORT from '../server/server.js';
 
 
 

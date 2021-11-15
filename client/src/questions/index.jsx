@@ -5,7 +5,7 @@ import axios from 'axios';
 import QuestionsSearch from './questionsSearch.jsx';
 import QuestionsBody from './questionsBody.jsx';
 import QuestionsFooter from './questionsFooter.jsx';
-import PORT from '../server/server.js';
+//import PORT from '../server/server.js';
 
 const Questions = (props) => {
   const product_id = useContext(Product_Id_Context);

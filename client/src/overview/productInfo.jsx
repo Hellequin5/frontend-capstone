@@ -2,7 +2,7 @@
 import React, {useContext, useState, useEffect}  from 'react';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios'
-import PORT from '../server/server.js';
+//import PORT from '../server/server.js';
 
 
 

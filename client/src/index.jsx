@@ -8,7 +8,7 @@ import Overview from './overview/index.jsx';
 import Questions from './questions/index.jsx';
 import Reviews from './reviews/index.jsx';
 import Product_Id_Context from './context.jsx';
-import PORT from '../server/server.js';
+//import PORT from '../server/server.js';
 
 function App() {
   var [product_id, setProduct_id] = useState(0);

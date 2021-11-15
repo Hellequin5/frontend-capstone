@@ -5,7 +5,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
-import PORT from '../server/server.js';
+//import PORT from '../server/server.js';
 
 const AddAnswerModal = (props) => {
   const question_id = props.question_id;

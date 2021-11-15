@@ -1,6 +1,10 @@
 const express = require('express');
 const axios = require('axios');
-const PORT = 10038; //Galvanize NYC zipcode
+var thePort = process.env.PORT;
+if (!thePort) {
+  thePort = 10038; //Galvanize NYC zipcode
+}
+const PORT = thePort;
 const API_KEY = require('./config.js')
 const cors = require ('cors')
 
@@ -61,9 +65,6 @@ app.get('/singleItemRequest', (req, res) => {
 // app.listen(PORT, () => {
 //   console.log(`server is listening on port ${PORT}`)
 // })
-if (process.env.PORT) {
-  PORT = process.env.PORT;
-}
 
 app.listen(process.env.PORT || PORT)
 

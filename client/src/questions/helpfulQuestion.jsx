@@ -1,6 +1,6 @@
 import React, {useState, useEffect}  from 'react';
 import axios from 'axios'
-import PORT from '../server/server.js';
+//import PORT from '../server/server.js';
 
 const HelpfulQuestion = (props) => {
 
