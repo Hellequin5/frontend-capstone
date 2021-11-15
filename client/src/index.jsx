@@ -30,9 +30,9 @@ function App() {
     axios(config)
       .then((resolveProductInfo) => {
 
-        //setProduct_id(product_id = resolveProductInfo.data.product_id)
+        setProduct_id(product_id = resolveProductInfo.data.product_id)
         //setProduct_id(product_id = 38325) //DEBUG
-        setProduct_id(product_id = 38227) //DEBUG
+        //setProduct_id(product_id = 38227) //DEBUG
       })
       .catch((err) => {
         console.error(err);
