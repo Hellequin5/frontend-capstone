@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const PORT = process.env.PORT || 10038;
-var baseUrl = process.env.baseURL || "http://fec-buttercup.herokuapp.com:"+PORT;
+var baseUrl = process.env.baseURL || "http://localhost:"+PORT;
 const API_KEY = require('../config.js');
 
 module.exports = function(app) {

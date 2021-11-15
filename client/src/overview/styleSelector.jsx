@@ -7,7 +7,7 @@ import ImageGallery from 'react-image-gallery';
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
-var baseUrl = process.env.baseURL || "http://fec-buttercup.herokuapp.com:"+PORT;
+var baseUrl = process.env.baseURL || "http://localhost:"+PORT;
 
 const StyleSelector = (props) => {
   const product_id = useContext(Product_Id_Context);
