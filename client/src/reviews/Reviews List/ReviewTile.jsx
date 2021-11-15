@@ -13,6 +13,7 @@ import Col from 'react-bootstrap/Col';
 import axios from 'axios';
 
 const ReviewTile = (props) => {
+  console.log('this should be the key')
   const [reported, setReported] = useState(false);
   const [wasHelpful, setWasHelpful] = useState(false);
   let [amountHelpful, setAmountHelpful] = useState(0)
@@ -40,7 +41,6 @@ const ReviewTile = (props) => {
   }
   const filterConditional = (Object.values(props.reviewFilter)).includes(true);
   const filterIncluded = props.data ? props.reviewFilter[props.data.rating]: true;
-  console.log('FILTER CONDITIONAL', filterConditional)
 
   useEffect(() => {
     if (props.data) {

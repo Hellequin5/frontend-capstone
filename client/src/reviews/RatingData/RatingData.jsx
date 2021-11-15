@@ -9,7 +9,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const RatingData = (props) => {
-  console.log(props)
   return (
     <div>
       <Container fluid className='px-0'>

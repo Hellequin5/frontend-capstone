@@ -14,13 +14,13 @@ const ReviewList = (props) => {
   const [submissionModal, setSubmissionModal] = React.useState(false);
   let [currentReviews, setCurrentReviews] = React.useState(1);
   const [reviews, setReviews] = React.useState([])
-  let count = 0;
+  let count = 1;
 
   var numOfReviews = 0;
   for (var key in ratingContext[0].ratings) {
     numOfReviews += Number(ratingContext[0].ratings[key])
   }
-  console.log('reviews', props)
+
   const amountOfReviews = (count) => {
     let test = []
     for (var i = 0; i <= count; i++) {
@@ -28,6 +28,7 @@ const ReviewList = (props) => {
     }
     setReviews(test);
   }
+
   useEffect(() => {
     amountOfReviews(currentReviews);
   }, [currentReviews, ratingContext, props.filter])
@@ -44,9 +45,9 @@ const ReviewList = (props) => {
       </div>
 
       <div id={'RR_List'}>
-      {reviews.map((value) => {
+      {reviews.map((value, index) => {
         count = count + 1;
-        return<ReviewTile data={value} key={value ? value.review_id : count} reviewFilter={props.reviewFilter}/>
+        return <ReviewTile data={value} key={value ? value.review_id : count} reviewFilter={props.reviewFilter}/>
       })}
       </div>
       <Container className='mt-2'>

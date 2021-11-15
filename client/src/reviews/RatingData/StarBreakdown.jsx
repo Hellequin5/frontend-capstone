@@ -31,12 +31,10 @@ const StarBreakdown = (props) => {
     mapArr.push([amountOfCurrent, percent, i]);
   };
 
-  console.log('mapArr', mapArr)
-
   // console.log(individualRatingArr);
   return (
     <div>
-      <Container fluid className='px-0 py-3'>
+      <Container fluid className='px-0 pb-3'>
         <Row xs='auto'>
           <div>{recommendPercent(props.recommended)}% of reviews recommend this product</div>
         </Row>
@@ -53,17 +51,6 @@ const StarBreakdown = (props) => {
           />
         )
       })}
-
-      {/* {individualRatingArr.map((value, index) => {
-        return (
-          <IndividualStarBreakdown
-            key={index}
-            value={value}
-            total={total}
-            rating={index+1}
-          />
-        )
-      })} */}
     </div>
   )
 }

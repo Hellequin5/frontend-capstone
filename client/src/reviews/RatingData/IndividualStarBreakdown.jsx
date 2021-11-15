@@ -5,11 +5,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 const IndividualStarBreakdown = (props) => {
-  console.log('individual star rating props', props)
   if (props.percent === NaN) {
     props.percent = 0;
   }
- console.log('reviewFILTER', props.reviewFilter)
 
   return (
     <div onClick ={() => {
