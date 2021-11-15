@@ -16,14 +16,24 @@ const QuestionsBody = (props) => {
     questions_in_view = questions_in_view.slice(0, 4);
   }
 
-  return (
-    <div>
-      {questions_in_view.map((question, index) => {
-        var keyVal = question.question_id + 'Q' + index;
-        //console.log('keyVal', keyVal);
-        return <QuestionWrapper key={keyVal} question={question} />
-      })}
+  var visibleRows = 0;
+  questions_in_view.forEach((question)=>{
+    if (question.answers) {
+      for (var key in question.answers) {
+        visibleRows+=3;
+      }
+    }
+  })
+  visibleRows += questions_in_view.length;
 
+  return (
+    <div class={`${(visibleRows > 12)?'qa-scroll':null}`}>
+
+        {questions_in_view.map((question, index) => {
+          var keyVal = question.question_id + 'Q' + index;
+          //console.log('keyVal', keyVal);
+          return <QuestionWrapper key={keyVal} question={question} />
+        })}
 
 
     </div>
