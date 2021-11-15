@@ -2,6 +2,9 @@
   "name": "catwalk",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+    "node": "^14.17.4"
+  }
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "webpack -p",
