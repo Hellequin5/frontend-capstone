@@ -45,7 +45,7 @@ module.exports = function(app) {
       .then((productResponse) => {
         var productStyles = productResponse.data.results;
         res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+        //res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
         res.status(200).send(productStyles)
       })
       .catch((error) => {
