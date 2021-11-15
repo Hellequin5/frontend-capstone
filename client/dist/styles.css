@@ -29,6 +29,15 @@
   display: flex;
  }
 
+ .qa-scroll {
+  height: 400px;
+  overflow-y: scroll;
+ }
+
+ .qa-centered {
+  margin: 25px 18%;
+}
+
  .qa-thick {
   display: flex;
   font-weight: bold;
