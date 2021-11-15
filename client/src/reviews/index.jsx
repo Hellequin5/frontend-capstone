@@ -8,6 +8,11 @@ import ReviewList from './Reviews List/ReviewList.jsx';
 import RatingData from './RatingData/RatingData.jsx';
 import axios from 'axios';
 //import PORT from '../server/server.js';
+var thePort = process.env.PORT;
+if (!thePort) {
+  thePort = 10038; //Galvanize NYC zipcode
+}
+const PORT = thePort;
 
 const Reviews = (props) => {
   const product_id = useContext(Product_Id_Context);

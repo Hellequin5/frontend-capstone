@@ -3,7 +3,11 @@ import React, {useContext, useState, useEffect}  from 'react';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios'
 //import PORT from '../server/server.js';
-
+var thePort = process.env.PORT;
+if (!thePort) {
+  thePort = 10038; //Galvanize NYC zipcode
+}
+const PORT = thePort;
 
 
 const ProductInfo = (props) => {
