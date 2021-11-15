@@ -1,7 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
-const PORT = process.env.PORT || 10038;
+import aws from 'aws-sdk';
+let s3 = new aws.S3({
+  thePort: process.env.PORT,
+  theBaseUrl: process.env.baseURL
+});
+const PORT = s3.thePort || 10038;
+var baseUrl = s3.theBaseUrl || "http://localhost:"+PORT;
 const API_KEY = require('../config.js')
 
 module.exports = function(app) {
