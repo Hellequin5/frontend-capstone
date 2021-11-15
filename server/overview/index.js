@@ -15,6 +15,7 @@ module.exports = function(app) {
   app.use(express.json());
   app.use(cors());
   app.get('/productInfoRequest/:product_id', (req, res) => {
+    console.log('API KEY IS', API_KEY)
     var id = req.params.product_id;
     var config = {
       method: 'get',
