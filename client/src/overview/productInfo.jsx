@@ -24,6 +24,7 @@ const ProductInfo = (props) => {
   // let [testing, setTesting] = useState({})
 
   let getProductInfo = () => {
+    console.log('PORT IS', PORT)
     axios.get(`${baseUrl}/productInfoRequest/${product_id}`)
       .then (productInfo => {
         setProductInfo({
@@ -37,7 +38,7 @@ const ProductInfo = (props) => {
         //setTesting(testing = productInfo.data)
       })
       .catch (error => {
-        console.log('failed to get product info')
+        console.log('failed to get product info!')
       })
   }
 
