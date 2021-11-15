@@ -47,8 +47,9 @@ const Reviews = (props) => {
       true: ''
     }
   });
-
-  const retrieveReviewData = (product_id, page = null, count = null, sort = null) => {
+  const [reviewSort, setReviewSort] = useState('relevence');
+  const [reviewFilter, setReviewFilter] = useState()
+  const retrieveReviewData = (product_id) => {
     var metaConfig = {
       method:'get',
       //Talk about baseurl variable somewhere else for deployment
@@ -61,32 +62,24 @@ const Reviews = (props) => {
       method:'get',
       url:'http://localhost:10038/productReviews/',
       params: {
-        page: page,
-        count: count,
-        sort: sort,
+        // page: page,
+        // count: count,
+        sort: reviewSort,
         product_id: product_id
       }
     }
 
-
-    // axios(metaConfig)
-    //   .then((response) => {
-    //     console.log('meta data', response.data)
-    //     setReviewMetaData(response.data);
-    //     return axios(reviewConfig);
-    //   })
-    //   .then((secondResponse) => {
-    //     console.log('review data', secondResponse.data)
-    //     setReviewData(secondResponse.data);
-    //   })
     axios(metaConfig)
     .then((response) => {
-      console.log('meta data', response.data)
       setReviewMetaData(response.data);
+      var numOfReviews = 0;
+      for (var key in response.data.ratings) {
+        numOfReviews += Number(response.data.ratings[key])
+      }
+      reviewConfig.params.count ? null :reviewConfig.params.count = numOfReviews;
       return axios(reviewConfig);
     })
     .then((secondResponse) => {
-      console.log('review data', secondResponse.data)
       setReviewData(secondResponse.data);
     })
       .catch((err) => {
@@ -109,12 +102,18 @@ const Reviews = (props) => {
       <Row>
         <Col>
         <RatingData
-        data={reviewMetaData}/>
+        data={reviewMetaData}
+        filter={() => setReviewFilter()}
+        filterBy={reviewFilter}
+        />
         </Col>
         <Col>
         <ReviewList
           data={reviewData}
-          metaInfo={reviewMetaData.ratings}/>
+          metaInfo={reviewMetaData.ratings}
+          typeSort={(event) => setReviewSort(event.target.value)}
+          sortedBy={reviewSort}
+          />
 
         </Col>
       </Row>

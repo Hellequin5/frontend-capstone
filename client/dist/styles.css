@@ -24,3 +24,17 @@
 .OV_SizeButton {
   margin: 0 1rem 1rem 0;
 }
+
+.container {
+  display: flex;
+ }
+
+ .qa-thick {
+  display: flex;
+  font-weight: bold;
+ }
+
+#RR_List {
+  height: 500px;
+  overflow-y: scroll;
+};

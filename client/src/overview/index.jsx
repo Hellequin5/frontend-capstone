@@ -1,9 +1,10 @@
 import React, {useContext, useState, useEffect} from 'react';
 import axios from 'axios'
 import Product_Id_Context from '../context.jsx';
+
 import OV_Context from './OV_Context.jsx'
 import ProductSpec from './ProductSpec.jsx'
-import StyleSelector from './StyleSelector.jsx'
+// import StyleSelector from './StyleSelector.jsx'
 import SelectSizeButton from './SelectSizeButton.jsx'
 import SelectQuantityButton from './SelectQuantityButton.jsx'
 import AddToCartButton from './AddToCartButton.jsx'
@@ -11,6 +12,9 @@ import ImageCarousel from './ImageCarousel.jsx'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+// import ProductInfo from './productInfo.jsx'
+import StyleSelector from './styleSelector.jsx'
+
 
 
 const Overview = (props) => {
