@@ -4,7 +4,7 @@
   "description": "",
   "engines": {
     "node": "^14.17.4"
-  }
+  },
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "webpack -p",
