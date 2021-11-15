@@ -10,7 +10,7 @@ import Reviews from './reviews/index.jsx';
 import Product_Id_Context from './context.jsx';
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
-var baseUrl = process.env.baseURL || "http://fec-buttercup.herokuapp.com:"+PORT;
+var baseUrl = process.env.baseURL || "http://localhost:"+PORT;
 
 
 function App() {
