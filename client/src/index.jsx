@@ -9,11 +9,8 @@ import Questions from './questions/index.jsx';
 import Reviews from './reviews/index.jsx';
 import Product_Id_Context from './context.jsx';
 //import PORT from '../server/server.js';
-var thePort = process.env.PORT;
-if (!thePort) {
-  thePort = 10038; //Galvanize NYC zipcode
-}
-const PORT = thePort;
+const PORT = process.env.PORT || 10038;
+
 
 function App() {
   var [product_id, setProduct_id] = useState(0);

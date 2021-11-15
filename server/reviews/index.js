@@ -2,11 +2,7 @@ console.log('Reviews routes loaded');
 const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
-var thePort = process.env.PORT;
-if (!thePort) {
-  thePort = 10038; //Galvanize NYC zipcode
-}
-const PORT = thePort;
+const PORT = process.env.PORT || 10038;
 const API_KEY = require('../config.js');
 //const app = express();
 

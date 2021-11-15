@@ -6,12 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import ImageGallery from 'react-image-gallery';
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 //import PORT from '../server/server.js';
-var thePort = process.env.PORT;
-if (!thePort) {
-  thePort = 10038; //Galvanize NYC zipcode
-}
-const PORT = thePort;
-
+const PORT = process.env.PORT || 10038;
 
 const StyleSelector = (props) => {
   const product_id = useContext(Product_Id_Context);

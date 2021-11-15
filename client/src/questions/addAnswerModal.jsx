@@ -6,11 +6,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
 //import PORT from '../server/server.js';
-var thePort = process.env.PORT;
-if (!thePort) {
-  thePort = 10038; //Galvanize NYC zipcode
-}
-const PORT = thePort;
+const PORT = process.env.PORT || 10038;
 
 const AddAnswerModal = (props) => {
   const question_id = props.question_id;

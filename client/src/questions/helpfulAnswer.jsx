@@ -1,11 +1,7 @@
 import React, {useState, useEffect}  from 'react';
 import axios from 'axios'
 //import PORT from '../server/server.js';
-var thePort = process.env.PORT;
-if (!thePort) {
-  thePort = 10038; //Galvanize NYC zipcode
-}
-const PORT = thePort;
+const PORT = process.env.PORT || 10038;
 
 const HelpfulAnswer = (props) => {
 
