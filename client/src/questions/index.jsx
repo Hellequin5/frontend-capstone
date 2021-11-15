@@ -139,13 +139,13 @@ const Questions = (props) => {
 
   return (
     <div class='qa-centered'>
+
+    <Container>
+      <Row>
+        <Col>
           <QuestionsSearch getSearchString={getSearchString}/>
           <QuestionsBody questions={questions} questions_view={questions_view} />
           <QuestionsFooter questions_view={questions_view} moreQuestionsClick={moreQuestionsClick} />
-
-    <Container class='qa-centered'>
-      <Row>
-        <Col>
         </Col>
       </Row>
     </Container>
