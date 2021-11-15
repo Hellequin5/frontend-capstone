@@ -2,6 +2,9 @@ import React, {useContext, useState, useEffect}  from 'react';
 import util from 'util';
 import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import QuestionsSearch from './questionsSearch.jsx';
 import QuestionsBody from './questionsBody.jsx';
 import QuestionsFooter from './questionsFooter.jsx';
@@ -135,13 +138,17 @@ const Questions = (props) => {
   }, [product_id])
 
   return (
-    <div>
+    <div class='qa-centered'>
+          <QuestionsSearch getSearchString={getSearchString}/>
+          <QuestionsBody questions={questions} questions_view={questions_view} />
+          <QuestionsFooter questions_view={questions_view} moreQuestionsClick={moreQuestionsClick} />
 
-    Questions Component Start, Product_id is {product_id}
-
-    <QuestionsSearch getSearchString={getSearchString}/>
-    <QuestionsBody questions={questions} questions_view={questions_view} />
-    <QuestionsFooter questions_view={questions_view} moreQuestionsClick={moreQuestionsClick} />
+    <Container class='qa-centered'>
+      <Row>
+        <Col>
+        </Col>
+      </Row>
+    </Container>
 
     </div>
   )

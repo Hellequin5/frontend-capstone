@@ -3,6 +3,10 @@
   display: flex;
  }
 
+ .qa-centered {
+  margin: 25px 15%;
+}
+
  .qa-thick {
   display: flex;
   font-weight: bold;

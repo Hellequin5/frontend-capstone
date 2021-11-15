@@ -11,7 +11,7 @@ const QuestionsSearch = (props) => {
   return (
     <div>
 
-    <input type='text' id='questionSearch' placeholder='Have a Question? Search for answers...' size='100' onChange={handleChange}></input>
+    <input type='text' id='questionSearch' placeholder='Have a Question? Search for answers...' size='85' onChange={handleChange}></input>
 
 
     </div>

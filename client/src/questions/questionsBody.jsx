@@ -17,7 +17,7 @@ const QuestionsBody = (props) => {
   }
 
   return (
-    <div align=''>
+    <div>
       {questions_in_view.map((question, index) => {
         var keyVal = question.question_id + 'Q' + index;
         //console.log('keyVal', keyVal);
