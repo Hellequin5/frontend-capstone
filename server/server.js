@@ -1,6 +1,6 @@
 const express = require('express');
 const axios = require('axios');
-import aws from 'aws-sdk';
+const aws = require('aws-sdk');
 let s3 = new aws.S3({
   thePort: process.env.PORT,
   theBaseUrl: process.env.baseURL
