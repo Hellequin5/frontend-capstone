@@ -2,6 +2,7 @@ import React, {useState, useEffect}  from 'react';
 import axios from 'axios'
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 
 const ReportAnswer = (props) => {
 
@@ -15,7 +16,7 @@ const ReportAnswer = (props) => {
     if (aid) {
       config = {
         method:'put',
-        url:`http://localhost:${PORT}/report_answer`,
+        url:`${baseUrl}/report_answer`,
         params: {'aid': aid}
       };
     }

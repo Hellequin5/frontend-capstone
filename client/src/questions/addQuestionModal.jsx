@@ -7,6 +7,7 @@ import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 
 const AddQuestionModal = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -45,10 +46,10 @@ const AddQuestionModal = (props) => {
     console.log(debug)
     var config = {}
 
-    var endpoint = `http://localhost:${PORT}/get_item_name/${pid}`;
+    var endpoint = `${baseUrl}/get_item_name/${pid}`;
     config = {
       method:'get',
-      url:`http://localhost:${PORT}/get_item_name/${pid}`
+      url:`${baseUrl}/get_item_name/${pid}`
     };
     //console.log('endpoint is', endpoint);
 
@@ -73,10 +74,10 @@ const AddQuestionModal = (props) => {
     var config = {}
 
 
-    var endpoint = `http://localhost:${PORT}/add_question`;
+    var endpoint = `${baseUrl}/add_question`;
     config = {
       method:'post',
-      url:`http://localhost:${PORT}/add_question`,
+      url:`${baseUrl}/add_question`,
       params: {
         product_id: product_id,
         body: body,

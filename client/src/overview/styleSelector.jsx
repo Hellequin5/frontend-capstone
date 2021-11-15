@@ -7,6 +7,7 @@ import ImageGallery from 'react-image-gallery';
 import "../../../node_modules/react-image-gallery/styles/css/image-gallery.css";
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 
 const StyleSelector = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -22,7 +23,7 @@ const StyleSelector = (props) => {
   })
 
   let styleSetter = () => {
-    axios.get(`http://localhost:${PORT}/productStylesRequest/${product_id}`)
+    axios.get(`${baseUrl}/productStylesRequest/${product_id}`)
       .then (productStyles => {
         let arrayOfSkus = Object.entries(productStyles.data[0].skus).map(key => ({ ...key[1]}));
         let carouselImagesArray = productStyles.data[0].photos.map(photo => ({

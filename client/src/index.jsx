@@ -10,6 +10,7 @@ import Reviews from './reviews/index.jsx';
 import Product_Id_Context from './context.jsx';
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 
 
 function App() {
@@ -21,13 +22,13 @@ function App() {
     if (id) {
       config = {
         method:'get',
-        url:`http://localhost:${PORT}/singleItemRequest`,
+        url:`${baseUrl}/singleItemRequest`,
         params: {product_id: id}
       };
     } else {
       config = {
         method: 'get',
-        url: `http://localhost:${PORT}/starting_product_id`
+        url: `${aseUrl}/starting_product_id`
       }
     }
     axios(config)

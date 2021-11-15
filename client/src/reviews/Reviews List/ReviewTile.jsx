@@ -8,6 +8,7 @@ import ReviewResponse from './ReviewResponse.jsx';
 import axios from 'axios';
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 
 const ReviewTile = (props) => {
   const [reported, setReported] = useState(false);

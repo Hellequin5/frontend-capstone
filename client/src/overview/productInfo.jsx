@@ -4,6 +4,7 @@ import Product_Id_Context from '../context.jsx';
 import axios from 'axios'
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 
 const ProductInfo = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -18,7 +19,7 @@ const ProductInfo = (props) => {
   // let [testing, setTesting] = useState({})
 
   let getProductInfo = () => {
-    axios.get(`http://localhost:${PORT}/productInfoRequest/${product_id}`)
+    axios.get(`${baseUrl}/productInfoRequest/${product_id}`)
       .then (productInfo => {
         setProductInfo({
           category: productInfo.data.category,

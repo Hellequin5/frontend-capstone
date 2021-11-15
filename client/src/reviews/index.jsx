@@ -9,6 +9,7 @@ import RatingData from './RatingData/RatingData.jsx';
 import axios from 'axios';
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 
 const Reviews = (props) => {
   const product_id = useContext(Product_Id_Context);
@@ -55,14 +56,14 @@ const Reviews = (props) => {
     var metaConfig = {
       method:'get',
       //Talk about baseurl variable somewhere else for deployment
-      url:`http://localhost:${PORT}/productMetaData`,
+      url:`${baseUrl}/productMetaData`,
       params: {
         product_id: product_id
       }
     }
     var reviewConfig = {
       method:'get',
-      url:`http://localhost:${PORT}/productReviews/`,
+      url:`${baseUrl}/productReviews/`,
       params: {
         // page: page,
         // count: count,

@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 const API_KEY = require('../config.js');
 
 module.exports = function(app) {

@@ -7,6 +7,7 @@ import Product_Id_Context from '../context.jsx';
 import axios from 'axios';
 //import PORT from '../server/server.js';
 const PORT = process.env.PORT || 10038;
+var baseUrl = process.env.baseURL || "http://localhost:10038"
 
 const AddAnswerModal = (props) => {
   const question_id = props.question_id;
@@ -37,10 +38,10 @@ const AddAnswerModal = (props) => {
     var config = {}
 
 
-    var endpoint = `http://localhost:${PORT}/add_answer`;
+    var endpoint = `${baseUrl}/add_answer`;
     config = {
       method:'post',
-      url:`http://localhost:${PORT}/add_answer`,
+      url:`${baseUrl}/add_answer`,
       params: {
         qid: question_id,
         body: body,
