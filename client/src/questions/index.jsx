@@ -138,9 +138,9 @@ const Questions = (props) => {
   }, [product_id])
 
   return (
-    <div class='qa-centered'>
+    <div>
 
-    <Container>
+    <Container fluid='md'>
       <Row>
         <Col>
           <QuestionsSearch getSearchString={getSearchString}/>
