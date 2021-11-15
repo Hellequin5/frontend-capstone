@@ -5,5 +5,6 @@ let s3 = new aws.S3({
   secretAccessKey: process.env.S3_SECRET
 });
 
-var API_KEY = s3.secretAccessKey;
+const API_KEY = s3.secretAccessKey;
+console.log('API_KEY is', API_KEY)
 module.exports = API_KEY;
