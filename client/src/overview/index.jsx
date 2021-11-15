@@ -3,7 +3,7 @@ import axios from 'axios'
 import Product_Id_Context from '../context.jsx';
 
 import OV_Context from './OV_Context.jsx'
-import ProductSpec from './ProductSpec.jsx'
+import ProductSpec from './productSpec.jsx'
 // import StyleSelector from './StyleSelector.jsx'
 import SelectSizeButton from './SelectSizeButton.jsx'
 import SelectQuantityButton from './SelectQuantityButton.jsx'
