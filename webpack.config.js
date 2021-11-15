@@ -24,5 +24,5 @@ module.exports = {
     ]
   },
   watch: true,
-  mode: 'production'
+  mode: 'development'
 };
