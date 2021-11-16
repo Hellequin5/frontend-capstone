@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
 app.use(
   cors({
-    origin: 'http://172.31.23.54:10038'
+    origin: '*'
   }));
 
 app.get('/starting_product_id', (req, res) => {
