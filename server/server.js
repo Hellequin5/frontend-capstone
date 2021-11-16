@@ -11,7 +11,10 @@ const overviewRoutes = require('./overview')(app)
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: 'http://localhost:10038'
+  }));
 
 app.get('/starting_product_id', (req, res) => {
   var config = {
