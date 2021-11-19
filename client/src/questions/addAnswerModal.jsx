@@ -35,10 +35,10 @@ const AddAnswerModal = (props) => {
     var config = {}
 
 
-    var endpoint = `http://localhost:10038/add_answer`;
+    var endpoint = `http://localhost:3000/add_answer`;
     config = {
       method:'post',
-      url:`http://localhost:10038/add_answer`,
+      url:`http://localhost:3000/add_answer`,
       params: {
         qid: question_id,
         body: body,

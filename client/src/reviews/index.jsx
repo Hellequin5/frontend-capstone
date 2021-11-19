@@ -60,14 +60,14 @@ const Reviews = (props) => {
     var metaConfig = {
       method:'get',
       //Talk about baseurl variable somewhere else for deployment
-      url:'http://localhost:10038/productMetaData',
+      url:'http://localhost:3000/productMetaData',
       params: {
         product_id: product_id
       }
     }
     var reviewConfig = {
       method:'get',
-      url:'http://localhost:10038/productReviews/',
+      url:'http://localhost:3000/productReviews/',
       params: {
         // page: page,
         // count: count,

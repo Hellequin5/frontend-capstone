@@ -14,7 +14,7 @@ const HelpfulAnswer = (props) => {
     if (aid) {
       config = {
         method:'put',
-        url:`http://localhost:10038/helpful_answer`,
+        url:`http://localhost:3000/helpful_answer`,
         params: {'aid': aid}
       };
     }

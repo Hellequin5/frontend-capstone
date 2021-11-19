@@ -38,7 +38,7 @@ const Overview = (props) => {
   });
 
   let getProductInfo = () => {
-    axios.get(`http://localhost:10038/productInfoRequest/${product_id}`)
+    axios.get(`http://localhost:3000/productInfoRequest/${product_id}`)
       .then (productInfo => {
         setProductInfo({
           category: productInfo.data.category,
@@ -52,7 +52,7 @@ const Overview = (props) => {
   };
 
   let styleSetter = () => {
-    axios.get(`http://localhost:10038/productStylesRequest/${product_id}`)
+    axios.get(`http://localhost:3000/productStylesRequest/${product_id}`)
       .then (productStyles => {
         let arrayOfSkus = Object.entries(productStyles.data[0].skus).map(key => ({ ...key[1]}));
         let carouselImagesArray = productStyles.data[0].photos.map(photo => ({
