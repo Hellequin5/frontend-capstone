@@ -22,6 +22,7 @@ app.get('/starting_product_id', (req, res) => {
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/',
     headers: {
       'Authorization': API_KEY,
+      'Access-Control-Allow-Private-Network': true,
       'Access-Control-Allow-Methods': '*',
       'Access-Control-Allow-Headers': '*',
       'Access-Control-Allow-Origin': '*'
