@@ -14,7 +14,8 @@ module.exports = function(app) {
       method: 'get',
       url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}`,
       headers: {
-        'Authorization': API_KEY
+        'Authorization': API_KEY,
+        'Access-Control-Allow-Origin': '*'
       }
     };
     axios(config)
