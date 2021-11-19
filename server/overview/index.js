@@ -39,7 +39,7 @@ module.exports = function(app) {
         axios(config)
           .then((productResponse) => {
             var productInfo = productResponse.data;
-            res.setHeader('Access-Control-Allow-Origin', '*')
+            //res.setHeader('Access-Control-Allow-Origin', '*')
             res.status(200).send(productInfo)
           })
           .catch((error) => {
