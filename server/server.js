@@ -17,8 +17,8 @@ app.use(
   }));
 
 app.get('/starting_product_id', (req, res) => {
-  var config = {
-    method: 'get',
+  var preFlightConfig = {
+    method: 'options',
     url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/',
     headers: {
       'Authorization': API_KEY,
@@ -27,18 +27,41 @@ app.get('/starting_product_id', (req, res) => {
       'Access-Control-Allow-Origin': '*'
     }
   };
-  axios(config)
-    .then((itemsResponse) => {
-      var default_product_id = { 'product_id': itemsResponse.data[0].id };
-      res.headers({'Access-Control-Allow-Methods': '*',
-      'Access-Control-Allow-Headers': '*',
-      'Access-Control-Allow-Origin': '*'})
-      res.status(200).json((default_product_id))
+  axios(preFlightConfig)
+    .then((pfcResponse)=>{
+
+
+
+      //THE ACTUAL REQUEST
+      var config = {
+        method: 'get',
+        url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/',
+        headers: {
+          'Authorization': API_KEY,
+          'Access-Control-Allow-Methods': '*',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Origin': '*'
+        }
+      };
+      axios(config)
+        .then((itemsResponse) => {
+          var default_product_id = { 'product_id': itemsResponse.data[0].id };
+          res.headers({'Access-Control-Allow-Methods': '*',
+          'Access-Control-Allow-Headers': '*',
+          'Access-Control-Allow-Origin': '*'})
+          res.status(200).json((default_product_id))
+        })
+        .catch((error) => {
+          console.log(error);
+          res.status(500).send('There was a problem retrieving a default product_id')
+        })
+        // END THE ACTUAL REQUEST
+
     })
-    .catch((error) => {
-      console.log(error);
-      res.status(500).send('There was a problem retrieving a default product_id')
+    .catch((preFlightErr)=>{
+      console.log(preFlightErr);
     })
+
 });
 
 app.get('/singleItemRequest', (req, res) => {
