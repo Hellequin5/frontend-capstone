@@ -6,7 +6,8 @@ const ReviewStarRating = (props) => {
     <div>
       <StarRatings
       rating= {props.rating}
-      starDimension='15px'
+      starDimension='20px'
+      starSpacing='3px'
       />
     </div>
   )

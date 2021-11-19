@@ -6,10 +6,11 @@ const ImageModal = (props) => {
   return (
   <Modal
     {...props}
-    size='lg'
+    size='xl'
     scrollable={true}
     aria-labelledby='contained-moda-title-vcenter'
     centered
+    dialogClassName=''
   >
     <Modal.Header closeButton>
 

@@ -8,10 +8,10 @@ import Overview from './overview/index.jsx';
 import Questions from './questions/index.jsx';
 import Reviews from './reviews/index.jsx';
 import Product_Id_Context from './context.jsx';
+import ButternutNavbar from './ButternutNavbar/index.jsx';
 
 function App() {
   var [product_id, setProduct_id] = useState(0);
-
 
   var singleItemRequest = (id) => {
     var config = {}
@@ -31,8 +31,8 @@ function App() {
       .then((resolveProductInfo) => {
 
         setProduct_id(product_id = resolveProductInfo.data.product_id)
-        //setProduct_id(product_id = 38325) //DEBUG
-        //setProduct_id(product_id = 38227) //DEBUG
+        // setProduct_id(product_id = 38325) //DEBUG
+        // setProduct_id(product_id = 38227) //DEBUG
       })
       .catch((err) => {
         console.error(err);
@@ -48,6 +48,7 @@ function App() {
   return (
     <div>
       <Product_Id_Context.Provider value={product_id}>
+        <ButternutNavbar singleItemRequest={(id) => singleItemRequest(id)}/>
         <Overview/>
         <Questions/>
         <Reviews/>
