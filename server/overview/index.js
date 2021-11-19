@@ -17,10 +17,10 @@ module.exports = function(app) {
       url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/',
       headers: {
         'Authorization': API_KEY,
-        'Access-Control-Allow-Private-Network': true,
-        'Access-Control-Allow-Methods': '*',
-        'Access-Control-Allow-Headers': '*',
-        'Access-Control-Allow-Origin': '*'
+        // 'Access-Control-Allow-Private-Network': true,
+        // 'Access-Control-Allow-Methods': '*',
+        // 'Access-Control-Allow-Headers': '*',
+        // 'Access-Control-Allow-Origin': '*'
       }
     };
     axios(preFlightConfig)
@@ -33,7 +33,7 @@ module.exports = function(app) {
           url:`https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/${id}`,
           headers: {
             'Authorization': API_KEY,
-            'Access-Control-Allow-Origin': '*'
+            // 'Access-Control-Allow-Origin': '*'
           }
         };
         axios(config)
