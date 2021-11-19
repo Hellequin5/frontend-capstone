@@ -18,13 +18,13 @@ function App() {
     if (id) {
       config = {
         method:'get',
-        url:`https://localhost:3000/singleItemRequest`,
+        url:`http://localhost:3000/singleItemRequest`,
         params: {product_id: id}
       };
     } else {
       config = {
         method: 'get',
-        url: 'https://localhost:3000/starting_product_id'
+        url: 'http://localhost:3000/starting_product_id'
       }
     }
     axios(config)
