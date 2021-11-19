@@ -12,7 +12,7 @@ const HelpfulQuestion = (props) => {
     if (qid) {
       config = {
         method:'put',
-        url:`http://localhost:3000/helpful_question`,
+        url:`http://localhost:10038/helpful_question`,
         params: {'qid': qid}
       };
     }

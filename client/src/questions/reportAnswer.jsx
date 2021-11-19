@@ -14,7 +14,7 @@ const ReportAnswer = (props) => {
     if (aid) {
       config = {
         method:'put',
-        url:`http://localhost:3000/report_answer`,
+        url:`http://localhost:10038/report_answer`,
         params: {'aid': aid}
       };
     }

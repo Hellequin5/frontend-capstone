@@ -1,7 +1,7 @@
 //console.log('overview routes loaded loaded')
 const express = require('express');
 const axios = require('axios');
-const PORT = 3000; //Galvanize NYC zipcode
+const PORT = 10038; //Galvanize NYC zipcode
 const API_KEY = require('../config.js')
 const app = express();
 app.use(express.json());

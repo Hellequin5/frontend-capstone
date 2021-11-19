@@ -19,7 +19,7 @@ const ReviewTile = (props) => {
   const handleHelpfulReport = (event) => {
     var config = {
       method: 'put',
-      url:'http://localhost:3000/reviews',
+      url:'http://localhost:10038/reviews',
       params: {
         review_id: props.data.review_id,
         type: event

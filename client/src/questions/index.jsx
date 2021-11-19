@@ -38,10 +38,10 @@ const Questions = (props) => {
     console.log(debug)
     var config = {}
 
-    var endpoint = `http://localhost:3000/get_item_questions/${pid}${page}${count}`;
+    var endpoint = `http://localhost:10038/get_item_questions/${pid}${page}${count}`;
     config = {
       method:'get',
-      url:`http://localhost:3000/get_item_questions/${pid}${page}${count}`
+      url:`http://localhost:10038/get_item_questions/${pid}${page}${count}`
 
       // params: {product_id: id}
     };

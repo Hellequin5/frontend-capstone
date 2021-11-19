@@ -43,10 +43,10 @@ const AddQuestionModal = (props) => {
     console.log(debug)
     var config = {}
 
-    var endpoint = `http://localhost:3000/get_item_name/${pid}`;
+    var endpoint = `http://localhost:10038/get_item_name/${pid}`;
     config = {
       method:'get',
-      url:`http://localhost:3000/get_item_name/${pid}`
+      url:`http://localhost:10038/get_item_name/${pid}`
     };
     //console.log('endpoint is', endpoint);
 
@@ -71,10 +71,10 @@ const AddQuestionModal = (props) => {
     var config = {}
 
 
-    var endpoint = `http://localhost:3000/add_question`;
+    var endpoint = `http://localhost:10038/add_question`;
     config = {
       method:'post',
-      url:`http://localhost:3000/add_question`,
+      url:`http://localhost:10038/add_question`,
       params: {
         product_id: product_id,
         body: body,
