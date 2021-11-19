@@ -1,7 +1,7 @@
 //console.log('overview routes loaded loaded')
 const express = require('express');
 const axios = require('axios');
-const cors = require('cors');
+//const cors = require('cors');
 const PORT = 10038; //Galvanize NYC zipcode
 const API_KEY = require('../config.js')
 const app = express();
@@ -9,7 +9,7 @@ app.use(express.json());
 
 
 module.exports = function(app) {
-  app.use(cors());
+  //app.use(cors());
 
   app.get('/productInfoRequest/:product_id', (req, res) => {
     var preFlightConfig = {
