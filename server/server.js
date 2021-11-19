@@ -15,7 +15,8 @@ app.use(express.json());
 //   cors({
 //     origin: '*'
 //   }));
-app.use(cors());
+
+//app.use(cors());
 
 app.get('/starting_product_id', (req, res) => {
   var preFlightConfig = {
