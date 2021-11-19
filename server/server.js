@@ -18,19 +18,19 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/starting_product_id', (req, res) => {
-  // var preFlightConfig = {
-  //   method: 'options',
-  //   url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/',
-  //   headers: {
-  //     'Authorization': API_KEY,
-  //     'Access-Control-Allow-Private-Network': true,
-  //     'Access-Control-Allow-Methods': '*',
-  //     'Access-Control-Allow-Headers': '*',
-  //     'Access-Control-Allow-Origin': '*'
-  //   }
-  // };
-  // axios(preFlightConfig)
-  //   .then((pfcResponse)=>{
+  var preFlightConfig = {
+    method: 'options',
+    url: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-atx/products/',
+    headers: {
+      'Authorization': API_KEY,
+      'Access-Control-Allow-Private-Network': true,
+      'Access-Control-Allow-Methods': '*',
+      'Access-Control-Allow-Headers': '*',
+      'Access-Control-Allow-Origin': '*'
+    }
+  };
+  axios(preFlightConfig)
+    .then((pfcResponse)=>{
 
 
 
@@ -59,10 +59,10 @@ app.get('/starting_product_id', (req, res) => {
         })
         // END THE ACTUAL REQUEST
 
-    // })
-    // .catch((preFlightErr)=>{
-    //   console.log(preFlightErr);
-    // })
+    })
+    .catch((preFlightErr)=>{
+      console.log(preFlightErr);
+    })
 
 });
 
